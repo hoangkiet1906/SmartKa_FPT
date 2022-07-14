@@ -27,6 +27,6 @@ public class UserDAO {
 	}
 	public static void main(String[] args) {
 		System.out.println(new UserDAO().getUser().toString());
-
+		
 	}
 }
