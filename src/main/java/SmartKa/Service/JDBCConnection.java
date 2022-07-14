@@ -27,5 +27,4 @@ public class JDBCConnection {
 			e.printStackTrace();
 		}
 	}
-	
 }
