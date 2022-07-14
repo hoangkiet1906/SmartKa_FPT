@@ -12,11 +12,11 @@ public class UserDAO {
 	public ArrayList<User> getUser(){
 		ArrayList<User> list = new ArrayList<User>();
 		try {	
-			String sql = "Select * from user";
+			String sql = "Select * from account";
 			PreparedStatement ps = new JDBCConnection().conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-            	User bean = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+            	User bean = new User(rs.getString(1), rs.getString(2), rs.getString(3));
                 list.add(bean);
             }
 		} catch (Exception e) {
