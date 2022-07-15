@@ -33,6 +33,14 @@ public class User {
 		return "User [user_name=" + user_name + ", password=" + password + ", date=" + date
 				+ "]";
 	}
+	public User() {
+		super();
+	}
+	public User(String user_name, String password) {
+		super();
+		this.user_name = user_name;
+		this.password = password;
+	}
 	
 
 }

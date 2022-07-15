@@ -1,11 +1,11 @@
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="slider-area">
 	<div class="slider-active swiper-container">
 		<div class="swiper-wrapper">
 			<div class="swiper-slide">
 				<div
 					class="intro-section slider-height-1 slider-content-center bg-img single-animation-wrap slider-bg-color-2"
-					style="background-image: url(assets/images/slider/slider-bg-2.jpg)">
+					style="background-image: url(assets/images/slider/nen1.jpg)">
 					<div class="container">
 						<div class="row">
 							<div class="col-12 hm2-slider-animation">
@@ -32,7 +32,7 @@
 			<div class="swiper-slide">
 				<div
 					class="intro-section slider-height-1 slider-content-center bg-img single-animation-wrap slider-bg-color-2"
-					style="background-image: url(assets/images/slider/slider-bg-2-2.jpg)">
+					style="background-image: url(assets/images/slider/nen3.jpg)">
 					<div class="container">
 						<div class="row">
 							<div class="col-12 hm2-slider-animation">
@@ -73,123 +73,26 @@
 		</div>
 		<div class="category-slider-active-2 swiper-container">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide">
-					<div class="single-category-wrap-2 text-center" data-aos="fade-up"
-						data-aos-delay="200">
-						<div class="category-img-2">
-							<a href="shop.html"> <img class="category-normal-img"
-								src="assets/images/category/category-6-black.png" alt="">
-								<img class="category-hover-img"
-								src="assets/images/category/category-hover-6.png" alt="icon">
-							</a>
-						</div>
-						<div class="category-content-2 category-content-2-black">
-							<h4>
-								<a href="shop.html">Wooden Sat</a>
-							</h4>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="single-category-wrap-2 text-center" data-aos="fade-up"
-						data-aos-delay="400">
-						<div class="category-img-2">
-							<a href="shop.html"> <img class="category-normal-img"
-								src="assets/images/category/category-7-black.png" alt="">
-								<img class="category-hover-img"
-								src="assets/images/category/category-hover-7.png" alt="icon">
-							</a>
-						</div>
-						<div class="category-content-2 category-content-2-black">
-							<h4>
-								<a href="shop.html">Office Cabin</a>
-							</h4>
+				<c:forEach var="cate" items="${cateList}">
+					<div class="swiper-slide">
+						<div class="single-category-wrap-2 text-center" data-aos="fade-up"
+							data-aos-delay="200">
+							<div class="category-img-2">
+								<a href="shop.html"> <img class="category-normal-img"
+									src="<c:url value="assets/images/product/${cate.image}" />" alt="">
+									<img class="category-hover-img"
+									src="<c:url value="assets/images/product/${cate.image}" />"
+									alt="icon">
+								</a>
+							</div>
+							<div class="category-content-2 category-content-2-black">
+								<h4>
+									<a href="shop.html">${cate.tag}</a>
+								</h4>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="single-category-wrap-2 text-center" data-aos="fade-up"
-						data-aos-delay="600">
-						<div class="category-img-2">
-							<a href="shop.html"> <img class="category-normal-img"
-								src="assets/images/category/category-8-black.png" alt="">
-								<img class="category-hover-img"
-								src="assets/images/category/category-hover-8.png" alt="icon">
-							</a>
-						</div>
-						<div class="category-content-2 category-content-2-black">
-							<h4>
-								<a href="shop.html">Bedroom Light</a>
-							</h4>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="single-category-wrap-2 text-center" data-aos="fade-up"
-						data-aos-delay="800">
-						<div class="category-img-2">
-							<a href="shop.html"> <img class="category-normal-img"
-								src="assets/images/category/category-9-black.png" alt="">
-								<img class="category-hover-img"
-								src="assets/images/category/category-hover-9.png" alt="icon">
-							</a>
-						</div>
-						<div class="category-content-2 category-content-2-black">
-							<h4>
-								<a href="shop.html">Bathroom Kit</a>
-							</h4>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="single-category-wrap-2 text-center" data-aos="fade-up"
-						data-aos-delay="1000">
-						<div class="category-img-2">
-							<a href="shop.html"> <img class="category-normal-img"
-								src="assets/images/category/category-10-black.png" alt="">
-								<img class="category-hover-img"
-								src="assets/images/category/category-hover-10.png" alt="icon">
-							</a>
-						</div>
-						<div class="category-content-2 category-content-2-black">
-							<h4>
-								<a href="shop.html">Kitchen Kit</a>
-							</h4>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="single-category-wrap-2 text-center">
-						<div class="category-img-2">
-							<a href="#"> <img class="category-normal-img"
-								src="assets/images/category/category-11-black.png" alt="">
-								<img class="category-hover-img"
-								src="assets/images/category/category-hover-11.png" alt="icon">
-							</a>
-						</div>
-						<div class="category-content-2 category-content-2-black">
-							<h4>
-								<a href="#">Computer Table</a>
-							</h4>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="single-category-wrap-2 text-center">
-						<div class="category-img-2">
-							<a href="#"> <img class="category-normal-img"
-								src="assets/images/category/category-7-black.png" alt="">
-								<img class="category-hover-img"
-								src="assets/images/category/category-hover-7.png" alt="icon">
-							</a>
-						</div>
-						<div class="category-content-2 category-content-2-black">
-							<h4>
-								<a href="#">Office Cabin</a>
-							</h4>
-						</div>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
 		</div>
 	</div>

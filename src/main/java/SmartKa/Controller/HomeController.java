@@ -1,19 +1,49 @@
 package SmartKa.Controller;
 
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import SmartKa.Constants.Constant;
+import SmartKa.DAO.ProductDAO;
+import SmartKa.DAO.UserDAO;
+import SmartKa.Model.User;
+import SmartKa.Model.Product;
+import SmartKa.Response.AuthResponse;
+
 @Controller
 public class HomeController {
 	@RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
-	public String Index() {
+	public String Index(HttpServletRequest req) {
+		ArrayList<Product> cateList =  ProductDAO.getProductByTag();
+		req.setAttribute("cateList", cateList );
 		return "user/index";
 	}
 	
-	@RequestMapping(value = {"/login"}, method = RequestMethod.GET)
+	@RequestMapping(value = {"/auth"}, method = RequestMethod.GET)
 	public String Login() {
 		return "user/login";
+	}
+	
+	@RequestMapping(value = {"/login"}, method = RequestMethod.POST)
+	public String postLogin(HttpSession session,HttpServletRequest request) {
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		User user = new User(username, password);
+		AuthResponse loginResponse = UserDAO.loginToSystem(user);
+		if (loginResponse.isSuccess()) {
+			session.setAttribute(Constant.SESSION_USERNAME, user.getUser_name());
+			request.setAttribute("message", loginResponse.getMessage());
+			return "user/index";
+		} else {
+			request.setAttribute("message", loginResponse.getMessage());
+			return "user/login";
+		}
 	}
 	
 	@RequestMapping(value = {"/info"}, method = RequestMethod.GET)

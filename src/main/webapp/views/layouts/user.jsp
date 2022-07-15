@@ -1,9 +1,10 @@
+<%@page import="SmartKa.Constants.Constant"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ page session="true" %>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -72,7 +73,14 @@
 					<div class="row align-items-center">
 						<div class="col-lg-6 col-6">
 							<div class="welcome-text">
-								<p>Default Welcome Msg!</p>
+								<%	String helloMessage = null;
+										if (session.getAttribute("username")!=null) {
+											helloMessage = "Hello " + session.getAttribute("username");
+										} else {
+											helloMessage = "Welcome to our website";
+										}
+								%>
+								<p><%=helloMessage %></p>
 							</div>
 						</div>
 						<div class="col-lg-6 col-6">
@@ -212,7 +220,25 @@
 									</div>
 								</div>
 								<div class="header-action-style">
-									<a title="Login Register" href="<c:url value="/login" />"><i
+									<a title="
+										<c:choose>
+										    <c:when test="${sessionScope.username==null}">
+										         Login Register
+										    </c:when>    
+										    <c:otherwise>
+										        Profile
+										    </c:otherwise>
+										</c:choose>
+									" href="
+									<c:choose>
+										    <c:when test="${sessionScope.username==null}">
+										         <c:url value="/auth" />
+										    </c:when>    
+										    <c:otherwise>
+										        <c:url value="/info" />
+										    </c:otherwise>
+										</c:choose>
+									"><i
 										class="pe-7s-user"></i></a>
 								</div>
 								<div class="header-action-style">

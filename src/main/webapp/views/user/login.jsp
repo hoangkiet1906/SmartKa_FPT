@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="breadcrumb-area bg-gray-4 breadcrumb-padding-1">
 	<div class="container">
 		<div class="breadcrumb-content text-center">
@@ -32,9 +33,9 @@
 						<div id="lg1" class="tab-pane active">
 							<div class="login-form-container">
 								<div class="login-register-form">
-									<form action="#" method="post">
-										<input type="text" name="user-name" placeholder="Username">
-										<input type="password" name="user-password"
+									<form action='<c:url value="/login" />' method="post">
+										<input type="text" name="username" placeholder="Username">
+										<input type="password" name="password"
 											placeholder="Password">
 										<div class="login-toggle-btn">
 											<input type="checkbox"> <label>Remember me</label> <a
