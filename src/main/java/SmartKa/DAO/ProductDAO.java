@@ -48,7 +48,7 @@ public class ProductDAO {
 		return list;
 	}
 	
-	public ArrayList<Product> getProductByTag() {
+	public static ArrayList<Product> getProductByTag() {
 		ArrayList<Product> list = new ArrayList<Product>();
 		ArrayList<String> listTagArrayList = new ArrayList<String>();
 		try {
@@ -84,7 +84,7 @@ public class ProductDAO {
 	
 	public static void main(String[] args) {
 	
-		System.out.println(new ProductDAO().getProductByTag().toString());
+		System.out.println( ProductDAO.getProductByTag().toString());
 
 	}
 }

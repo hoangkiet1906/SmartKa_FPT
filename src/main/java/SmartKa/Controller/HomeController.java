@@ -1,13 +1,22 @@
 package SmartKa.Controller;
 
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import SmartKa.DAO.ProductDAO;
+import SmartKa.Model.Product;
+
 @Controller
 public class HomeController {
 	@RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
-	public String Index() {
+	public String Index(HttpServletRequest req) {
+		ArrayList<Product> cateList =  ProductDAO.getProductByTag();
+		req.setAttribute("cateList", cateList );
 		return "user/index";
 	}
 	
