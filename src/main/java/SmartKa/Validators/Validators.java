@@ -12,6 +12,18 @@ import SmartKa.DAO.UserDAO;
 import SmartKa.Model.User;
 
 public class Validators {
+	// Check valid email
+	public static boolean validEmail(String email) {
+		String regex = "^(.+)@(.+)$";
+		if (email.matches(regex)) {
+			return true;
+		}
+		return false;
+	}
+	// Check valid password
+	public static boolean validPassword(String password) {
+		return password.length()>=6 ? true : false;
+	}
 	// Check existing user
 	public static boolean checkExistingUser(User user) {
 		ArrayList<User> users = UserDAO.getAllUsers();
@@ -24,7 +36,7 @@ public class Validators {
 	}
 	// Check confirmation of password
 	public static boolean confirmationPassword (String password, String confirmPassword) {
-		return hashPassword(password).equals(hashPassword(confirmPassword));
+		return confirmPassword.equals(password);
 	}
 	// Hash password to MD5
 	public static String hashPassword(String password) {
@@ -60,5 +72,9 @@ public class Validators {
 			return true;
 		}
 		return false;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(Validators.checkExistingUser(new User("kietba", "toannguyen")));
 	}
 }

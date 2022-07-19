@@ -29,7 +29,7 @@ public class ProductDAO {
 		return list;
 	}
 	
-	public ArrayList<Product> getProductByStatus(String status) {
+	public static ArrayList<Product> getProductByStatus(String status) {
 		ArrayList<Product> list = new ArrayList<Product>();
 		try {
 			String sql = "Select * from product where status = '"+ status + "'";
@@ -84,7 +84,7 @@ public class ProductDAO {
 	
 	public static void main(String[] args) {
 	
-		System.out.println(new ProductDAO().getProductByTag().toString());
+		System.out.println(new ProductDAO().getProduct().toString());
 
 	}
 }

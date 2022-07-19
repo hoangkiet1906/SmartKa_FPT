@@ -1,14 +1,17 @@
 package SmartKa.Model;
 
 public class UserInfo {
-	int id;
-	String fullname;
-	String avatar;
-	String phone;
-	String email;
-	String address;
-	String daddress;
-	String username;
+	private int id;
+	private String fullname;
+	private String avatar;
+	private String phone;
+	private String email;
+	private String address;
+	private String daddress;
+	private String username;
+	public UserInfo() {
+		super();
+	}
 	public UserInfo(int id, String fullname,String avatar, String phone, String email, String address, String daddress, String username) {
 		super();
 		this.id = id;
@@ -73,5 +76,4 @@ public class UserInfo {
 		return "User info: [id=" + id + ", fullname=" + fullname +", avatar="+avatar+ ", email=" + email + ", address=" + address
 				+ ", delivery address: " + daddress + ", username" + username + "]";
 	}
-
 }

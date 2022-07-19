@@ -32,55 +32,54 @@ public class UserDAO {
 		return users;
 	}
 	
-	public UserInfo getUserInfo(String sessionuser) {
-		UserInfo sessionui = null;		
+	public static UserInfo getUserInfo(String username) {
+		UserInfo sessionUserInfo = null;		
 		try {
-			String sql = "select * from info where user_name= "+"'"+sessionuser +"'";
-			PreparedStatement ps = new JDBCConnection().conn.prepareStatement(sql);
+			String sql = Constant.GET_USER_INFO_BY_USERNAME_QUERY;
+			PreparedStatement ps = UserDAO.connection.prepareStatement(sql);
+			ps.setString(1, username);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
-				sessionui = new UserInfo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
-				break;
+				sessionUserInfo = new UserInfo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
 			}
-
-		}catch (Exception e) {
-			// TODO: handle exception
+		}catch (SQLException e) {
+			e.printStackTrace();
 		}
-		return sessionui;
+		return sessionUserInfo;
 	}
-	public String addUserInfo() {
-		String uname = "testname";
-		String uavatar = "testurl";
-		String uphone = "testphone";
-		String uemail = "Testmail";
-		String uadd="addresst";
-		String udadd = "asdlxjv";
-		String uuname = "bjviet";
+	public static String addUserInfo(UserInfo userInfo) {
 		try {
-			String addquery = "insert into info(fullname,avatar,phone,email,address,deliveryaddress,user_name)"
-					+ "values('"+uname+"','"+uavatar+"','"+uphone+"','"+uemail+"','"+uadd+"','"+udadd+"','"+uuname+"')";
-			PreparedStatement ps = new JDBCConnection().conn.prepareStatement(addquery);
+			String addQuery = Constant.ADD_USER_INFO_QUERY;
+			PreparedStatement ps = UserDAO.connection.prepareStatement(addQuery);
+			ps.setString(1, userInfo.getFullname());
+			ps.setString(2, userInfo.getAvatar());
+			ps.setString(3, userInfo.getPhone());
+			ps.setString(4, userInfo.getEmail());
+			ps.setString(5, userInfo.getAddress());
+			ps.setString(6, userInfo.getDaddress());
+			ps.setString(7, userInfo.getUsername());
 			ps.execute();
-		} catch (Exception e) {
-			// TODO: handle exception
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-		return "add success";
+		return "Add user information successfully!";
 	}
-	public String updateUserInfo(String sessionuser) {
-		String uname = "testname2";
-		String uavatar = "testurl2";
-		String uphone = "testphone2";
-		String uemail = "Testmail2";
-		String uadd="testaddresst2";
-		String udadd = "testasdlxjv2";
+	public static String updateUserInfo(String username, UserInfo userInfo) {
 		try {
-			String addquery = "update info set fullname ='"+ uname +"', avatar='"+uavatar+"', phone='"+uphone+"', email='"+uemail+"', address='"+uadd+"', deliveryaddress='"+udadd+"' where user_name = '"+ sessionuser+"';";
-			PreparedStatement ps = new JDBCConnection().conn.prepareStatement(addquery);
-			ps.execute();
-		} catch (Exception e) {
-			// TODO: handle exception
+			String updateQuery = Constant.UPDATE_USER_INFO_QUERY;
+			PreparedStatement ps = UserDAO.connection.prepareStatement(updateQuery);
+			ps.setString(1, userInfo.getFullname());
+			ps.setString(2, userInfo.getAvatar());
+			ps.setString(3, userInfo.getPhone());
+			ps.setString(4, userInfo.getEmail());
+			ps.setString(5, userInfo.getAddress());
+			ps.setString(6, userInfo.getDaddress());
+			ps.setString(7, userInfo.getUsername());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-		return "update success";
+		return "Update user information successfully!";
 	}
 
 	public static AuthResponse loginToSystem (User user) {
@@ -139,12 +138,5 @@ public class UserDAO {
 			}
 		}
 		return authResponse;
-	}
-	public static void main(String[] args) {
-//		System.out.println(new UserDAO().getAllUsers().toString());
-		System.out.println(new UserDAO().updateUserInfo("kietlac"));
-
-//		System.out.println(UserDAO.addUserIntoDatabase(new User("oooooo", "12345")));
-
 	}
 }

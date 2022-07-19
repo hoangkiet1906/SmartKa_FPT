@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="breadcrumb-area bg-gray-4 breadcrumb-padding-1">
 	<div class="container">
 		<div class="breadcrumb-content text-center">
@@ -48,7 +49,7 @@
 										<div class="welcome">
 											<p>
 												Hello, <strong>Alex Tuntuni</strong> (If Not <strong>Tuntuni
-													!</strong><a href="login-register.html" class="logout"> Logout</a>)
+													!</strong><a href='<c:url value="/logout" />' id="logoutText" class="logout"> Logout</a>)
 											</p>
 										</div>
 
@@ -169,52 +170,90 @@
 									<div class="myaccount-content">
 										<h3>Account Details</h3>
 										<div class="account-details-form">
-											<form action="#">
-												<div class="row">
-													<div class="col-lg-6">
-														<div class="single-input-item">
-															<label for="first-name" class="required">First
-																Name</label> <input type="text" id="first-name" />
-														</div>
-													</div>
-													<div class="col-lg-6">
-														<div class="single-input-item">
-															<label for="last-name" class="required">Last Name</label>
-															<input type="text" id="last-name" />
-														</div>
-													</div>
+											<form action="javascript:void(0)" id="accountDetailsForm">
+												<div class="single-input-item">
+													<label for="fullname" 
+													 class="required">Full Name</label> 
+													<input type="text" id="fullname"
+														<c:choose>
+															<c:when test="${sessionScope.userInfo.fullname==''}">
+														         placeholder="No update yet"
+														    </c:when>
+														    <c:when test="${sessionScope.userInfo.fullname!=null}">
+														         value="${sessionScope.userInfo.fullname}"
+														    </c:when>    
+														    <c:otherwise>
+														        placeholder="No update yet"
+														    </c:otherwise>
+														</c:choose>
+													 />
 												</div>
 												<div class="single-input-item">
-													<label for="display-name" class="required">Display
-														Name</label> <input type="text" id="display-name" />
+													<label for="email" class="required">Email Address</label> 
+													<input type="text" 
+														<c:choose>
+															<c:when test="${sessionScope.userInfo.email==''}">
+														         placeholder="No update yet"
+														    </c:when>
+														    <c:when test="${sessionScope.userInfo.email!=null}">
+														         value="${sessionScope.userInfo.email}"
+														    </c:when>    
+														    <c:otherwise>
+														        placeholder="No update yet"
+														    </c:otherwise>
+														</c:choose>
+													id="email" />
 												</div>
 												<div class="single-input-item">
-													<label for="email" class="required">Email Addres</label> <input
-														type="email" id="email" />
+													<label for="phoneNumber" class="required">Phone Number</label> 
+													<input type="text"
+														<c:choose>
+															<c:when test="${sessionScope.userInfo.phone==''}">
+														         placeholder="No update yet"
+														    </c:when>
+														    <c:when test="${sessionScope.userInfo.phone!=null}">
+														         value="${sessionScope.userInfo.phone}"
+														    </c:when>    
+														    <c:otherwise>
+														        placeholder="No update yet"
+														    </c:otherwise>
+														</c:choose>
+													id="phoneNumber" />
 												</div>
-												<fieldset>
-													<legend>Password change</legend>
-													<div class="single-input-item">
-														<label for="current-pwd" class="required">Current
-															Password</label> <input type="password" id="current-pwd" />
-													</div>
-													<div class="row">
-														<div class="col-lg-6">
-															<div class="single-input-item">
-																<label for="new-pwd" class="required">New
-																	Password</label> <input type="password" id="new-pwd" />
-															</div>
-														</div>
-														<div class="col-lg-6">
-															<div class="single-input-item">
-																<label for="confirm-pwd" class="required">Confirm
-																	Password</label> <input type="password" id="confirm-pwd" />
-															</div>
-														</div>
-													</div>
-												</fieldset>
+												<div class="single-input-item">
+													<label for="address" class="required">Address</label> 
+													<input type="text" 
+														<c:choose>
+															<c:when test="${sessionScope.userInfo.address==''}">
+														         placeholder="No update yet"
+														    </c:when>
+														    <c:when test="${sessionScope.userInfo.address!=null}">
+														         value="${sessionScope.userInfo.address}"
+														    </c:when>    
+														    <c:otherwise>
+														        placeholder="No update yet"
+														    </c:otherwise>
+														</c:choose>
+													id="address" />
+												</div>
+												<div class="single-input-item">
+													<label for="deliveryAddress" class="required">Delivery Address</label> 
+													<input type="text" 
+														<c:choose>
+														    <c:when test="${sessionScope.userInfo.daddress==''}">
+														         placeholder="No update yet"
+														    </c:when>
+														    <c:when test="${sessionScope.userInfo.daddress!=null}">
+														         value="${sessionScope.userInfo.daddress}"
+														    </c:when>    
+														    <c:otherwise>
+														        placeholder="No update yet"
+														    </c:otherwise>
+														</c:choose>
+													id="deliveryAddress" />
+												</div>
 												<div class="single-input-item btn-hover">
-													<button class="check-btn sqr-btn">Save Changes</button>
+													<button type="submit" class="check-btn sqr-btn">Save Changes</button>
 												</div>
 											</form>
 										</div>

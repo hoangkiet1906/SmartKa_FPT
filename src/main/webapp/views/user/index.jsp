@@ -79,8 +79,8 @@
 							data-aos-delay="200">
 							<div class="category-img-2">
 								<a href="shop.html"> <img class="category-normal-img"
-									src="<c:url value="assets/images/product/${cate.image}" />" alt="">
-									<img class="category-hover-img"
+									src="<c:url value="assets/images/product/${cate.image}" />"
+									alt=""> <img class="category-hover-img"
 									src="<c:url value="assets/images/product/${cate.image}" />"
 									alt="icon">
 								</a>
@@ -114,814 +114,332 @@
 		<div class="tab-content jump">
 			<div id="pro-1" class="tab-pane active">
 				<div class="row">
-					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-						<div class="product-wrap mb-35" data-aos="fade-up"
-							data-aos-delay="200">
-							<div class="product-img img-zoom mb-25">
-								<a href="product-details.html"> <img
-									src="assets/images/product/product-5.png" alt="">
-								</a>
-								<div class="product-badge badge-top badge-right badge-pink">
-									<span>-10%</span>
+
+					<!--  -->
+					<c:forEach items="${productNews}" var="pro">
+						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+							<div class="product-wrap mb-35" data-aos="fade-up"
+								data-aos-delay="200">
+								<div class="product-img img-zoom mb-25">
+									<a href="product-details.html"> <img
+										src="<c:url value="assets/images/product/${pro.image}" />"
+										alt="">
+									</a>
+									<div class="product-action-wrap">
+										<button class="product-action-btn-1" title="Wishlist">
+											<i class="pe-7s-like"></i>
+										</button>
+										<button class="product-action-btn-1" title="Quick View"
+											data-bs-toggle="modal" data-bs-target="#Modal${pro.id}">
+											<i class="pe-7s-look"></i>
+										</button>
+									</div>
+									<div class="product-action-2-wrap">
+										<button class="product-action-btn-2" title="Add To Cart">
+											<i class="pe-7s-cart"></i> Add to cart
+										</button>
+									</div>
 								</div>
-								<div class="product-action-wrap">
-									<button class="product-action-btn-1" title="Wishlist">
-										<i class="pe-7s-like"></i>
-									</button>
-									<button class="product-action-btn-1" title="Quick View"
-										data-bs-toggle="modal" data-bs-target="#exampleModal">
-										<i class="pe-7s-look"></i>
-									</button>
-								</div>
-								<div class="product-action-2-wrap">
-									<button class="product-action-btn-2" title="Add To Cart">
-										<i class="pe-7s-cart"></i> Add to cart
-									</button>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3>
-									<a href="product-details.html">Interior moderno render</a>
-								</h3>
-								<div class="product-price">
-									<span class="old-price">$25.89 </span> <span class="new-price">$20.25
-									</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-						<div class="product-wrap mb-35" data-aos="fade-up"
-							data-aos-delay="400">
-							<div class="product-img img-zoom mb-25">
-								<a href="product-details.html"> <img
-									src="assets/images/product/product-6.png" alt="">
-								</a>
-								<div class="product-action-wrap">
-									<button class="product-action-btn-1" title="Wishlist">
-										<i class="pe-7s-like"></i>
-									</button>
-									<button class="product-action-btn-1" title="Quick View"
-										data-bs-toggle="modal" data-bs-target="#exampleModal">
-										<i class="pe-7s-look"></i>
-									</button>
-								</div>
-								<div class="product-action-2-wrap">
-									<button class="product-action-btn-2" title="Add To Cart">
-										<i class="pe-7s-cart"></i> Add to cart
-									</button>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3>
-									<a href="product-details.html">Stylish Dining Chair</a>
-								</h3>
-								<div class="product-price">
-									<span>$50.25 </span>
+								<div class="product-content">
+									<h3>
+										<a href="product-details.html"> ${pro.name} </a>
+									</h3>
+									<div class="product-price">
+										<span class="new-price">$${pro.price} </span>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-						<div class="product-wrap mb-35" data-aos="fade-up"
-							data-aos-delay="600">
-							<div class="product-img img-zoom mb-25">
-								<a href="product-details.html"> <img
-									src="assets/images/product/product-7.png" alt="">
-								</a>
-								<div class="product-badge badge-top badge-right badge-pink">
-									<span>-10%</span>
-								</div>
-								<div class="product-action-wrap">
-									<button class="product-action-btn-1" title="Wishlist">
-										<i class="pe-7s-like"></i>
-									</button>
-									<button class="product-action-btn-1" title="Quick View"
-										data-bs-toggle="modal" data-bs-target="#exampleModal">
-										<i class="pe-7s-look"></i>
-									</button>
-								</div>
-								<div class="product-action-2-wrap">
-									<button class="product-action-btn-2" title="Add To Cart">
-										<i class="pe-7s-cart"></i> Add to cart
-									</button>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3>
-									<a href="product-details.html">Round Standard Chair</a>
-								</h3>
-								<div class="product-price">
-									<span class="old-price">$45.00 </span> <span class="new-price">$40.00
-									</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-						<div class="product-wrap mb-35" data-aos="fade-up"
-							data-aos-delay="800">
-							<div class="product-img img-zoom mb-25">
-								<a href="product-details.html"> <img
-									src="assets/images/product/product-4.png" alt="">
-								</a>
-								<div class="product-action-wrap">
-									<button class="product-action-btn-1" title="Wishlist">
-										<i class="pe-7s-like"></i>
-									</button>
-									<button class="product-action-btn-1" title="Quick View"
-										data-bs-toggle="modal" data-bs-target="#exampleModal">
-										<i class="pe-7s-look"></i>
-									</button>
-								</div>
-								<div class="product-action-2-wrap">
-									<button class="product-action-btn-2" title="Add To Cart">
-										<i class="pe-7s-cart"></i> Add to cart
-									</button>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3>
-									<a href="product-details.html">Stylish Swing Chair</a>
-								</h3>
-								<div class="product-price">
-									<span>$30.25 </span>
+
+						<!-- Product Modal start -->
+						<div class="modal fade quickview-modal-style" id="Modal${pro.id}"
+							tabindex="-1" role="dialog">
+							<div class="modal-dialog modal-dialog-centered" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<a href="#" class="close" data-bs-dismiss="modal"
+											aria-label="Close"><i class=" ti-close "></i></a>
+									</div>
+									<div class="modal-body">
+										<div class="row gx-0">
+											<div class="col-lg-5 col-md-5 col-12">
+												<div class="modal-img-wrap">
+													<img
+														src="<c:url value="assets/images/product/${pro.image}" />"
+														alt="">
+												</div>
+											</div>
+											<div class="col-lg-7 col-md-7 col-12">
+												<div class="product-details-content quickview-content">
+													<h2>${pro.name}</h2>
+													<div class="product-details-price">
+														<span class="new-price">$${pro.price}</span>
+													</div>
+													<div class="product-details-review">
+														<div class="product-rating">
+															<i class=" ti-star"></i> <i class=" ti-star"></i> <i
+																class=" ti-star"></i> <i class=" ti-star"></i> <i
+																class=" ti-star"></i>
+														</div>
+														<span>( ${pro.view} Customer Review )</span>
+													</div>
+													<div
+														class="product-color product-color-active product-details-color">
+														<span>Color :</span>
+														<ul>
+															<li><a title="Pink" class="pink" href="#">pink</a></li>
+															<li><a title="Yellow" class="active yellow" href="#">yellow</a></li>
+															<li><a title="Purple" class="purple" href="#">purple</a></li>
+														</ul>
+													</div>
+													<p>${pro.description}</p>
+													<div class="product-details-action-wrap">
+														<div class="product-quality">
+															<input class="cart-plus-minus-box input-text qty text"
+																name="qtybutton" value="1">
+														</div>
+														<div class="single-product-cart btn-hover">
+															<a href="#">Add to cart</a>
+														</div>
+														<div class="single-product-wishlist">
+															<a title="Wishlist" href="#"><i class="pe-7s-like"></i></a>
+														</div>
+														<div class="single-product-compare">
+															<a title="Compare" href="#"><i class="pe-7s-shuffle"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-						<div class="product-wrap mb-35" data-aos="fade-up"
-							data-aos-delay="200">
-							<div class="product-img img-zoom mb-25">
-								<a href="product-details.html"> <img
-									src="assets/images/product/product-8.png" alt="">
-								</a>
-								<div class="product-badge badge-top badge-right badge-pink">
-									<span>-10%</span>
-								</div>
-								<div class="product-action-wrap">
-									<button class="product-action-btn-1" title="Wishlist">
-										<i class="pe-7s-like"></i>
-									</button>
-									<button class="product-action-btn-1" title="Quick View"
-										data-bs-toggle="modal" data-bs-target="#exampleModal">
-										<i class="pe-7s-look"></i>
-									</button>
-								</div>
-								<div class="product-action-2-wrap">
-									<button class="product-action-btn-2" title="Add To Cart">
-										<i class="pe-7s-cart"></i> Add to cart
-									</button>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3>
-									<a href="product-details.html">Modern Swivel Chair</a>
-								</h3>
-								<div class="product-price">
-									<span class="old-price">$25.89 </span> <span class="new-price">$20.25
-									</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-						<div class="product-wrap mb-35" data-aos="fade-up"
-							data-aos-delay="400">
-							<div class="product-img img-zoom mb-25">
-								<a href="product-details.html"> <img
-									src="assets/images/product/product-2.png" alt="">
-								</a>
-								<div class="product-action-wrap">
-									<button class="product-action-btn-1" title="Wishlist">
-										<i class="pe-7s-like"></i>
-									</button>
-									<button class="product-action-btn-1" title="Quick View"
-										data-bs-toggle="modal" data-bs-target="#exampleModal">
-										<i class="pe-7s-look"></i>
-									</button>
-								</div>
-								<div class="product-action-2-wrap">
-									<button class="product-action-btn-2" title="Add To Cart">
-										<i class="pe-7s-cart"></i> Add to cart
-									</button>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3>
-									<a href="product-details.html">New Modern Sofa Set</a>
-								</h3>
-								<div class="product-price">
-									<span>$50.25 </span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-						<div class="product-wrap mb-35" data-aos="fade-up"
-							data-aos-delay="600">
-							<div class="product-img img-zoom mb-25">
-								<a href="product-details.html"> <img
-									src="assets/images/product/product-3.png" alt="">
-								</a>
-								<div class="product-badge badge-top badge-right badge-pink">
-									<span>-10%</span>
-								</div>
-								<div class="product-action-wrap">
-									<button class="product-action-btn-1" title="Wishlist">
-										<i class="pe-7s-like"></i>
-									</button>
-									<button class="product-action-btn-1" title="Quick View"
-										data-bs-toggle="modal" data-bs-target="#exampleModal">
-										<i class="pe-7s-look"></i>
-									</button>
-								</div>
-								<div class="product-action-2-wrap">
-									<button class="product-action-btn-2" title="Add To Cart">
-										<i class="pe-7s-cart"></i> Add to cart
-									</button>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3>
-									<a href="product-details.html">Easy Modern Chair</a>
-								</h3>
-								<div class="product-price">
-									<span class="old-price">$45.00 </span> <span class="new-price">$40.00
-									</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-						<div class="product-wrap mb-35" data-aos="fade-up"
-							data-aos-delay="800">
-							<div class="product-img img-zoom mb-25">
-								<a href="product-details.html"> <img
-									src="assets/images/product/product-9.png" alt="">
-								</a>
-								<div class="product-action-wrap">
-									<button class="product-action-btn-1" title="Wishlist">
-										<i class="pe-7s-like"></i>
-									</button>
-									<button class="product-action-btn-1" title="Quick View"
-										data-bs-toggle="modal" data-bs-target="#exampleModal">
-										<i class="pe-7s-look"></i>
-									</button>
-								</div>
-								<div class="product-action-2-wrap">
-									<button class="product-action-btn-2" title="Add To Cart">
-										<i class="pe-7s-cart"></i> Add to cart
-									</button>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3>
-									<a href="product-details.html">Modern Lounge Chairs</a>
-								</h3>
-								<div class="product-price">
-									<span>$30.25 </span>
-								</div>
-							</div>
-						</div>
-					</div>
+						<!-- Product Modal end -->
+
+						<!--  -->
+					</c:forEach>
 				</div>
 			</div>
+
 			<div id="pro-2" class="tab-pane">
 				<div class="row">
-					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-						<div class="product-wrap mb-35">
-							<div class="product-img img-zoom mb-25">
-								<a href="product-details.html"> <img
-									src="assets/images/product/product-9.png" alt="">
-								</a>
-								<div class="product-badge badge-top badge-right badge-pink">
-									<span>-10%</span>
+					<!--  -->
+					<c:forEach items="${productBests}" var="pro">
+						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+							<div class="product-wrap mb-35">
+								<div class="product-img img-zoom mb-25">
+									<a href="product-details.html"> <img
+										src="<c:url value="assets/images/product/${pro.image}" />"
+										alt="">
+									</a>
+									<div class="product-action-wrap">
+										<button class="product-action-btn-1" title="Wishlist">
+											<i class="pe-7s-like"></i>
+										</button>
+										<button class="product-action-btn-1" title="Quick View"
+											data-bs-toggle="modal" data-bs-target="#Modal${pro.id}">
+											<i class="pe-7s-look"></i>
+										</button>
+									</div>
+									<div class="product-action-2-wrap">
+										<button class="product-action-btn-2" title="Add To Cart">
+											<i class="pe-7s-cart"></i> Add to cart
+										</button>
+									</div>
 								</div>
-								<div class="product-action-wrap">
-									<button class="product-action-btn-1" title="Wishlist">
-										<i class="pe-7s-like"></i>
-									</button>
-									<button class="product-action-btn-1" title="Quick View"
-										data-bs-toggle="modal" data-bs-target="#exampleModal">
-										<i class="pe-7s-look"></i>
-									</button>
-								</div>
-								<div class="product-action-2-wrap">
-									<button class="product-action-btn-2" title="Add To Cart">
-										<i class="pe-7s-cart"></i> Add to cart
-									</button>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3>
-									<a href="product-details.html">Modern Lounge Chairs</a>
-								</h3>
-								<div class="product-price">
-									<span class="old-price">$25.89 </span> <span class="new-price">$20.25
-									</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-						<div class="product-wrap mb-35">
-							<div class="product-img img-zoom mb-25">
-								<a href="product-details.html"> <img
-									src="assets/images/product/product-8.png" alt="">
-								</a>
-								<div class="product-action-wrap">
-									<button class="product-action-btn-1" title="Wishlist">
-										<i class="pe-7s-like"></i>
-									</button>
-									<button class="product-action-btn-1" title="Quick View"
-										data-bs-toggle="modal" data-bs-target="#exampleModal">
-										<i class="pe-7s-look"></i>
-									</button>
-								</div>
-								<div class="product-action-2-wrap">
-									<button class="product-action-btn-2" title="Add To Cart">
-										<i class="pe-7s-cart"></i> Add to cart
-									</button>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3>
-									<a href="product-details.html">Modern Swivel Chair</a>
-								</h3>
-								<div class="product-price">
-									<span>$50.25 </span>
+								<div class="product-content">
+									<h3>
+										<a href="product-details.html">${pro.name}</a>
+									</h3>
+									<div class="product-price">
+										<span class="new-price">$${pro.price} </span>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-						<div class="product-wrap mb-35">
-							<div class="product-img img-zoom mb-25">
-								<a href="product-details.html"> <img
-									src="assets/images/product/product-6.png" alt="">
-								</a>
-								<div class="product-badge badge-top badge-right badge-pink">
-									<span>-10%</span>
-								</div>
-								<div class="product-action-wrap">
-									<button class="product-action-btn-1" title="Wishlist">
-										<i class="pe-7s-like"></i>
-									</button>
-									<button class="product-action-btn-1" title="Quick View"
-										data-bs-toggle="modal" data-bs-target="#exampleModal">
-										<i class="pe-7s-look"></i>
-									</button>
-								</div>
-								<div class="product-action-2-wrap">
-									<button class="product-action-btn-2" title="Add To Cart">
-										<i class="pe-7s-cart"></i> Add to cart
-									</button>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3>
-									<a href="product-details.html">Stylish Dining Chair</a>
-								</h3>
-								<div class="product-price">
-									<span class="old-price">$45.00 </span> <span class="new-price">$40.00
-									</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-						<div class="product-wrap mb-35">
-							<div class="product-img img-zoom mb-25">
-								<a href="product-details.html"> <img
-									src="assets/images/product/product-7.png" alt="">
-								</a>
-								<div class="product-action-wrap">
-									<button class="product-action-btn-1" title="Wishlist">
-										<i class="pe-7s-like"></i>
-									</button>
-									<button class="product-action-btn-1" title="Quick View"
-										data-bs-toggle="modal" data-bs-target="#exampleModal">
-										<i class="pe-7s-look"></i>
-									</button>
-								</div>
-								<div class="product-action-2-wrap">
-									<button class="product-action-btn-2" title="Add To Cart">
-										<i class="pe-7s-cart"></i> Add to cart
-									</button>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3>
-									<a href="product-details.html">Round Standard Chair</a>
-								</h3>
-								<div class="product-price">
-									<span>$30.25 </span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-						<div class="product-wrap mb-35">
-							<div class="product-img img-zoom mb-25">
-								<a href="product-details.html"> <img
-									src="assets/images/product/product-5.png" alt="">
-								</a>
-								<div class="product-badge badge-top badge-right badge-pink">
-									<span>-10%</span>
-								</div>
-								<div class="product-action-wrap">
-									<button class="product-action-btn-1" title="Wishlist">
-										<i class="pe-7s-like"></i>
-									</button>
-									<button class="product-action-btn-1" title="Quick View"
-										data-bs-toggle="modal" data-bs-target="#exampleModal">
-										<i class="pe-7s-look"></i>
-									</button>
-								</div>
-								<div class="product-action-2-wrap">
-									<button class="product-action-btn-2" title="Add To Cart">
-										<i class="pe-7s-cart"></i> Add to cart
-									</button>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3>
-									<a href="product-details.html">Interior moderno render</a>
-								</h3>
-								<div class="product-price">
-									<span class="old-price">$25.89 </span> <span class="new-price">$20.25
-									</span>
+
+						<!-- Product Modal start -->
+						<div class="modal fade quickview-modal-style" id="Modal${pro.id}"
+							tabindex="-1" role="dialog">
+							<div class="modal-dialog modal-dialog-centered" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<a href="#" class="close" data-bs-dismiss="modal"
+											aria-label="Close"><i class=" ti-close "></i></a>
+									</div>
+									<div class="modal-body">
+										<div class="row gx-0">
+											<div class="col-lg-5 col-md-5 col-12">
+												<div class="modal-img-wrap">
+													<img
+														src="<c:url value="assets/images/product/${pro.image}" />"
+														alt="">
+												</div>
+											</div>
+											<div class="col-lg-7 col-md-7 col-12">
+												<div class="product-details-content quickview-content">
+													<h2>${pro.name}</h2>
+													<div class="product-details-price">
+														<span class="new-price">$${pro.price}</span>
+													</div>
+													<div class="product-details-review">
+														<div class="product-rating">
+															<i class=" ti-star"></i> <i class=" ti-star"></i> <i
+																class=" ti-star"></i> <i class=" ti-star"></i> <i
+																class=" ti-star"></i>
+														</div>
+														<span>( ${pro.view} Customer Review )</span>
+													</div>
+													<div
+														class="product-color product-color-active product-details-color">
+														<span>Color :</span>
+														<ul>
+															<li><a title="Pink" class="pink" href="#">pink</a></li>
+															<li><a title="Yellow" class="active yellow" href="#">yellow</a></li>
+															<li><a title="Purple" class="purple" href="#">purple</a></li>
+														</ul>
+													</div>
+													<p>${pro.description}</p>
+													<div class="product-details-action-wrap">
+														<div class="product-quality">
+															<input class="cart-plus-minus-box input-text qty text"
+																name="qtybutton" value="1">
+														</div>
+														<div class="single-product-cart btn-hover">
+															<a href="#">Add to cart</a>
+														</div>
+														<div class="single-product-wishlist">
+															<a title="Wishlist" href="#"><i class="pe-7s-like"></i></a>
+														</div>
+														<div class="single-product-compare">
+															<a title="Compare" href="#"><i class="pe-7s-shuffle"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-						<div class="product-wrap mb-35">
-							<div class="product-img img-zoom mb-25">
-								<a href="product-details.html"> <img
-									src="assets/images/product/product-4.png" alt="">
-								</a>
-								<div class="product-action-wrap">
-									<button class="product-action-btn-1" title="Wishlist">
-										<i class="pe-7s-like"></i>
-									</button>
-									<button class="product-action-btn-1" title="Quick View"
-										data-bs-toggle="modal" data-bs-target="#exampleModal">
-										<i class="pe-7s-look"></i>
-									</button>
-								</div>
-								<div class="product-action-2-wrap">
-									<button class="product-action-btn-2" title="Add To Cart">
-										<i class="pe-7s-cart"></i> Add to cart
-									</button>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3>
-									<a href="product-details.html">Stylish Swing Chair</a>
-								</h3>
-								<div class="product-price">
-									<span>$50.25 </span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-						<div class="product-wrap mb-35">
-							<div class="product-img img-zoom mb-25">
-								<a href="product-details.html"> <img
-									src="assets/images/product/product-2.png" alt="">
-								</a>
-								<div class="product-badge badge-top badge-right badge-pink">
-									<span>-10%</span>
-								</div>
-								<div class="product-action-wrap">
-									<button class="product-action-btn-1" title="Wishlist">
-										<i class="pe-7s-like"></i>
-									</button>
-									<button class="product-action-btn-1" title="Quick View"
-										data-bs-toggle="modal" data-bs-target="#exampleModal">
-										<i class="pe-7s-look"></i>
-									</button>
-								</div>
-								<div class="product-action-2-wrap">
-									<button class="product-action-btn-2" title="Add To Cart">
-										<i class="pe-7s-cart"></i> Add to cart
-									</button>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3>
-									<a href="product-details.html">New Modern Sofa Set</a>
-								</h3>
-								<div class="product-price">
-									<span class="old-price">$45.00 </span> <span class="new-price">$40.00
-									</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-						<div class="product-wrap mb-35">
-							<div class="product-img img-zoom mb-25">
-								<a href="product-details.html"> <img
-									src="assets/images/product/product-1.png" alt="">
-								</a>
-								<div class="product-action-wrap">
-									<button class="product-action-btn-1" title="Wishlist">
-										<i class="pe-7s-like"></i>
-									</button>
-									<button class="product-action-btn-1" title="Quick View"
-										data-bs-toggle="modal" data-bs-target="#exampleModal">
-										<i class="pe-7s-look"></i>
-									</button>
-								</div>
-								<div class="product-action-2-wrap">
-									<button class="product-action-btn-2" title="Add To Cart">
-										<i class="pe-7s-cart"></i> Add to cart
-									</button>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3>
-									<a href="product-details.html">New Modern Sofa Set</a>
-								</h3>
-								<div class="product-price">
-									<span>$30.25 </span>
-								</div>
-							</div>
-						</div>
-					</div>
+						<!-- Product Modal end -->
+
+						<!--  -->
+					</c:forEach>
+
 				</div>
 			</div>
 			<div id="pro-3" class="tab-pane">
 				<div class="row">
-					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-						<div class="product-wrap mb-35">
-							<div class="product-img img-zoom mb-25">
-								<a href="product-details.html"> <img
-									src="assets/images/product/product-4.png" alt="">
-								</a>
-								<div class="product-badge badge-top badge-right badge-pink">
-									<span>-10%</span>
+					<!--  -->
+					<c:forEach items="${productSales}" var="pro">
+						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+							<div class="product-wrap mb-35">
+								<div class="product-img img-zoom mb-25">
+									<a href="product-details.html"> <img
+										src="<c:url value="assets/images/product/${pro.image}" />"
+										alt="">
+									</a>
+									<div class="product-badge badge-top badge-right badge-pink">
+										<span>-10%</span>
+									</div>
+									<div class="product-action-wrap">
+										<button class="product-action-btn-1" title="Wishlist">
+											<i class="pe-7s-like"></i>
+										</button>
+										<button class="product-action-btn-1" title="Quick View"
+											data-bs-toggle="modal" data-bs-target="#Modal${pro.id}">
+											<i class="pe-7s-look"></i>
+										</button>
+									</div>
+									<div class="product-action-2-wrap">
+										<button class="product-action-btn-2" title="Add To Cart">
+											<i class="pe-7s-cart"></i> Add to cart
+										</button>
+									</div>
 								</div>
-								<div class="product-action-wrap">
-									<button class="product-action-btn-1" title="Wishlist">
-										<i class="pe-7s-like"></i>
-									</button>
-									<button class="product-action-btn-1" title="Quick View"
-										data-bs-toggle="modal" data-bs-target="#exampleModal">
-										<i class="pe-7s-look"></i>
-									</button>
-								</div>
-								<div class="product-action-2-wrap">
-									<button class="product-action-btn-2" title="Add To Cart">
-										<i class="pe-7s-cart"></i> Add to cart
-									</button>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3>
-									<a href="product-details.html">Stylish Swing Chair</a>
-								</h3>
-								<div class="product-price">
-									<span class="old-price">$25.89 </span> <span class="new-price">$20.25
-									</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-						<div class="product-wrap mb-35">
-							<div class="product-img img-zoom mb-25">
-								<a href="product-details.html"> <img
-									src="assets/images/product/product-3.png" alt="">
-								</a>
-								<div class="product-action-wrap">
-									<button class="product-action-btn-1" title="Wishlist">
-										<i class="pe-7s-like"></i>
-									</button>
-									<button class="product-action-btn-1" title="Quick View"
-										data-bs-toggle="modal" data-bs-target="#exampleModal">
-										<i class="pe-7s-look"></i>
-									</button>
-								</div>
-								<div class="product-action-2-wrap">
-									<button class="product-action-btn-2" title="Add To Cart">
-										<i class="pe-7s-cart"></i> Add to cart
-									</button>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3>
-									<a href="product-details.html">Easy Modern Chair</a>
-								</h3>
-								<div class="product-price">
-									<span>$50.25 </span>
+								<div class="product-content">
+									<h3>
+										<a href="product-details.html">${pro.name}</a>
+									</h3>
+									<div class="product-price">
+										<span class="old-price">$${pro.price} </span> <span
+											class="new-price">$${pro.price-pro.price*10/100} </span>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-						<div class="product-wrap mb-35">
-							<div class="product-img img-zoom mb-25">
-								<a href="product-details.html"> <img
-									src="assets/images/product/product-5.png" alt="">
-								</a>
-								<div class="product-badge badge-top badge-right badge-pink">
-									<span>-10%</span>
-								</div>
-								<div class="product-action-wrap">
-									<button class="product-action-btn-1" title="Wishlist">
-										<i class="pe-7s-like"></i>
-									</button>
-									<button class="product-action-btn-1" title="Quick View"
-										data-bs-toggle="modal" data-bs-target="#exampleModal">
-										<i class="pe-7s-look"></i>
-									</button>
-								</div>
-								<div class="product-action-2-wrap">
-									<button class="product-action-btn-2" title="Add To Cart">
-										<i class="pe-7s-cart"></i> Add to cart
-									</button>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3>
-									<a href="product-details.html">Interior moderno render</a>
-								</h3>
-								<div class="product-price">
-									<span class="old-price">$45.00 </span> <span class="new-price">$40.00
-									</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-						<div class="product-wrap mb-35">
-							<div class="product-img img-zoom mb-25">
-								<a href="product-details.html"> <img
-									src="assets/images/product/product-2.png" alt="">
-								</a>
-								<div class="product-action-wrap">
-									<button class="product-action-btn-1" title="Wishlist">
-										<i class="pe-7s-like"></i>
-									</button>
-									<button class="product-action-btn-1" title="Quick View"
-										data-bs-toggle="modal" data-bs-target="#exampleModal">
-										<i class="pe-7s-look"></i>
-									</button>
-								</div>
-								<div class="product-action-2-wrap">
-									<button class="product-action-btn-2" title="Add To Cart">
-										<i class="pe-7s-cart"></i> Add to cart
-									</button>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3>
-									<a href="product-details.html">New Modern Sofa Set</a>
-								</h3>
-								<div class="product-price">
-									<span>$30.25 </span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-						<div class="product-wrap mb-35">
-							<div class="product-img img-zoom mb-25">
-								<a href="product-details.html"> <img
-									src="assets/images/product/product-1.png" alt="">
-								</a>
-								<div class="product-badge badge-top badge-right badge-pink">
-									<span>-10%</span>
-								</div>
-								<div class="product-action-wrap">
-									<button class="product-action-btn-1" title="Wishlist">
-										<i class="pe-7s-like"></i>
-									</button>
-									<button class="product-action-btn-1" title="Quick View"
-										data-bs-toggle="modal" data-bs-target="#exampleModal">
-										<i class="pe-7s-look"></i>
-									</button>
-								</div>
-								<div class="product-action-2-wrap">
-									<button class="product-action-btn-2" title="Add To Cart">
-										<i class="pe-7s-cart"></i> Add to cart
-									</button>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3>
-									<a href="product-details.html">New Modern Sofa Set</a>
-								</h3>
-								<div class="product-price">
-									<span class="old-price">$25.89 </span> <span class="new-price">$20.25
-									</span>
+
+						<!-- Product Modal start -->
+						<div class="modal fade quickview-modal-style" id="Modal${pro.id}"
+							tabindex="-1" role="dialog">
+							<div class="modal-dialog modal-dialog-centered" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<a href="#" class="close" data-bs-dismiss="modal"
+											aria-label="Close"><i class=" ti-close "></i></a>
+									</div>
+									<div class="modal-body">
+										<div class="row gx-0">
+											<div class="col-lg-5 col-md-5 col-12">
+												<div class="modal-img-wrap">
+													<img
+														src="<c:url value="assets/images/product/${pro.image}" />"
+														alt="">
+												</div>
+											</div>
+											<div class="col-lg-7 col-md-7 col-12">
+												<div class="product-details-content quickview-content">
+													<h2>${pro.name}</h2>
+													<div class="product-details-price">
+														<span class="old-price">$${pro.price}</span> <span
+															class="new-price">$${pro.price-pro.price*10/100}</span>
+													</div>
+													<div class="product-details-review">
+														<div class="product-rating">
+															<i class=" ti-star"></i> <i class=" ti-star"></i> <i
+																class=" ti-star"></i> <i class=" ti-star"></i> <i
+																class=" ti-star"></i>
+														</div>
+														<span>( ${pro.view} Customer Review )</span>
+													</div>
+													<div
+														class="product-color product-color-active product-details-color">
+														<span>Color :</span>
+														<ul>
+															<li><a title="Pink" class="pink" href="#">pink</a></li>
+															<li><a title="Yellow" class="active yellow" href="#">yellow</a></li>
+															<li><a title="Purple" class="purple" href="#">purple</a></li>
+														</ul>
+													</div>
+													<p>${pro.description}</p>
+													<div class="product-details-action-wrap">
+														<div class="product-quality">
+															<input class="cart-plus-minus-box input-text qty text"
+																name="qtybutton" value="1">
+														</div>
+														<div class="single-product-cart btn-hover">
+															<a href="#">Add to cart</a>
+														</div>
+														<div class="single-product-wishlist">
+															<a title="Wishlist" href="#"><i class="pe-7s-like"></i></a>
+														</div>
+														<div class="single-product-compare">
+															<a title="Compare" href="#"><i class="pe-7s-shuffle"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-						<div class="product-wrap mb-35">
-							<div class="product-img img-zoom mb-25">
-								<a href="product-details.html"> <img
-									src="assets/images/product/product-8.png" alt="">
-								</a>
-								<div class="product-action-wrap">
-									<button class="product-action-btn-1" title="Wishlist">
-										<i class="pe-7s-like"></i>
-									</button>
-									<button class="product-action-btn-1" title="Quick View"
-										data-bs-toggle="modal" data-bs-target="#exampleModal">
-										<i class="pe-7s-look"></i>
-									</button>
-								</div>
-								<div class="product-action-2-wrap">
-									<button class="product-action-btn-2" title="Add To Cart">
-										<i class="pe-7s-cart"></i> Add to cart
-									</button>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3>
-									<a href="product-details.html">Modern Swivel Chair</a>
-								</h3>
-								<div class="product-price">
-									<span>$50.25 </span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-						<div class="product-wrap mb-35">
-							<div class="product-img img-zoom mb-25">
-								<a href="product-details.html"> <img
-									src="assets/images/product/product-7.png" alt="">
-								</a>
-								<div class="product-badge badge-top badge-right badge-pink">
-									<span>-10%</span>
-								</div>
-								<div class="product-action-wrap">
-									<button class="product-action-btn-1" title="Wishlist">
-										<i class="pe-7s-like"></i>
-									</button>
-									<button class="product-action-btn-1" title="Quick View"
-										data-bs-toggle="modal" data-bs-target="#exampleModal">
-										<i class="pe-7s-look"></i>
-									</button>
-								</div>
-								<div class="product-action-2-wrap">
-									<button class="product-action-btn-2" title="Add To Cart">
-										<i class="pe-7s-cart"></i> Add to cart
-									</button>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3>
-									<a href="product-details.html">Round Standard Chair</a>
-								</h3>
-								<div class="product-price">
-									<span class="old-price">$45.00 </span> <span class="new-price">$40.00
-									</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-						<div class="product-wrap mb-35">
-							<div class="product-img img-zoom mb-25">
-								<a href="product-details.html"> <img
-									src="assets/images/product/product-6.png" alt="">
-								</a>
-								<div class="product-action-wrap">
-									<button class="product-action-btn-1" title="Wishlist">
-										<i class="pe-7s-like"></i>
-									</button>
-									<button class="product-action-btn-1" title="Quick View"
-										data-bs-toggle="modal" data-bs-target="#exampleModal">
-										<i class="pe-7s-look"></i>
-									</button>
-								</div>
-								<div class="product-action-2-wrap">
-									<button class="product-action-btn-2" title="Add To Cart">
-										<i class="pe-7s-cart"></i> Add to cart
-									</button>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3>
-									<a href="product-details.html">Stylish Dining Chair</a>
-								</h3>
-								<div class="product-price">
-									<span>$30.25 </span>
-								</div>
-							</div>
-						</div>
-					</div>
+						<!-- Product Modal end -->
+
+						<!--  -->
+					</c:forEach>
 				</div>
 			</div>
 		</div>
@@ -934,10 +452,11 @@
 				<div class="banner-wrap mb-30" data-aos="fade-up"
 					data-aos-delay="200">
 					<a href="product-details.html"><img
-						src="assets/images/banner/banner-6.png" alt=""></a>
+						src="assets/images/banner/safe.jpg" alt=""></a>
 					<div class="banner-content-5">
 						<span>Up To 40% Off</span>
-						<h2>Dining Furniture</h2>
+						<h2></h2>
+						<h2></h2>
 						<div class="btn-style-3 btn-hover">
 							<a class="btn hover-border-radius" href="product-details.html">Shop
 								Now</a>
@@ -949,10 +468,11 @@
 				<div class="banner-wrap mb-30" data-aos="fade-up"
 					data-aos-delay="400">
 					<a href="product-details.html"><img
-						src="assets/images/banner/banner-7.png" alt=""></a>
+						src="assets/images/banner/light.jpg" alt=""></a>
 					<div class="banner-content-5">
 						<span>Up To 40% Off</span>
-						<h2>Bed Furniture</h2>
+						<h2></h2>
+						<h2></h2>
 						<div class="btn-style-3 btn-hover">
 							<a class="btn hover-border-radius" href="product-details.html">Shop
 								Now</a>
@@ -969,183 +489,43 @@
 			data-aos-delay="200">
 			<div class="section-title-timer-wrap bg-white">
 				<div class="section-title-1">
-					<h2>Deal Of The Day</h2>
-				</div>
-				<div id="timer-1-active" class="timer-style-1">
-					<span>End In: </span>
-					<div data-countdown="2021/8/30"></div>
+					<h2 class="timer-style-1" style="color: white">Deal Of The Day</h2>
 				</div>
 			</div>
 		</div>
 		<div class="product-slider-active-1 swiper-container">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide">
-					<div class="product-wrap">
-						<div class="product-img img-zoom mb-25">
-							<a href="product-details.html"> <img
-								src="assets/images/product/product-1.png" alt="">
-							</a>
-							<div class="product-badge badge-top badge-right badge-pink">
-								<span>-10%</span>
+
+				<c:forEach items="${productSales}" var="pro">
+					<div class="swiper-slide">
+						<div class="product-wrap">
+							<div class="product-img img-zoom mb-25">
+								<a href="product-details.html"> <img
+									src="<c:url value="assets/images/product/${pro.image}" />"
+									alt="">
+								</a>
+								<div class="product-badge badge-top badge-right badge-pink">
+									<span>-10%</span>
+								</div>
+								<div class="product-action-2-wrap">
+									<button class="product-action-btn-2" title="Add To Cart">
+										<i class="pe-7s-cart"></i> Add to cart
+									</button>
+								</div>
 							</div>
-							<div class="product-action-wrap">
-								<button class="product-action-btn-1" title="Wishlist">
-									<i class="pe-7s-like"></i>
-								</button>
-								<button class="product-action-btn-1" title="Quick View"
-									data-bs-toggle="modal" data-bs-target="#exampleModal">
-									<i class="pe-7s-look"></i>
-								</button>
-							</div>
-							<div class="product-action-2-wrap">
-								<button class="product-action-btn-2" title="Add To Cart">
-									<i class="pe-7s-cart"></i> Add to cart
-								</button>
-							</div>
-						</div>
-						<div class="product-content">
-							<h3>
-								<a href="product-details.html">New Modern Sofa Set</a>
-							</h3>
-							<div class="product-price">
-								<span class="old-price">$25.89 </span> <span class="new-price">$20.25
-								</span>
+							<div class="product-content">
+								<h3>
+									<a href="product-details.html">${pro.name}</a>
+								</h3>
+								<div class="product-price">
+									<span class="old-price">$${pro.price} </span> <span
+										class="new-price">$${pro.price-pro.price*10/100} </span>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="product-wrap">
-						<div class="product-img img-zoom mb-25">
-							<a href="product-details.html"> <img
-								src="assets/images/product/product-2.png" alt="">
-							</a>
-							<div class="product-action-wrap">
-								<button class="product-action-btn-1" title="Wishlist">
-									<i class="pe-7s-like"></i>
-								</button>
-								<button class="product-action-btn-1" title="Quick View"
-									data-bs-toggle="modal" data-bs-target="#exampleModal">
-									<i class="pe-7s-look"></i>
-								</button>
-							</div>
-							<div class="product-action-2-wrap">
-								<button class="product-action-btn-2" title="Add To Cart">
-									<i class="pe-7s-cart"></i> Add to cart
-								</button>
-							</div>
-						</div>
-						<div class="product-content">
-							<h3>
-								<a href="product-details.html">New Modern Sofa Set</a>
-							</h3>
-							<div class="product-price">
-								<span>$50.25 </span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="product-wrap">
-						<div class="product-img img-zoom mb-25">
-							<a href="product-details.html"> <img
-								src="assets/images/product/product-3.png" alt="">
-							</a>
-							<div class="product-badge badge-top badge-right badge-pink">
-								<span>-10%</span>
-							</div>
-							<div class="product-action-wrap">
-								<button class="product-action-btn-1" title="Wishlist">
-									<i class="pe-7s-like"></i>
-								</button>
-								<button class="product-action-btn-1" title="Quick View"
-									data-bs-toggle="modal" data-bs-target="#exampleModal">
-									<i class="pe-7s-look"></i>
-								</button>
-							</div>
-							<div class="product-action-2-wrap">
-								<button class="product-action-btn-2" title="Add To Cart">
-									<i class="pe-7s-cart"></i> Add to cart
-								</button>
-							</div>
-						</div>
-						<div class="product-content">
-							<h3>
-								<a href="product-details.html">Easy Modern Chair</a>
-							</h3>
-							<div class="product-price">
-								<span class="old-price">$45.00 </span> <span class="new-price">$40.00
-								</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="product-wrap">
-						<div class="product-img img-zoom mb-25">
-							<a href="product-details.html"> <img
-								src="assets/images/product/product-4.png" alt="">
-							</a>
-							<div class="product-action-wrap">
-								<button class="product-action-btn-1" title="Wishlist">
-									<i class="pe-7s-like"></i>
-								</button>
-								<button class="product-action-btn-1" title="Quick View"
-									data-bs-toggle="modal" data-bs-target="#exampleModal">
-									<i class="pe-7s-look"></i>
-								</button>
-							</div>
-							<div class="product-action-2-wrap">
-								<button class="product-action-btn-2" title="Add To Cart">
-									<i class="pe-7s-cart"></i> Add to cart
-								</button>
-							</div>
-						</div>
-						<div class="product-content">
-							<h3>
-								<a href="product-details.html">Stylish Swing Chair</a>
-							</h3>
-							<div class="product-price">
-								<span>$30.25 </span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="product-wrap">
-						<div class="product-img img-zoom mb-25">
-							<a href="product-details.html"> <img
-								src="assets/images/product/product-2.png" alt="">
-							</a>
-							<div class="product-badge badge-top badge-right badge-pink">
-								<span>-10%</span>
-							</div>
-							<div class="product-action-wrap">
-								<button class="product-action-btn-1" title="Wishlist">
-									<i class="pe-7s-like"></i>
-								</button>
-								<button class="product-action-btn-1" title="Quick View"
-									data-bs-toggle="modal" data-bs-target="#exampleModal">
-									<i class="pe-7s-look"></i>
-								</button>
-							</div>
-							<div class="product-action-2-wrap">
-								<button class="product-action-btn-2" title="Add To Cart">
-									<i class="pe-7s-cart"></i> Add to cart
-								</button>
-							</div>
-						</div>
-						<div class="product-content">
-							<h3>
-								<a href="product-details.html">New Modern Sofa Set</a>
-							</h3>
-							<div class="product-price">
-								<span class="old-price">$80.50 </span> <span class="new-price">$75.25
-								</span>
-							</div>
-						</div>
-					</div>
-				</div>
+
+				</c:forEach>
 			</div>
 			<div class="product-prev-1 product-nav-1" data-aos="fade-up"
 				data-aos-delay="200">
@@ -1160,12 +540,12 @@
 </div>
 <div class="banner-area pb-100">
 	<div class="bg-img bg-padding-2"
-		style="background-image: url(assets/images/bg/bg-2.png)">
+		style="background-image: url(assets/images/bg/b-2.jpg)">
 		<div class="container">
 			<div class="banner-content-5 banner-content-5-static">
 				<span data-aos="fade-up" data-aos-delay="200">Up To 40% Off</span>
 				<h1 data-aos="fade-up" data-aos-delay="400">
-					New Furniture <br>Sofa Set
+					New Devices <br>Light Set
 				</h1>
 				<div class="btn-style-3 btn-hover" data-aos="fade-up"
 					data-aos-delay="600">
@@ -1180,48 +560,18 @@
 	<div class="container">
 		<div class="brand-logo-active swiper-container">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide">
-					<div class="single-brand-logo" data-aos="fade-up"
-						data-aos-delay="200">
-						<a href="#"><img
-							src="assets/images/brand-logo/brand-logo-1.png" alt=""></a>
+
+				<c:forEach items="${cateList}" var="cate">
+					<div class="swiper-slide">
+						<div class="single-brand-logo" data-aos="fade-up"
+							data-aos-delay="200">
+							<a href="#"><img
+								src="<c:url value="assets/images/product/${cate.image}" />"
+								alt=""></a>
+						</div>
 					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="single-brand-logo" data-aos="fade-up"
-						data-aos-delay="400">
-						<a href="#"><img
-							src="assets/images/brand-logo/brand-logo-2.png" alt=""></a>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="single-brand-logo" data-aos="fade-up"
-						data-aos-delay="600">
-						<a href="#"><img
-							src="assets/images/brand-logo/brand-logo-3.png" alt=""></a>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="single-brand-logo" data-aos="fade-up"
-						data-aos-delay="800">
-						<a href="#"><img
-							src="assets/images/brand-logo/brand-logo-4.png" alt=""></a>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="single-brand-logo" data-aos="fade-up"
-						data-aos-delay="1000">
-						<a href="#"><img
-							src="assets/images/brand-logo/brand-logo-5.png" alt=""></a>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="single-brand-logo" data-aos="fade-up"
-						data-aos-delay="1200">
-						<a href="#"><img
-							src="assets/images/brand-logo/brand-logo-1.png" alt=""></a>
-					</div>
-				</div>
+				</c:forEach>
+
 			</div>
 		</div>
 	</div>

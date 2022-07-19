@@ -33,16 +33,16 @@
 						<div id="lg1" class="tab-pane active">
 							<div class="login-form-container">
 								<div class="login-register-form">
-									<form action='<c:url value="/login" />' method="post">
-										<input type="text" name="username" placeholder="Username">
-										<input type="password" name="password"
+									<form id="loginForm" action="javascript:void(0)">
+										<input id="username_login" type="text" name="username" placeholder="Username">
+										<input id="password_login" type="password" name="password"
 											placeholder="Password">
 										<div class="login-toggle-btn">
 											<input type="checkbox"> <label>Remember me</label> <a
 												href="#">Forgot Password?</a>
 										</div>
 										<div class="button-box btn-hover">
-											<button type="submit">Login</button>
+											<button id="loginBtn" type="submit">Login</button>
 										</div>
 									</form>
 								</div>
@@ -51,11 +51,12 @@
 						<div id="lg2" class="tab-pane">
 							<div class="login-form-container">
 								<div class="login-register-form">
-									<form action="#" method="post">
-										<input type="text" name="user-name" placeholder="Username">
-										<input type="password" name="user-password"
-											placeholder="Password"> <input name="user-email"
-											placeholder="Email" type="email">
+									<form id="registerForm" action='<c:url value="/register" />' method="post">
+										<input type="text" id="username_register" name="username" placeholder="Username">
+										<input type="password" id="password_register" name="password"
+											placeholder="Password"> 
+										<input id="confirmPassword_register" type="password" name="confirmPassword"
+											placeholder="Confirm Password"> 
 										<div class="button-box btn-hover">
 											<button type="submit">Register</button>
 										</div>

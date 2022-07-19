@@ -60,11 +60,8 @@
 <link rel="stylesheet" href="assets/css/plugins/easyzoom.css" />
 <link rel="stylesheet" href="assets/css/plugins/slinky.css" />
 <link rel="stylesheet" href="assets/css/style.css" />
+
 </head>
-
-
-
-
 <body>
 	<div class="main-wrapper main-wrapper-2">
 		<header class="header-area header-responsive-padding header-height-1">
@@ -181,8 +178,8 @@
 											</ul></li>
 										<li><a href="#">PAGES</a>
 											<ul class="sub-menu-style">
-												<li><a href="about-us.html">about us </a></li>
-												<li><a href="cart.html">cart page</a></li>
+												<li><a href='<c:url value="/aboutus" />'>about us </a></li>
+												<li><a href='<c:url value="/cart" />'>cart page</a></li>
 												<li><a href="checkout.html">checkout </a></li>
 												<li><a href="my-account.html">my account</a></li>
 												<li><a href="wishlist.html">wishlist </a></li>
@@ -191,14 +188,14 @@
 												<li><a href="login-register.html">login / register
 												</a></li>
 											</ul></li>
-										<li><a href="blog.html">BLOG</a>
+										<li><a href='<c:url value="/blog" />'>BLOG</a>
 											<ul class="sub-menu-style">
 												<li><a href="blog.html">blog standard </a></li>
 												<li><a href="blog-sidebar.html">blog sidebar</a></li>
 												<li><a href="blog-details.html">blog details</a></li>
 											</ul></li>
-										<li><a href="about-us.html">ABOUT</a></li>
-										<li><a href="contact-us.html">CONTACT US</a></li>
+										<li><a href='<c:url value="/aboutus" />'>ABOUT</a></li>
+										<li><a href='<c:url value="/contactus" />'>CONTACT US</a></li>
 									</ul>
 								</nav>
 							</div>
@@ -212,7 +209,7 @@
 									</a>
 									<div class="search-wrap-1">
 										<form action="#">
-											<input placeholder="Search products…" type="text">
+											<input placeholder="Search products" type="text">
 											<button class="button-search">
 												<i class="pe-7s-search"></i>
 											</button>
@@ -311,8 +308,6 @@
 		</div>
 
 		<decorator:body />
-
-		<p>footer</p>
 
 		<footer class="footer-area">
 			<div class="bg-gray-2">
@@ -581,6 +576,111 @@
 	<script src="assets/js/plugins/ajax-mail.js"></script>
 	<!-- Main JS -->
 	<script src="assets/js/main.js"></script>
+	<!-- SweetAlert JS -->
+	<%-- <link rel='stylesheet'
+		href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'> --%>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			const logoutUser = (e) => {
+				e.preventDefault();
+				$.ajax({
+					type: "GET",
+					url: "/SmartKa/logout",
+					dataType: "json",
+					success: function (data) {
+						if (data.success) {
+							swal("Success", data.message, "info")
+							.then(() => {
+								$(location).prop("href", "/SmartKa/auth")
+							});
+						} else {
+							swal("Failed", data.message, "error")
+						}
+					}
+				});
+			}
+			// Login AJAX
+			$("#loginForm").submit(function (e) {
+				const username = $("#username_login").val();
+				const password = $("#password_login").val();
+				e.preventDefault();
+				$.ajax({
+					type: "POST",
+					url: "/SmartKa/login",
+					data: {
+						username,
+						password
+					},
+					dataType: "json",
+					timeout : 10000,
+					success: function (data) {
+						if (data.success) {
+							swal("Success", data.message, "success")
+							.then(() => {
+								$(location).prop("href", "/SmartKa/")
+							});
+						} else {
+							swal("Failed", data.message, "error")
+						}
+					}
+				});
+			});
+			// Register AJAX
+			$("#registerForm").submit(function (e) {
+				const username = $("#username_register").val();
+				const password = $("#password_register").val();
+				const confirmPassword = $("#confirmPassword_register").val();
+				e.preventDefault();
+				$.ajax({
+					type: "POST",
+					url: "/SmartKa/register",
+					data: {
+						username, password, confirmPassword
+					},
+					dataType: "json",
+					timeout : 10000,
+					success: function (data) {
+						if (data.success) {
+							swal("Success", data.message, "success")
+							.then(() => {
+								$(location).prop("href", "/SmartKa/")
+							});
+						} else {
+							swal("Failed", data.message, "error")
+						}
+					}
+				});
+			});
+			// Logout AJAX
+			$("#logoutText").click(logoutUser);
+			// Update User Profile
+			$("#accountDetailsForm").submit(function(e) {
+				const fullname = $("#fullname").val();
+				const email = $("#email").val();
+				const phoneNumber = $("#phoneNumber").val();
+				const address = $("#address").val();
+				const deliveryAddress = $("#deliveryAddress").val();
+				e.preventDefault();
+				$.ajax({
+					type: "POST",
+					url: "/SmartKa/update-userInfo",
+					data: {
+						fullname, email, phoneNumber, address, deliveryAddress
+					},
+					dataType: "json",
+					success: function (data) {
+						if (data.success) {
+							swal("Success", data.message, "success")
+						} else {
+							swal("Failed", data.message, "error")
+						}
+					}
+				});
+			});
+		});
+	</script>
 </body>
-
 </html>

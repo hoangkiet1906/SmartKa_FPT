@@ -1,4 +1,4 @@
-div class="breadcrumb-area bg-gray-4 breadcrumb-padding-1">
+<div class="breadcrumb-area bg-gray-4 breadcrumb-padding-1">
 <div class="container">
 	<div class="breadcrumb-content text-center">
 		<h2 data-aos="fade-up" data-aos-delay="200">Blog Details</h2>
