@@ -168,13 +168,30 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = { "/info" }, method = RequestMethod.GET)
-	public String Info(HttpSession session) {
+	public String Info(HttpSession session, HttpServletRequest req) {
 		String username = (String) session.getAttribute(Constant.SESSION_USERNAME);
 		UserInfo info = UserDAO.getUserInfo(username);
 		if (info != null) {
 			session.setAttribute(Constant.SESSION_USER_INFORMATION, info);
 		}
+		//set attribute to get avatar in UI
+		String avt = UserDAO.getAvatar(username);
+		if(avt != null ) {
+			req.setAttribute("avatar", avt);
+		}
+		
 		return HomeController.protectedUserRoute(session, "user/myaccount");
+	}
+
+	// link update avatar
+	@RequestMapping(value = { "/update-avatar" }, method = RequestMethod.POST)
+	public @ResponseBody void updateAvt(HttpSession session, HttpServletRequest req) {
+		String username = (String) session.getAttribute(Constant.SESSION_USERNAME);
+		//set avt into database
+		String avt = (String) req.getParameter("avt");
+		if(avt != null) {
+			UserDAO.setAvatar(avt, username);
+		}
 	}
 
 	@RequestMapping(value = { "/aboutus" }, method = RequestMethod.GET)

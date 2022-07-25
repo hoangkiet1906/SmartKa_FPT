@@ -22,5 +22,8 @@
 	<mvc:annotation-driven/>
 	<mvc:resources mapping="/assets/**" location="/assets/"/>
 	
+	<mvc:annotation-driven/>
+	<mvc:resources mapping="/admin/**" location="/admin/"/>
+	
 
 </beans>

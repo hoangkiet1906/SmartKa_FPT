@@ -133,10 +133,49 @@ public class UserDAO {
 				authResponse.setSuccess(true);
 				authResponse.setMessage("Created User Successfully!");
 				authResponse.setUser(newUser);
+				// set information in info table database 
+				String sql = "INSERT INTO info (avatar, user_name) VALUES (?,?)";
+				PreparedStatement ps1 = UserDAO.connection.prepareStatement(sql);
+				ps1.setString(1, "avt.jpg");
+				ps1.setString(2, newUser.getUser_name());
+				ps1.execute();
 			} catch (SQLException e) {
 				e.printStackTrace();
+				System.out.println("fail");
 			}
 		}
 		return authResponse;
+	}
+
+	// get + set avatar
+	public static String getAvatar(String username) {
+		String avt = "";
+		try {
+			String sql = "Select avatar from info where user_name = '" + username + "'";
+			PreparedStatement ps = new JDBCConnection().conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				avt = rs.getString("avatar");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return avt;
+	}
+	
+	public static String setAvatar(String avatar, String username) {
+		try {
+			String sql = "UPDATE info SET avatar = ? WHERE  user_name = '" + username + "'";
+			PreparedStatement ps = UserDAO.connection.prepareStatement(sql);
+			ps.setString(1, avatar);
+			ps.executeUpdate();
+			return "success";
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "fail";
 	}
 }

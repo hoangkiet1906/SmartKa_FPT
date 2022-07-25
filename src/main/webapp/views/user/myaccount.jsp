@@ -1,20 +1,32 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div class="breadcrumb-area bg-gray-4 breadcrumb-padding-1">
+<div class="breadcrumb-area breadcrumb-padding-1"
+	style="background-image: url(assets/images/slider/nen2.jpg)">
 	<div class="container">
+		<c:if test="${avatar != null }">
+			<img id="img" class="imgAvt" src="assets/images/avatar/${avatar}">
+		</c:if>
+				
+		<form class="formAvt" action="">
+			<input type='file' id="uploadAvt" style="display: none"> 
+			<div class="divUpdate">
+				<label class="lblUpdate" for="uploadAvt">UPDATE</label>
+			</div>
+		</form>
 		<div class="breadcrumb-content text-center">
-			<h2>My Account</h2>
+			<h3>My Account</h3>
 			<ul>
 				<li><a href="index.html">Home</a></li>
 				<li><i class="ti-angle-right"></i></li>
 				<li>My Account</li>
+				
 			</ul>
 		</div>
 	</div>
 	<div class="breadcrumb-img-1">
-		<img src="assets/images/banner/breadcrumb-1.png" alt="">
+		<img src="assets/images/bg/light.jpg" alt="">
 	</div>
 	<div class="breadcrumb-img-2">
-		<img src="assets/images/banner/breadcrumb-2.png" alt="">
+		<img src="assets/images/bg/safe.jpg" alt="">
 	</div>
 </div>
 <!-- my account wrapper start -->

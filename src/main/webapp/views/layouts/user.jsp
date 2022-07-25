@@ -4,7 +4,7 @@
 <%@ taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="true" %>
+<%@ page session="true"%>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -45,7 +45,7 @@
 	content="assets/images/favicon/cropped-favicon-270x270.png" />
 
 <!-- All CSS is here
-	============================================ -->
+		============================================ -->
 <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css" />
 <link rel="stylesheet" href="assets/css/vendor/pe-icon-7-stroke.css" />
 <link rel="stylesheet" href="assets/css/vendor/themify-icons.css" />
@@ -61,6 +61,37 @@
 <link rel="stylesheet" href="assets/css/plugins/slinky.css" />
 <link rel="stylesheet" href="assets/css/style.css" />
 
+	<style type="text/css">
+		.imgAvt {
+			width: 22%; 
+			position: absolute;
+			top:16%; 
+			left: 39%;
+			border-radius: 50%;
+			z-index: 1;
+		}
+		.formAvt {
+		    z-index: 2;
+			position: absolute; 
+			left: 47%; 
+			top: 88%;
+			border-radius: 50%;
+		}
+		.divUpdate {
+			visibility: hidden;
+		}
+		.formAvt:hover .divUpdate {
+			visibility: visible;
+		}
+		.lblUpdate{
+			border: 2px solid #000000; 
+			padding: 5px; 
+			border-radius: 5px; 
+			background-color: #ffffff
+		}
+		
+	</style>
+
 </head>
 <body>
 	<div class="main-wrapper main-wrapper-2">
@@ -70,14 +101,15 @@
 					<div class="row align-items-center">
 						<div class="col-lg-6 col-6">
 							<div class="welcome-text">
-								<%	String helloMessage = null;
-										if (session.getAttribute("username")!=null) {
-											helloMessage = "Hello " + session.getAttribute("username");
-										} else {
-											helloMessage = "Welcome to our website";
-										}
+								<%
+								String helloMessage = null;
+								if (session.getAttribute("username") != null) {
+									helloMessage = "Hello " + session.getAttribute("username");
+								} else {
+									helloMessage = "Welcome to our website";
+								}
 								%>
-								<p><%=helloMessage %></p>
+								<p><%=helloMessage%></p>
 							</div>
 						</div>
 						<div class="col-lg-6 col-6">
@@ -217,7 +249,8 @@
 									</div>
 								</div>
 								<div class="header-action-style">
-									<a title="
+									<a
+										title="
 										<c:choose>
 										    <c:when test="${sessionScope.username==null}">
 										         Login Register
@@ -226,7 +259,8 @@
 										        Profile
 										    </c:otherwise>
 										</c:choose>
-									" href="
+									"
+										href="
 									<c:choose>
 										    <c:when test="${sessionScope.username==null}">
 										         <c:url value="/auth" />
@@ -680,6 +714,45 @@
 					}
 				});
 			});
+			
+			//update avt ajax
+			function preview(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) { 
+                    console.log(reader.result)
+                    var img = new Image;
+                    img.onload = function() {$('#img').attr({'src':e.target.result,'width':img.width});};
+                    img.src = reader.result;
+                                            }
+                    reader.readAsDataURL(input.files[0]);    
+                    }
+                    
+            }
+			$("#uploadAvt").change(function(event) {
+				preview(this);
+				
+				var avt = $("#uploadAvt").val();
+				avt = avt.substring(12, avt.length);
+				$.ajax({
+			        type: "post",
+			        url: '/SmartKa/update-avatar',
+			        data: {
+			            avt
+			        },
+			        success: function (data) {
+						if (data.success) {
+							swal("Success", data.message, "success");
+						} else {
+							swal("Failed", data.message, "error");
+						}
+					}
+			    });
+				
+			});
+			
+			
+			
 		});
 	</script>
 </body>
