@@ -13,6 +13,12 @@ public class Product {
 	String details;
 	String specifications;
 	
+	
+	
+	public Product() {
+		super();
+	}
+
 	public Product(int id, String name, int price, int quantity, String image, String description, String tag, int view,
 			String status, String details, String specifications) {
 		super();

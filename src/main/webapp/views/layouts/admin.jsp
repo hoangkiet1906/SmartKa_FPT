@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -142,7 +144,7 @@
                     <img src="asset/dist/img/ad.jpg" style="width: 50px; border-radius: 50%;">
 
 
-                    <a href="#" style="margin-top: 5px; margin-bottom: -10px;">Admin Kiệt<i
+                    <a href="#" style="margin-top: 5px; margin-bottom: -10px;">Admin Kiet<i
                             style="color: #00A7FB; font-size: 13px; position: absolute; top: 61px; left: 157px;"
                             class="far fa-check-circle"></i></a>
 
@@ -155,11 +157,19 @@
                         <!-- Add icons to the links using the .nav-icon class
                    with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open">
-                            @if ($page == 'quanli1' && $page == 'quanli2')
+                     
+							<c:if test="${page == 'quanli1' && page == 'quanli2'}" var="condition">
+							    <a href="#" class="nav-link active">
+							</c:if>
+							<c:if test="${!condition}">
+							    <a href="#" class="nav-link">
+							</c:if>
+							
+                            <!-- @if ($page == 'quanli1' && $page == 'quanli2')
                                 <a href="#" class="nav-link active">
                                 @else
                                     <a href="#" class="nav-link">
-                            @endif
+                            @endif -->
 
                             <i class="nav-icon fab fa-accusoft"></i>
                             <p>
@@ -169,26 +179,28 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    @if ($page == 'quanli1')
-                                        <a href="{{route('Adhome')}}" class="nav-link"
+                                    <c:if test="${page == 'quanli1'}" var="condition">                              
+                                        <a href="<c:url value="/admin/usermng" />" class="nav-link"
                                             style="margin-left: 20px; width: 214px; color: rgba(46, 255, 255, 1);">
-                                    @else
-                                        <a href="{{route('Adhome')}}" class="nav-link"
+                                    </c:if>
+									<c:if test="${!condition}">
+                                        <a href="<c:url value="/admin/usermng" />" class="nav-link"
                                             style="margin-left: 20px; width: 214px;">
-                                    @endif
+                                    </c:if>
 
                                     <i class="nav-icon fas fa-user-graduate"></i>
                                     <p>User</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    @if ($page == 'quanli2')
-                                    <a href="{{route('Adhome2')}}" class="nav-link"
+                                    <c:if test="${page == 'quanli2'}" var="condition">  
+                                    <a href="<c:url value="/admin/revenuemng" />" class="nav-link"
                                         style="margin-left: 20px; width: 214px; color: rgba(46, 255, 255, 1);">
-                                    @else
-                                    <a href="{{route('Adhome2')}}" class="nav-link"
+                                    </c:if>
+									<c:if test="${!condition}">
+                                    <a href="<c:url value="/admin/revenuemng" />" class="nav-link"
                                         style="margin-left: 20px; width: 214px;">
-                                    @endif
+                                    </c:if>
                                         <i class="nav-icon fas fa-coins"></i>
                                         <p>Revenue</p>
                                     </a>
@@ -197,33 +209,38 @@
                         </li>
 
                         <li class="nav-item">
-                            @if ($page == 'qlproduct')
-                            <a href="{{route('Adproduct')}}" class="nav-link active">
-                            @else
-                            <a href="{{route('Adproduct')}}" class="nav-link">
-                            @endif
+                            <c:if test="${page == 'qlproduct'}" var="condition">
+                            	<a href="<c:url value="/admin/product" />" class="nav-link active">
+                            </c:if>
+							<c:if test="${!condition}">
+                            <a href="<c:url value="/admin/product" />" class="nav-link">
+                            </c:if>
                                 <i class="nav-icon fas fa-book-open"></i>
                                 <p>Product Manager</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            @if ($page == 'qlstaff')
-                            <a href="{{route('Adstaff')}}" class="nav-link active">
-                            @else
-                            <a href="{{route('Adstaff')}}" class="nav-link">
-                            @endif
+                            
+                            <c:if test="${page == 'qlstaff'}" var="condition">
+                            <a href="<c:url value="/admin/product" />" class="nav-link active">
+                            </c:if>
+							<c:if test="${!condition}">
+                            <a href="<c:url value="/admin/product" />" class="nav-link">
+                            </c:if>
                                 <i class="nav-icon far fa-paper-plane"></i>
                                 <p>Staff Manager</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            @if ($page == 'qlblog')
-                            <a href="{{route('Adblog')}}" class="nav-link active">
-                            @else
-                            <a href="{{route('Adblog')}}" class="nav-link">
-                            @endif
+                        
+                            <c:if test="${page == 'qlblog'}" var="condition">
+                            <a href="<c:url value="/admin/blog" />" class="nav-link active">
+                            </c:if>
+							<c:if test="${!condition}">
+                            <a href="<c:url value="/admin/blog" />" class="nav-link">
+                            </c:if>
                                 <i class="nav-icon fas fa-copy"></i>
                                 <p>
                                     Blog Manager

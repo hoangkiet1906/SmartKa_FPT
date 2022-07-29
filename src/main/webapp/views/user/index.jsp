@@ -364,8 +364,8 @@
 										<a href="product-details.html">${pro.name}</a>
 									</h3>
 									<div class="product-price">
-										<span class="old-price">$${pro.price} </span> <span
-											class="new-price">$${pro.price-pro.price*10/100} </span>
+										<span class="old-price">$${pro.price*10/100+pro.price} </span> <span
+											class="new-price">$${pro.price}</span>
 									</div>
 								</div>
 							</div>
@@ -393,8 +393,8 @@
 												<div class="product-details-content quickview-content">
 													<h2>${pro.name}</h2>
 													<div class="product-details-price">
-														<span class="old-price">$${pro.price}</span> <span
-															class="new-price">$${pro.price-pro.price*10/100}</span>
+														<span class="old-price">$${pro.price*10/100+pro.price}</span> <span
+															class="new-price">$${pro.price}</span>
 													</div>
 													<div class="product-details-review">
 														<div class="product-rating">
@@ -518,8 +518,8 @@
 									<a href="product-details.html">${pro.name}</a>
 								</h3>
 								<div class="product-price">
-									<span class="old-price">$${pro.price} </span> <span
-										class="new-price">$${pro.price-pro.price*10/100} </span>
+									<span class="old-price">$${pro.price*10/100+pro.price} </span> <span
+										class="new-price">$${pro.price} </span>
 								</div>
 							</div>
 						</div>

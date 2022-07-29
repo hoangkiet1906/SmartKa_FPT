@@ -178,4 +178,20 @@ public class UserDAO {
 		}
 		return "fail";
 	}
+	
+	// add feedback into database
+	public static void addFeedback(String content, String username) {
+		try {
+			String date = Validators.getCurrentTime();
+			String sql = "INSERT INTO support (user_name, mess, date) VALUES (?,?,?)";
+			PreparedStatement ps = UserDAO.connection.prepareStatement(sql);
+			ps.setString(1, username);
+			ps.setString(2, content);
+			ps.setString(3, date);
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
