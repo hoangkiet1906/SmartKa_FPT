@@ -194,4 +194,67 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	//ktoan
+	public static ArrayList<User> findAll() {
+		ArrayList<User> users = new ArrayList<User>();
+		try {
+			String sql = Constant.GET_ALL_ACCOUNTS_QUERY;
+			PreparedStatement ps = UserDAO.connection.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				User a = new User(rs.getString(1), rs.getString(2), rs.getString(3));
+				users.add(a);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return users;
+	}
+
+	public static User findOne(User user) {
+		User loginUser = new User();
+		try {
+			String query = Constant.CHECK_ACCOUNT_QUERY;
+			PreparedStatement ps = UserDAO.connection.prepareStatement(query);
+			ps.setString(1, user.getUser_name());
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				loginUser.setUser_name(rs.getString(1));
+				loginUser.setPassword(rs.getString(2));
+				loginUser.setDate(rs.getString(3));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return loginUser;
+	}
+
+	public static User save(User user) {
+		User newUser = new User();
+		try {
+			newUser.setUser_name(user.getUser_name());
+			newUser.setPassword(Validators.hashPassword(user.getPassword()));
+			newUser.setDate(Validators.getCurrentTime());
+			String query = Constant.ADD_USER_QUERY;
+			PreparedStatement ps = UserDAO.connection.prepareStatement(query);
+			ps.setString(1, newUser.getUser_name());
+			ps.setString(2, newUser.getPassword());
+			ps.setString(3, newUser.getDate());
+			ps.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return newUser;
+	}
+
+	public static boolean isExists(User user) {
+		ArrayList<User> users = UserDAO.findAll();
+		for (User u : users) {
+			if (u.getUser_name().equals(user.getUser_name())) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

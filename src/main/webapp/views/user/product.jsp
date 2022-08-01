@@ -142,16 +142,20 @@
 					<table>
 						<tbody>
 							<tr>
-								<td class="width1">Brands</td>
-								<td>Airi, Brand, Draven, Skudmart, Yena</td>
+								<td class="width1">Name</td>
+								<td>${product.name}</td>
 							</tr>
 							<tr>
-								<td class="width1">Color</td>
-								<td>Blue, Gray, Pink</td>
+								<td class="width1">Tag</td>
+								<td>${product.tag}</td>
 							</tr>
 							<tr>
-								<td class="width1">Size</td>
-								<td>L, M, S, XL, XXL</td>
+								<td class="width1">Price</td>
+								<td>$${product.price}</td>
+							</tr>
+							<tr>
+								<td class="width1">Quantity</td>
+								<td>${product.quantity}</td>
 							</tr>
 						</tbody>
 					</table>

@@ -42,5 +42,10 @@ public class User {
 		this.password = password;
 	}
 	
+	public User(String user_name) {
+		super();
+		this.user_name = user_name;
+	}
+	
 
 }

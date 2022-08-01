@@ -91,7 +91,32 @@
 		}
 		
 	</style>
+<style>
+.button-a-hover:hover {
+	color: white
+}
 
+#countries-list, #states-list {
+	padding: 2px 16px;
+	height: 52px;
+}
+
+#countries-list>option, #states-list>option {
+	height: 52px;
+}
+
+.input-checkout {
+	padding: 2px 16px;
+	height: 52px;
+	border: none;
+	outline: none;
+	height: 52px;
+}
+.input-checkout:focus {
+	border: none;
+	outline: none;
+}
+</style>
 </head>
 <body>
 	<div class="main-wrapper main-wrapper-2">
@@ -215,7 +240,7 @@
 								</div>
 								<div class="header-action-style header-action-cart">
 									<a class="cart-active" href="#"><i class="pe-7s-shopbag"></i>
-										<span class="product-count bg-black">01</span> </a>
+										<span id="totalCart"></span> </a>
 								</div>
 								<div class="header-action-style d-block d-lg-none">
 									<a class="mobile-menu-active-button" href="#"><i
@@ -233,43 +258,16 @@
 				<a class="cart-close" href="#"><i class="pe-7s-close"></i></a>
 				<div class="cart-content">
 					<h3>Shopping Cart</h3>
-					<ul>
-						<li>
-							<div class="cart-img">
-								<a href="#"><img src="assets/images/cart/cart-1.jpg" alt=""></a>
-							</div>
-							<div class="cart-title">
-								<h4>
-									<a href="#">Stylish Swing Chair</a>
-								</h4>
-								<span> 1 x $49.00 </span>
-							</div>
-							<div class="cart-delete">
-								<a href="#">x</a>
-							</div>
-						</li>
-						<li>
-							<div class="cart-img">
-								<a href="#"><img src="assets/images/cart/cart-2.jpg" alt=""></a>
-							</div>
-							<div class="cart-title">
-								<h4>
-									<a href="#">Modern Chairs</a>
-								</h4>
-								<span> 1 x $49.00 </span>
-							</div>
-							<div class="cart-delete">
-								<a href="#">x</a>
-							</div>
-						</li>
+					<ul id="shoppingCart">
 					</ul>
 					<div class="cart-total">
 						<h4>
-							Subtotal: <span>$170.00</span>
+							Subtotal: <span class="subTotal"></span>
 						</h4>
 					</div>
 					<div class="cart-btn btn-hover">
-						<a class="theme-color" href="cart.html">view cart</a>
+						<a class="theme-color" href="<c:url value="/viewCart"/>">view
+							cart</a>
 					</div>
 					<div class="checkout-btn btn-hover">
 						<a class="theme-color" href="checkout.html">checkout</a>
@@ -428,104 +426,11 @@
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="assets/js/userCart.js"></script>
+	<script src="assets/js/auth.js"></script>
+	<script src="assets/js/checkout.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function () {
-			const logoutUser = (e) => {
-				e.preventDefault();
-				$.ajax({
-					type: "GET",
-					url: "/SmartKa/logout",
-					dataType: "json",
-					success: function (data) {
-						if (data.success) {
-							swal("Success", data.message, "info")
-							.then(() => {
-								$(location).prop("href", "/SmartKa/auth")
-							});
-						} else {
-							swal("Failed", data.message, "error")
-						}
-					}
-				});
-			}
-			// Login AJAX
-			$("#loginForm").submit(function (e) {
-				const username = $("#username_login").val();
-				const password = $("#password_login").val();
-				e.preventDefault();
-				$.ajax({
-					type: "POST",
-					url: "/SmartKa/login",
-					data: {
-						username,
-						password
-					},
-					dataType: "json",
-					timeout : 10000,
-					success: function (data) {
-						if (data.success) {
-							swal("Success", data.message, "success")
-							.then(() => {
-								$(location).prop("href", "/SmartKa/")
-							});
-						} else {
-							swal("Failed", data.message, "error")
-						}
-					}
-				});
-			});
-			// Register AJAX
-			$("#registerForm").submit(function (e) {
-				const username = $("#username_register").val();
-				const password = $("#password_register").val();
-				const confirmPassword = $("#confirmPassword_register").val();
-				e.preventDefault();
-				$.ajax({
-					type: "POST",
-					url: "/SmartKa/register",
-					data: {
-						username, password, confirmPassword
-					},
-					dataType: "json",
-					timeout : 10000,
-					success: function (data) {
-						if (data.success) {
-							swal("Success", data.message, "success")
-							.then(() => {
-								$(location).prop("href", "/SmartKa/")
-							});
-						} else {
-							swal("Failed", data.message, "error")
-						}
-					}
-				});
-			});
-			// Logout AJAX
-			$("#logoutText").click(logoutUser);
-			// Update User Profile
-			$("#accountDetailsForm").submit(function(e) {
-				const fullname = $("#fullname").val();
-				const email = $("#email").val();
-				const phoneNumber = $("#phoneNumber").val();
-				const address = $("#address").val();
-				const deliveryAddress = $("#deliveryAddress").val();
-				e.preventDefault();
-				$.ajax({
-					type: "POST",
-					url: "/SmartKa/update-userInfo",
-					data: {
-						fullname, email, phoneNumber, address, deliveryAddress
-					},
-					dataType: "json",
-					success: function (data) {
-						if (data.success) {
-							swal("Success", data.message, "success")
-						} else {
-							swal("Failed", data.message, "error")
-						}
-					}
-				});
-			});
 			
 			//update avt ajax
 			function preview(input) {

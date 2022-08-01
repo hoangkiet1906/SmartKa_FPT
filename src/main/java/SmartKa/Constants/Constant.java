@@ -68,5 +68,23 @@ public class Constant {
 	//	const
 			public static final int NUMBER_OF_PRODUCT_PER_PAGE = 9;
 			public static final int FIRST_PRODUCT_NUMBER = 1;
+			
+	//ktoan
+			public static final String LOCAL_CART = "localCart";
+			public static final String GET_PRODUCT_BY_ID_QUERY = "SELECT * FROM product WHERE id = ?";
+			public static final String GET_CART_OF_USER_QUERY = "SELECT * FROM cart WHERE user_name = ?";
+			public static final String ADD_CART_QUERY = "INSERT INTO cart (cartquantity, user_name, id) VALUES (?, ?, ?)";
+			public static final String UPDATE_CART_QUERY = "UPDATE cart SET cartquantity = ? WHERE user_name = ? and id = ?";
+			public static final String GET_CART_BY_ID_USERNAME_QUERY = "SELECT * FROM cart WHERE user_name = ? AND id = ?";
+			public static final String DELETE_CART_QUERY = "DELETE FROM cart WHERE idcart = ? and user_name = ?";
+			public static final String UPDATE_CART_BY_ID_QUERY = "UPDATE cart SET cartquantity = ? WHERE user_name = ? and idcart = ? and id = ?";
+			public static final String GET_ORDER_BY_ID_QUERY = "SELECT * FROM smartka.order where idcheckout = ?";
+			public static final String GET_ALL_ORDER_QUERY = "SELECT * FROM smartka.order";
+			public static final String ADD_ORDER_QUERY = "INSERT INTO smartka.order(user_name, payment_method, "
+					+ "total_money, date_checkout, status, address, email, fullname, phone, note) "
+					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			public static final String ADD_ORDER_DETAIL_QUERY = "INSERT INTO smartka.orderdetail(id, "
+					+ "idcheckout, quantity) "
+					+ "VALUES (?, ?, ?)";
 // end shop
 }

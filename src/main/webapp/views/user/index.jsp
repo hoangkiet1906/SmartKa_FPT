@@ -114,7 +114,6 @@
 		<div class="tab-content jump">
 			<div id="pro-1" class="tab-pane active">
 				<div class="row">
-
 					<!--  -->
 					<c:forEach items="${productNews}" var="pro">
 						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
@@ -135,7 +134,7 @@
 										</button>
 									</div>
 									<div class="product-action-2-wrap">
-										<button class="product-action-btn-2" title="Add To Cart">
+										<button data-productid="${pro.id }" class="product-action-btn-2" title="Add To Cart">
 											<i class="pe-7s-cart"></i> Add to cart
 										</button>
 									</div>
@@ -155,7 +154,7 @@
 						<div class="modal fade quickview-modal-style" id="Modal${pro.id}"
 							tabindex="-1" role="dialog">
 							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
+								<form class="modal-content modal-product-form" data-productid="${pro.id }">
 									<div class="modal-header">
 										<a href="#" class="close" data-bs-dismiss="modal"
 											aria-label="Close"><i class=" ti-close "></i></a>
@@ -198,9 +197,9 @@
 															<input class="cart-plus-minus-box input-text qty text"
 																name="qtybutton" value="1">
 														</div>
-														<div class="single-product-cart btn-hover">
-															<a href="#">Add to cart</a>
-														</div>
+														<button type="submit" style="padding: unset" class="single-product-cart btn-hover">
+															<a class="">Add to cart</a>
+														</button>
 														<div class="single-product-wishlist">
 															<a title="Wishlist" href="#"><i class="pe-7s-like"></i></a>
 														</div>
@@ -212,11 +211,10 @@
 											</div>
 										</div>
 									</div>
-								</div>
+								</form>
 							</div>
 						</div>
 						<!-- Product Modal end -->
-
 						<!--  -->
 					</c:forEach>
 				</div>
@@ -243,7 +241,7 @@
 										</button>
 									</div>
 									<div class="product-action-2-wrap">
-										<button class="product-action-btn-2" title="Add To Cart">
+										<button data-productid="${pro.id }" class="product-action-btn-2" title="Add To Cart">
 											<i class="pe-7s-cart"></i> Add to cart
 										</button>
 									</div>
@@ -263,7 +261,7 @@
 						<div class="modal fade quickview-modal-style" id="Modal${pro.id}"
 							tabindex="-1" role="dialog">
 							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
+								<form class="modal-content modal-product-form" data-productid="${pro.id }">
 									<div class="modal-header">
 										<a href="#" class="close" data-bs-dismiss="modal"
 											aria-label="Close"><i class=" ti-close "></i></a>
@@ -306,9 +304,9 @@
 															<input class="cart-plus-minus-box input-text qty text"
 																name="qtybutton" value="1">
 														</div>
-														<div class="single-product-cart btn-hover">
-															<a href="#">Add to cart</a>
-														</div>
+														<button type="submit" style="padding: unset" class="single-product-cart btn-hover">
+															<a class="button-a-hover">Add to cart</a>
+														</button>
 														<div class="single-product-wishlist">
 															<a title="Wishlist" href="#"><i class="pe-7s-like"></i></a>
 														</div>
@@ -320,7 +318,7 @@
 											</div>
 										</div>
 									</div>
-								</div>
+								</form>
 							</div>
 						</div>
 						<!-- Product Modal end -->
@@ -354,7 +352,7 @@
 										</button>
 									</div>
 									<div class="product-action-2-wrap">
-										<button class="product-action-btn-2" title="Add To Cart">
+										<button data-productid="${pro.id }" class="product-action-btn-2" title="Add To Cart">
 											<i class="pe-7s-cart"></i> Add to cart
 										</button>
 									</div>
@@ -375,7 +373,7 @@
 						<div class="modal fade quickview-modal-style" id="Modal${pro.id}"
 							tabindex="-1" role="dialog">
 							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
+								<form class="modal-content modal-product-form" data-productid="${pro.id }">
 									<div class="modal-header">
 										<a href="#" class="close" data-bs-dismiss="modal"
 											aria-label="Close"><i class=" ti-close "></i></a>
@@ -393,8 +391,7 @@
 												<div class="product-details-content quickview-content">
 													<h2>${pro.name}</h2>
 													<div class="product-details-price">
-														<span class="old-price">$${pro.price*10/100+pro.price}</span> <span
-															class="new-price">$${pro.price}</span>
+														<span class="new-price">$${pro.price}</span>
 													</div>
 													<div class="product-details-review">
 														<div class="product-rating">
@@ -419,9 +416,9 @@
 															<input class="cart-plus-minus-box input-text qty text"
 																name="qtybutton" value="1">
 														</div>
-														<div class="single-product-cart btn-hover">
-															<a href="#">Add to cart</a>
-														</div>
+														<button type="submit" style="padding: unset" class="single-product-cart btn-hover">
+															<a class="button-a-hover">Add to cart</a>
+														</button>
 														<div class="single-product-wishlist">
 															<a title="Wishlist" href="#"><i class="pe-7s-like"></i></a>
 														</div>
@@ -433,7 +430,7 @@
 											</div>
 										</div>
 									</div>
-								</div>
+								</form>
 							</div>
 						</div>
 						<!-- Product Modal end -->
@@ -508,7 +505,7 @@
 									<span>-10%</span>
 								</div>
 								<div class="product-action-2-wrap">
-									<button class="product-action-btn-2" title="Add To Cart">
+									<button data-productid="${pro.id }" class="product-action-btn-2" title="Add To Cart">
 										<i class="pe-7s-cart"></i> Add to cart
 									</button>
 								</div>

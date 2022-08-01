@@ -30,76 +30,11 @@
 					<div class="tab-content jump">
 						<div id="shop-1" class="tab-pane active">
 							<div class="row" id="productContentShop1">
-								<!-- Product Modal start -->
-									 <!-- <div class="modal fade quickview-modal-style" id="Modal${product.id}"
-											tabindex="-1" role="dialog">
-											<div class="modal-dialog modal-dialog-centered" role="document">
-												<div class="modal-content">
-													<div class="modal-header">
-														<a href="#" class="close" data-bs-dismiss="modal"
-															aria-label="Close"><i class=" ti-close "></i></a>
-													</div>
-													<div class="modal-body">
-														<div class="row gx-0">
-															<div class="col-lg-5 col-md-5 col-12">
-																<div class="modal-img-wrap">
-																	<img src="<c:url value="assets/images/product/${product.image}" />" alt="">
-																</div>
-															</div>
-															<div class="col-lg-7 col-md-7 col-12">
-																<div class="product-details-content quickview-content">
-																	<h2>${product.name}</h2>
-																	<div class="product-details-price">
-																		<span class="new-price">$${product.price}</span>
-																	</div>
-																	<div class="product-details-review">
-																		<div class="product-rating">
-																			<i class=" ti-star"></i> <i class=" ti-star"></i> <i
-																				class=" ti-star"></i> <i class=" ti-star"></i> <i
-																				class=" ti-star"></i>
-																		</div>
-																		<span>( ${product.view} Customer Review )</span>
-																	</div>
-																	<div
-																		class="product-color product-color-active product-details-color">
-																		<span>Color :</span>
-																		<ul>
-																			<li><a title="Pink" class="pink" href="#">pink</a></li>
-																			<li><a title="Yellow" class="active yellow" href="#">yellow</a></li>
-																			<li><a title="Purple" class="purple" href="#">purple</a></li>
-																		</ul>
-																	</div>
-																	<p>${product.description}</p>
-																	<div class="product-details-action-wrap">
-																		<div class="product-quality">
-																			<input class="cart-plus-minus-box input-text qty text"
-																				name="qtybutton" value="1">
-																		</div>
-																		<div class="single-product-cart btn-hover">
-																			<a href="#">Add to cart</a>
-																		</div>
-																		<div class="single-product-wishlist">
-																			<a title="Wishlist" href="#"><i class="pe-7s-like"></i></a>
-																		</div>
-																		<div class="single-product-compare">
-																			<a title="Compare" href="#"><i class="pe-7s-shuffle"></i></a>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div> -->
-								<!-- Product Modal end -->
 							</div>
 							<div class="pagination-style-1" data-aos="fade-up" data-aos-delay="200">
 								<ul id="pagiContentShop1"></ul>									
 							</div>
 						</div>
-						
-						
 						<div id="shop-2" class="tab-pane">
 								<div id="productContentShop2" class="shop-list-wrap mb-30"></div>
 							<!-- Pagi -->
@@ -108,6 +43,12 @@
 							</div>
 							
 						</div>
+						<!-- Product Modal start -->
+							<div class="modal fade quickview-modal-style" id="Modaldetail"
+							tabindex="-1" role="dialog">
+								
+							</div>
+						<!-- Product Modal end -->
 					</div>
 				</div>
 			</div>
@@ -222,10 +163,149 @@
 				const pagiContentShop1 = $("#pagiContentShop1");
 				const pagiContentShop2 = $("#pagiContentShop2");
 				
-				const showing = $("#showing");
-				
 				const cateList1 = $("#cateList1");
+
+				const detailModal = $('#Modaldetail');
 				
+				const getProductModal = (productID) => {
+					detailModal.empty();
+					$.ajax({
+						type: "GET",
+						url: "/SmartKa/productModal",
+						data: { id : productID },
+						dataType: "json",
+						contentType:false,
+						success: function (response) {
+							console.log(response);
+							if(response.status === "Sale Items")
+							{
+								detailModal.append('<div class="modal-dialog modal-dialog-centered" role="document">\
+									<div class="modal-content">\
+										<div class="modal-header">\
+											<a href="#" class="close" data-bs-dismiss="modal"\
+												aria-label="Close"><i class=" ti-close "></i></a>\
+										</div>\
+										<div class="modal-body">\
+											<div class="row gx-0">\
+												<div class="col-lg-5 col-md-5 col-12">\
+													<div class="modal-img-wrap">\
+														<img src="assets/images/product/'+response.image+'" alt="">\
+													</div>\
+												</div>\
+												<div class="col-lg-7 col-md-7 col-12">\
+													<div class="product-details-content quickview-content">\
+														<h2>'+response.name+'</h2>\
+														<div class="product-details-price">\
+															<span class="old-price">$'+response.price*110/100+'</span>\
+															<span class="new-price">$'+response.price+'</span>\
+														</div>\
+														<div class="product-details-review">\
+															<div class="product-rating">\
+																<i class=" ti-star"></i> <i class=" ti-star"></i> <i\
+																	class=" ti-star"></i> <i class=" ti-star"></i> <i\
+																	class=" ti-star"></i>\
+															</div>\
+															<span>( '+response.view+' Customer Review )</span>\
+														</div>\
+														<div\
+															class="product-color product-color-active product-details-color">\
+															<span>Color :</span>\
+															<ul>\
+																<li><a title="Pink" class="pink" href="#">pink</a></li>\
+																<li><a title="Yellow" class="active yellow" href="#">yellow</a></li>\
+																<li><a title="Purple" class="purple" href="#">purple</a></li>\
+															</ul>\
+														</div>\
+														<p>'+response.description+'</p>\
+														<div class="product-details-action-wrap">\
+															<div class="product-quality">\
+																<input class="cart-plus-minus-box input-text qty text"\
+																	name="qtybutton" value="1">\
+															</div>\
+															<div class="single-product-cart btn-hover">\
+																<a href="#">Add to cart</a>\
+															</div>\
+															<div class="single-product-wishlist">\
+																<a title="Wishlist" href="#"><i class="pe-7s-like"></i></a>\
+															</div>\
+															<div class="single-product-compare">\
+																<a title="Compare" href="#"><i class="pe-7s-shuffle"></i></a>\
+															</div>\
+														</div>\
+													</div>\
+												</div>\
+											</div>\
+										</div>\
+									</div>\
+								</div>');
+							}
+							else {
+								detailModal.append('<div class="modal-dialog modal-dialog-centered" role="document">\
+									<div class="modal-content">\
+										<div class="modal-header">\
+											<a href="#" class="close" data-bs-dismiss="modal"\
+												aria-label="Close"><i class=" ti-close "></i></a>\
+										</div>\
+										<div class="modal-body">\
+											<div class="row gx-0">\
+												<div class="col-lg-5 col-md-5 col-12">\
+													<div class="modal-img-wrap">\
+														<img src="assets/images/product/'+response.image+'" alt="">\
+													</div>\
+												</div>\
+												<div class="col-lg-7 col-md-7 col-12">\
+													<div class="product-details-content quickview-content">\
+														<h2>'+response.name+'</h2>\
+														<div class="product-details-price">\
+															<span class="price" style="font-size:20px">$'+response.price+'</span>\
+														</div>\
+														<div class="product-details-review">\
+															<div class="product-rating">\
+																<i class=" ti-star"></i> <i class=" ti-star"></i> <i\
+																	class=" ti-star"></i> <i class=" ti-star"></i> <i\
+																	class=" ti-star"></i>\
+															</div>\
+															<span>( '+response.view+' Customer Review )</span>\
+														</div>\
+														<div\
+															class="product-color product-color-active product-details-color">\
+															<span>Color :</span>\
+															<ul>\
+																<li><a title="Pink" class="pink" href="#">pink</a></li>\
+																<li><a title="Yellow" class="active yellow" href="#">yellow</a></li>\
+																<li><a title="Purple" class="purple" href="#">purple</a></li>\
+															</ul>\
+														</div>\
+														<p>'+response.description+'</p>\
+														<div class="product-details-action-wrap">\
+															<div class="product-quality">\
+																<input class="cart-plus-minus-box input-text qty text"\
+																	name="qtybutton" value="1">\
+															</div>\
+															<div class="single-product-cart btn-hover">\
+																<a href="#">Add to cart</a>\
+															</div>\
+															<div class="single-product-wishlist">\
+																<a title="Wishlist" href="#"><i class="pe-7s-like"></i></a>\
+															</div>\
+															<div class="single-product-compare">\
+																<a title="Compare" href="#"><i class="pe-7s-shuffle"></i></a>\
+															</div>\
+														</div>\
+													</div>\
+												</div>\
+											</div>\
+										</div>\
+									</div>\
+								</div>');
+							}
+							detailModal.modal('show');
+						},
+						error: function(){alert("fail")}
+					});
+				}
+
+				//chua co modal
 				const getProductByTag = (tagNameShop, pageNumber) => {
 					
 					productContentShop1.empty();
@@ -233,8 +313,6 @@
 					
 					productContentShop2.empty();
 					pagiContentShop2.empty();
-					
-					showing.empty();
 					
 					$.ajax({
 						type: "GET",
@@ -268,8 +346,7 @@
 	    											<button class="product-action-btn-1" title="Wishlist">\
 	    												<i class="pe-7s-like"></i>\
 	    											</button>\
-	    											<button class="product-action-btn-1" title="Quick View"\
-	    												data-bs-toggle="modal" data-bs-target="#">\
+	    											<button class="product-action-btn-1" data-productid="'+item.id+'" id="showModalButtonShop1'+item.id+'" title="Quick View">\
 	    												<i class="pe-7s-look"></i>\
 	    											</button>\
 	    										</div>\
@@ -302,8 +379,7 @@
 														<span>-10%</span>\
 													</div>\
 													<div class="product-list-quickview">\
-														<button class="product-action-btn-2" title="Quick View"\
-															data-bs-toggle="modal" data-bs-target="#">\
+														<button data-productid="'+item.id+'" id="showModalButtonShop2'+item.id+'" class="product-action-btn-2" title="Quick View"\
 															<i class="pe-7s-look"></i>\
 														</button>\
 													</div>\
@@ -355,8 +431,7 @@
 														<button class="product-action-btn-1" title="Wishlist">\
 															<i class="pe-7s-like"></i>\
 														</button>\
-														<button class="product-action-btn-1" title="Quick View"\
-															data-bs-toggle="modal" data-bs-target="#">\
+														<button class="product-action-btn-1" data-productid="'+item.id+'" id="showModalButtonShop1'+item.id+'" title="Quick View">\
 															<i class="pe-7s-look"></i>\
 														</button>\
 													</div>\
@@ -385,8 +460,7 @@
 														alt="Product Style">\
 													</a>\
 													<div class="product-list-quickview">\
-														<button class="product-action-btn-2" title="Quick View"\
-															data-bs-toggle="modal" data-bs-target="#">\
+														<button data-productid="'+item.id+'" id="showModalButtonShop2'+item.id+'" class="product-action-btn-2" title="Quick View"\
 															<i class="pe-7s-look"></i>\
 														</button>\
 													</div>\
@@ -422,43 +496,45 @@
 										</div>');
 	                   				} //else
 	                    		}); // end productList item
-                    	
-                    			// page list
-	                    			for(let i = 1; i <= totalPage; i++) {
-	                    				if(i == currentPageShop)
-	                   					{
-	                   						pagiContentShop1.append('<li><a id="shop1page'+i+'" class="active">'+i+'</a></li>');
-	                   						pagiContentShop2.append('<li><a id="shop2page'+i+'" class="active">'+i+'</a></li>');
-	                   					}
-	                    				else 
-										{
-											pagiContentShop1.append('<li><a id="shop1page'+i+'">'+i+'</a></li>');
-											pagiContentShop2.append('<li><a id="shop2page'+i+'">'+i+'</a></li>');
-										}
-										$('#shop1page'+i).click(function(e){
-											productContentShop1.empty();
-											pagiContentShop1.empty();
-											productContentShop2.empty();
-											pagiContentShop2.empty();
-											e.preventDefault();
-											var currentURL = window.location.protocol + "//" + window.location.host + window.location.pathname + '?page='+i;    
-											window.history.pushState({ path: currentURL }, '', currentURL);
-											var changedCurrentPage = getUrlParameter('page')
-											getProductByTag(tagNameShop,changedCurrentPage);
-										})
-										$('#shop2page'+i).click(function(e){
-											productContentShop1.empty();
-											pagiContentShop1.empty();
-											productContentShop2.empty();
-											pagiContentShop2.empty();
-											e.preventDefault();
-											var currentURL = window.location.protocol + "//" + window.location.host + window.location.pathname + '?page='+i;    
-											window.history.pushState({ path: currentURL }, '', currentURL);
-											var changedCurrentPage = getUrlParameter('page')
-											getProductByTag(tagNameShop,changedCurrentPage);
-										})
-	                    			} //for
-	                    		//page list
+							// product list map
+
+							// page list
+								for(let i = 1; i <= totalPage; i++) 
+								{
+									if(i == currentPageShop)
+									{
+										pagiContentShop1.append('<li><a id="shop1page'+i+'" class="active">'+i+'</a></li>');
+										pagiContentShop2.append('<li><a id="shop2page'+i+'" class="active">'+i+'</a></li>');
+									}
+									else 
+									{
+										pagiContentShop1.append('<li><a id="shop1page'+i+'">'+i+'</a></li>');
+										pagiContentShop2.append('<li><a id="shop2page'+i+'">'+i+'</a></li>');
+									}
+									$('#shop1page'+i).click(function(e){
+										productContentShop1.empty();
+										pagiContentShop1.empty();
+										productContentShop2.empty();
+										pagiContentShop2.empty();
+										e.preventDefault();
+										var currentURL = window.location.protocol + "//" + window.location.host + window.location.pathname + '?page='+i;    
+										window.history.pushState({ path: currentURL }, '', currentURL);
+										var changedCurrentPage = getUrlParameter('page')
+										getProductByTag(tagNameShop,changedCurrentPage);
+									})
+									$('#shop2page'+i).click(function(e){
+										productContentShop1.empty();
+										pagiContentShop1.empty();
+										productContentShop2.empty();
+										pagiContentShop2.empty();
+										e.preventDefault();
+										var currentURL = window.location.protocol + "//" + window.location.host + window.location.pathname + '?page='+i;    
+										window.history.pushState({ path: currentURL }, '', currentURL);
+										var changedCurrentPage = getUrlParameter('page')
+										getProductByTag(tagNameShop,changedCurrentPage);
+									})
+								} //for
+							//page list
 						},
 						error: function(){
 							alert("error");
@@ -503,8 +579,7 @@
 	    											<button class="product-action-btn-1" title="Wishlist">\
 	    												<i class="pe-7s-like"></i>\
 	    											</button>\
-	    											<button class="product-action-btn-1" title="Quick View"\
-	    												data-bs-toggle="modal" data-bs-target="#">\
+	    											<button class="product-action-btn-1" data-productid="'+item.id+'" id="showModalButtonShop1'+item.id+'" title="Quick View">\
 	    												<i class="pe-7s-look"></i>\
 	    											</button>\
 	    										</div>\
@@ -537,8 +612,7 @@
 														<span>-10%</span>\
 													</div>\
 													<div class="product-list-quickview">\
-														<button class="product-action-btn-2" title="Quick View"\
-															data-bs-toggle="modal" data-bs-target="#">\
+														<button data-productid="'+item.id+'" id="showModalButtonShop2'+item.id+'" class="product-action-btn-2" title="Quick View"\
 															<i class="pe-7s-look"></i>\
 														</button>\
 													</div>\
@@ -590,8 +664,7 @@
 														<button class="product-action-btn-1" title="Wishlist">\
 															<i class="pe-7s-like"></i>\
 														</button>\
-														<button class="product-action-btn-1" title="Quick View"\
-															data-bs-toggle="modal" data-bs-target="#">\
+														<button class="product-action-btn-1" data-productid="'+item.id+'" id="showModalButtonShop1'+item.id+'" title="Quick View">\
 															<i class="pe-7s-look"></i>\
 														</button>\
 													</div>\
@@ -620,8 +693,7 @@
 														alt="Product Style">\
 													</a>\
 													<div class="product-list-quickview">\
-														<button class="product-action-btn-2" title="Quick View"\
-															data-bs-toggle="modal" data-bs-target="#">\
+														<button data-productid="'+item.id+'" id="showModalButtonShop2'+item.id+'" class="product-action-btn-2" title="Quick View"\
 															<i class="pe-7s-look"></i>\
 														</button>\
 													</div>\
@@ -656,6 +728,21 @@
 											</div>\
 										</div>');
 	                   				} //else
+
+									// modal
+										$('#showModalButtonShop1'+item.id).click(function(e){
+											e.preventDefault();
+											const productId = $(this).data("productid");
+											getProductModal(productId)
+										});
+
+										$('#showModalButtonShop2'+item.id).click(function(e){
+											e.preventDefault();
+											const productId = $(this).data("productid");
+											getProductModal(productId)
+										});
+									// end modal
+
 	                    		}); // end productList item
                     	
                     			// page list
@@ -694,11 +781,13 @@
 										})
 	                    			} //for
 	                    		//page list
+
+								
 						}, //success function
                     	error: function(){alert("err")}
 					}); //ajax
 				} //getInitialPage()
-			
+
 				if(!tagFromProductDetail)
 				{
 					if(!currentPageShop)
@@ -722,7 +811,7 @@
 					})
 				// tag all
 				
-					// tag
+				// tag
 					// tag list ben trai phai tren
 						$(".productTag1").click(
 							function(e) 
@@ -757,7 +846,6 @@
 							} //function e
 						)
 					//  tag list ben trai o duoi
-					
 				// end tag
 				
 				// search
@@ -816,10 +904,9 @@
 			    											<button class="product-action-btn-1" title="Wishlist">\
 			    												<i class="pe-7s-like"></i>\
 			    											</button>\
-			    											<button class="product-action-btn-1" title="Quick View"\
-			    												data-bs-toggle="modal" data-bs-target="#">\
-			    												<i class="pe-7s-look"></i>\
-			    											</button>\
+			    											<button class="product-action-btn-1" data-productid="'+item.id+'" id="showModalButtonShop1'+item.id+'" title="Quick View">\
+																<i class="pe-7s-look"></i>\
+															</button>\
 			    										</div>\
 			    										<div class="product-action-2-wrap">\
 			    											<button class="product-action-btn-2" title="Add To Cart">\
@@ -903,8 +990,7 @@
 																<button class="product-action-btn-1" title="Wishlist">\
 																	<i class="pe-7s-like"></i>\
 																</button>\
-																<button class="product-action-btn-1" title="Quick View"\
-																	data-bs-toggle="modal" data-bs-target="#">\
+																<button class="product-action-btn-1" data-productid="'+item.id+'" id="showModalButtonShop1'+item.id+'" title="Quick View">\
 																	<i class="pe-7s-look"></i>\
 																</button>\
 															</div>\
@@ -1043,10 +1129,9 @@
 		    											<button class="product-action-btn-1" title="Wishlist">\
 		    												<i class="pe-7s-like"></i>\
 		    											</button>\
-		    											<button class="product-action-btn-1" title="Quick View"\
-		    												data-bs-toggle="modal" data-bs-target="#">\
-		    												<i class="pe-7s-look"></i>\
-		    											</button>\
+		    											<button class="product-action-btn-1" data-productid="'+item.id+'" id="showModalButtonShop1'+item.id+'" title="Quick View">\
+															<i class="pe-7s-look"></i>\
+														</button>\
 		    										</div>\
 		    										<div class="product-action-2-wrap">\
 		    											<button class="product-action-btn-2" title="Add To Cart">\
@@ -1130,8 +1215,7 @@
 															<button class="product-action-btn-1" title="Wishlist">\
 																<i class="pe-7s-like"></i>\
 															</button>\
-															<button class="product-action-btn-1" title="Quick View"\
-																data-bs-toggle="modal" data-bs-target="#">\
+															<button class="product-action-btn-1" data-productid="'+item.id+'" id="showModalButtonShop1'+item.id+'" title="Quick View">\
 																<i class="pe-7s-look"></i>\
 															</button>\
 														</div>\
