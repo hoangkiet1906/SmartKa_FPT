@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
@@ -343,8 +344,7 @@
 									<h3 class="card-title">Members</h3>
 
 									<div class="card-tools">
-										<span class="badge badge-danger">{{$UserQuantity->count()
-											}} New Members</span>
+										<span class="badge badge-danger">${userNumber} New Members</span>
 										<button type="button" class="btn btn-tool"
 											data-card-widget="collapse">
 											<i class="fas fa-minus"></i>
@@ -360,14 +360,13 @@
 								<!-- /.card-header -->
 								<div class="card-body p-0">
 									<ul class="users-list clearfix">
-										@foreach ($UserQuantity as $u)
-
-										<li><img
-											src="{{ asset('User')}}/assets/images/avatar/{{$u->avatar}}"
-											alt="User Image"> <a class="users-list-name" href="#">{{$u->user_name}}</a>
-											<span class="users-list-date">{{$Udate[$u->user_name]}}</span>
-										</li> @endforeach
-
+										<c:forEach items="${users}" var="users">
+											<li><img
+												src="<c:url value = "/assets/images/avatar/${users.avatar}"/>"
+												alt="User Image"> <a class="users-list-name" href="#">${users.fullname}</a>
+												<span class="users-list-date">${users.date}</span>
+											</li>
+										</c:forEach>
 									</ul>
 									<!-- /.users-list -->
 								</div>

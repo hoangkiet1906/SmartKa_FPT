@@ -86,5 +86,10 @@ public class Constant {
 			public static final String ADD_ORDER_DETAIL_QUERY = "INSERT INTO smartka.orderdetail(id, "
 					+ "idcheckout, quantity) "
 					+ "VALUES (?, ?, ?)";
-// end shop
+			
+	// qhai - admin user manage
+			public static final String ADMIN_GET_USER_MANAGE = "SELECT * FROM info INNER JOIN account "
+					+ "ON (account.user_name = info.user_name) "
+					+ "WHERE DATE >= ? AND DATE <= ? order BY DATE desc LIMIT ?";
+			public static final int NO_USER_IN_ADMIN_MANAGE = 8;
 }
