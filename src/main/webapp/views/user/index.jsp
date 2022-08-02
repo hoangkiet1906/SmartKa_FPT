@@ -120,7 +120,7 @@
 							<div class="product-wrap mb-35" data-aos="fade-up"
 								data-aos-delay="200">
 								<div class="product-img img-zoom mb-25">
-									<a href="product-details.html"> <img
+									<a href='/SmartKa/product?id=${pro.id }&&tag=${pro.tag}'> <img
 										src="<c:url value="assets/images/product/${pro.image}" />"
 										alt="">
 									</a>
@@ -233,7 +233,7 @@
 						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
 							<div class="product-wrap mb-35">
 								<div class="product-img img-zoom mb-25">
-									<a href="product-details.html"> <img
+									<a href='/SmartKa/product?id=${pro.id }&&tag=${pro.tag}'> <img
 										src="<c:url value="assets/images/product/${pro.image}" />"
 										alt="">
 									</a>
@@ -344,7 +344,7 @@
 						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
 							<div class="product-wrap mb-35">
 								<div class="product-img img-zoom mb-25">
-									<a href="product-details.html"> <img
+									<a href='/SmartKa/product?id=${pro.id }&&tag=${pro.tag}'> <img
 										src="<c:url value="assets/images/product/${pro.image}" />"
 										alt="">
 									</a>

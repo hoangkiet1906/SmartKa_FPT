@@ -78,6 +78,7 @@ public class HomeController {
 		AuthResponse loginResponse = UserDAO.loginToSystem(user);
 		if (loginResponse.isSuccess()) {
 			session.setAttribute(Constant.SESSION_USERNAME, user.getUser_name());
+			session.setAttribute("role", loginResponse.getUser().getRole());
 			UserInfo info = UserDAO.getUserInfo(username);
 			if (info != null) {
 				session.setAttribute(Constant.SESSION_USER_INFORMATION, info);
@@ -111,6 +112,7 @@ public class HomeController {
 		}
 		if (registerResponse.isSuccess()) {
 			session.setAttribute(Constant.SESSION_USERNAME, username);
+			session.setAttribute("role", "USER");
 			UserInfo info = UserDAO.getUserInfo(username);
 			if (info != null) {
 				session.setAttribute(Constant.SESSION_USER_INFORMATION, info);
@@ -133,6 +135,7 @@ public class HomeController {
 		try {
 			session.removeAttribute(Constant.SESSION_USERNAME);
 			session.removeAttribute(Constant.SESSION_USER_INFORMATION);
+			session.removeAttribute("role");
 			authResponse.setMessage("Logout successfully!");
 			authResponse.setSuccess(true);
 		} catch (Exception e) {

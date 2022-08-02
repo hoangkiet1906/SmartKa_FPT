@@ -4,6 +4,7 @@ public class User {
 	String user_name;
 	String password;
 	String date;
+	String role;
 	public String getUser_name() {
 		return user_name;
 	}
@@ -22,11 +23,19 @@ public class User {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public User(String user_name, String password, String date) {
+	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	public User(String user_name, String password, String date, String role) {
 		super();
 		this.user_name = user_name;
 		this.password = password;
 		this.date = date;
+		this.role = role;
 	}
 	@Override
 	public String toString() {

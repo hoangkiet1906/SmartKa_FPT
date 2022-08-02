@@ -37,7 +37,11 @@ $(document).ready(function() {
 				if (data.success) {
 					swal("Success", data.message, "success")
 						.then(() => {
-							$(location).prop("href", "/SmartKa/")
+							if (data.user.role == "ADMIN") {
+								$(location).prop("href", "/SmartKa/admin/usermng")
+							} else {
+								$(location).prop("href", "/SmartKa/")
+							}
 						});
 				} else {
 					swal("Failed", data.message, "error")
