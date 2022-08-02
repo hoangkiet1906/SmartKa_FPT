@@ -19,7 +19,7 @@ public class SupportDAO {
 			PreparedStatement ps = UserDAO.connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-            	Support a = new Support(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4));
+            	Support a = new Support(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4),rs.getString(7));
             	sp.add(a);
             }
 		} catch (Exception e) {
@@ -28,5 +28,7 @@ public class SupportDAO {
 		}
 		return sp;
 	}
-
+	public static void main(String[] args) {
+		System.out.println(SupportDAO.getAllSp());
+	}
 }

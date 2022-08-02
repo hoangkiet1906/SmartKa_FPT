@@ -5,13 +5,24 @@ public class Support {
 	String user_name;
 	String  mess;
 	String  date;
-	public Support(int id, String user_name, String mess, String date) {
+	String 	img;
+	public Support(int id, String user_name, String mess, String date, String img) {
 		super();
 		this.id = id;
 		this.user_name = user_name;
 		this.mess = mess;
 		this.date = date;
+		this.img = img;
 	}
+	
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -36,10 +47,13 @@ public class Support {
 	public void setDate(String date) {
 		this.date = date;
 	}
+
 	@Override
 	public String toString() {
-		return "Support [id=" + id + ", user_name=" + user_name + ", mess=" + mess + ", date=" + date + "]";
+		return "Support [id=" + id + ", user_name=" + user_name + ", mess=" + mess + ", date=" + date + ", img=" + img
+				+ "]";
 	}
+	
 	
 	
 }

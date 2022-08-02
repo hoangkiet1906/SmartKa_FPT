@@ -248,13 +248,13 @@
 										<!-- Message. Default to the left -->
 										<div class="direct-chat-msg">
 											<div class="direct-chat-infos clearfix">
-												<span class="direct-chat-name float-left">Kiệt Con</span> <span
+												<span class="direct-chat-name float-left">Hoang Kiet</span> <span
 													class="direct-chat-timestamp float-right">23 Jan
 													2:00 pm</span>
 											</div>
 											<!-- /.direct-chat-infos -->
 											<img class="direct-chat-img"
-												src="asset/dist/img/ad.jpg')}}"
+												src="asset/dist/img/ad.jpg"
 												alt="message user image">
 											<!-- /.direct-chat-img -->
 											<div class="direct-chat-text">Do you have kali linux ?
@@ -266,7 +266,7 @@
 										<!-- Message to the right -->
 										<div class="direct-chat-msg right">
 											<div class="direct-chat-infos clearfix">
-												<span class="direct-chat-name float-right">Kiệt Cha</span> <span
+												<span class="direct-chat-name float-right">Vo Trinh</span> <span
 													class="direct-chat-timestamp float-left">23 Jan 2:05
 													pm</span>
 											</div>
@@ -283,7 +283,7 @@
 										<!-- Message. Default to the left -->
 										<div class="direct-chat-msg">
 											<div class="direct-chat-infos clearfix">
-												<span class="direct-chat-name float-left">Kiệt Con</span> <span
+												<span class="direct-chat-name float-left">Hoang Kiet</span> <span
 													class="direct-chat-timestamp float-right">23 Jan
 													5:37 pm</span>
 											</div>
@@ -300,7 +300,7 @@
 										<!-- Message to the right -->
 										<div class="direct-chat-msg right">
 											<div class="direct-chat-infos clearfix">
-												<span class="direct-chat-name float-right">Kiệt Cha</span> <span
+												<span class="direct-chat-name float-right">Vo Trinh</span> <span
 													class="direct-chat-timestamp float-left">23 Jan 6:10
 													pm</span>
 											</div>

@@ -27,7 +27,7 @@ public class UserDAO {
 			PreparedStatement ps = UserDAO.connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-            	User a = new User(rs.getString(1), rs.getString(2), rs.getString(3));
+            	User a = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
             	users.add(a);
             }
 		} catch (Exception e) {
@@ -103,6 +103,7 @@ public class UserDAO {
 					loginUser.setUser_name(rs.getString(1));
 					loginUser.setPassword(rs.getString(2));
 					loginUser.setDate(rs.getString(3));
+					loginUser.setRole(rs.getString(4));
 				}
 				if (loginUser!=null && Validators.confirmationPassword(loginUser.getPassword(), Validators.hashPassword(user.getPassword()))) {
 					authResponse.setSuccess(true);
@@ -129,11 +130,13 @@ public class UserDAO {
 				newUser.setUser_name(user.getUser_name());
 				newUser.setPassword(Validators.hashPassword(user.getPassword()));
 				newUser.setDate(Validators.getCurrentTime());
+				newUser.setRole("USER");
 				String query = Constant.ADD_USER_QUERY;
 				PreparedStatement ps = UserDAO.connection.prepareStatement(query);
 				ps.setString(1, newUser.getUser_name());
 				ps.setString(2, newUser.getPassword());
 				ps.setString(3, newUser.getDate());
+				ps.setString(4, newUser.getRole());
 				ps.execute();
 				authResponse.setSuccess(true);
 				authResponse.setMessage("Created User Successfully!");
@@ -208,7 +211,7 @@ public class UserDAO {
 			PreparedStatement ps = UserDAO.connection.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				User a = new User(rs.getString(1), rs.getString(2), rs.getString(3));
+				User a = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
 				users.add(a);
 			}
 		} catch (Exception e) {
@@ -228,6 +231,7 @@ public class UserDAO {
 				loginUser.setUser_name(rs.getString(1));
 				loginUser.setPassword(rs.getString(2));
 				loginUser.setDate(rs.getString(3));
+				loginUser.setRole(rs.getString(4));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -241,11 +245,13 @@ public class UserDAO {
 			newUser.setUser_name(user.getUser_name());
 			newUser.setPassword(Validators.hashPassword(user.getPassword()));
 			newUser.setDate(Validators.getCurrentTime());
+			newUser.setRole("USER");
 			String query = Constant.ADD_USER_QUERY;
 			PreparedStatement ps = UserDAO.connection.prepareStatement(query);
 			ps.setString(1, newUser.getUser_name());
 			ps.setString(2, newUser.getPassword());
 			ps.setString(3, newUser.getDate());
+			ps.setString(4, newUser.getRole());
 			ps.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();

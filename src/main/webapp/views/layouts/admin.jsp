@@ -66,31 +66,30 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="far fa-comments"></i>
-                        <span class="badge badge-danger navbar-badge">{{count(Session::get('support'))}}</span>
+                        <span class="badge badge-danger navbar-badge">${sessionScope.support.size()}</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        @foreach (Session::get('support') as $item)
+                        <c:forEach var="item" items="${sessionScope.support }" >	
 
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="{{ asset('User')}}/assets/images/avatar/{{Session::get('img')[$item->user_name][0]->avatar}}" alt="User Avatar"
+                                <img src="asset/images/avatar/${item.img}" alt="User Avatar"
                                     class="img-size-50 mr-3 img-circle">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
-                                        {{$item->user_name}}
+                                        ${item.user_name}
                                         <span class="float-right text-sm text-danger"><i
                                                 class="fas fa-star"></i></span>
                                     </h3>
-                                    <p class="text-sm">{{$item->mess}}</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i>{{$item->date}}</p>
+                                    <p class="text-sm">${item.mess}</p>
+                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i>${item.date}</p>
                                 </div>
                             </div>
                             <!-- Message End -->
                         </a>
                         <div class="dropdown-divider"></div>
-                            
-                        @endforeach
+                        </c:forEach>
                         
                         <a href="#" class="dropdown-item dropdown-footer">View all messages</a>
                     </div>
@@ -99,29 +98,10 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">{{ count(Session::get('support'))+count(Session::get('countUser'))+count(Session::get('countUser'))}}</span>
+                        <span class="badge badge-warning navbar-badge">${sessionScope.support.size()}</span>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">{{count(Session::get('support'))+count(Session::get('countUser'))+count(Session::get('countUser'))}} New notifications</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> {{count(Session::get('support'))}} Messages
-                            <span class="float-right text-muted text-sm">4s</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-users mr-2"></i> {{count(Session::get('countUser'))}} Users
-                            <span class="float-right text-muted text-sm">1h</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-file mr-2"></i> {{count(Session::get('countUser'))}} Purchases
-                            <span class="float-right text-muted text-sm">1d</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">View all announcements</a>
-                    </div>
-                </li>
+                    
+                </li> 
 
             </ul>
         </nav>
@@ -223,10 +203,10 @@
                         <li class="nav-item">
                             
                             <c:if test="${page == 'qlstaff'}" var="condition">
-                            <a href="<c:url value="/admin/product" />" class="nav-link active">
+                            <a href="<c:url value="/admin/staff" />" class="nav-link active">
                             </c:if>
 							<c:if test="${!condition}">
-                            <a href="<c:url value="/admin/product" />" class="nav-link">
+                            <a href="<c:url value="/admin/staff" />" class="nav-link">
                             </c:if>
                                 <i class="nav-icon far fa-paper-plane"></i>
                                 <p>Staff Manager</p>

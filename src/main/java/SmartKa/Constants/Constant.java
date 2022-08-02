@@ -5,7 +5,7 @@ public class Constant {
 	public static final String SESSION_USER_INFORMATION = "userInfo";
 	public static final String GET_ALL_ACCOUNTS_QUERY = "SELECT * FROM account";
 	public static final String CHECK_ACCOUNT_QUERY = "SELECT * FROM account WHERE user_name = ?";
-	public static final String ADD_USER_QUERY = "INSERT INTO account (user_name, password, date) VALUE (?, ?, ?)";
+	public static final String ADD_USER_QUERY = "INSERT INTO account (user_name, password, date, role) VALUE (?, ?, ?, ?)";
 	public static final String GET_USER_INFO_BY_USERNAME_QUERY = "SELECT * FROM info WHERE user_name = ?";
 	public static final String ADD_USER_INFO_QUERY = "INSERT INTO info (fullname, avatar, phone, email, address, deliveryaddress, user_name) VALUES (?,?,?,?,?,?,?)";
 	public static final String UPDATE_USER_INFO_QUERY = "UPDATE info SET fullname = ?, avatar = ?, phone = ?, email = ?, address = ?, deliveryaddress = ? WHERE user_name = ?";
@@ -78,6 +78,7 @@ public class Constant {
 	public static final String DELETE_CART_QUERY = "DELETE FROM cart WHERE idcart = ? and user_name = ?";
 	public static final String UPDATE_CART_BY_ID_QUERY = "UPDATE cart SET cartquantity = ? WHERE user_name = ? and idcart = ? and id = ?";
 	public static final String GET_ORDER_BY_ID_QUERY = "SELECT * FROM smartka.order where idcheckout = ?";
+	
 	public static final String GET_ALL_ORDER_QUERY = "SELECT * FROM smartka.order";
 	public static final String ADD_ORDER_QUERY = "INSERT INTO smartka.order(user_name, payment_method, "
 			+ "total_money, date_checkout, status, address, email, fullname, phone, note) "
@@ -96,6 +97,6 @@ public class Constant {
 			+ "ON (account.user_name = info.user_name) " + "WHERE DATE >= ? AND DATE <= ? order BY DATE desc LIMIT ?";
 	public static final int NO_USER_IN_ADMIN_MANAGE = 8;
 	
-	public static final String GET_ALL_SUPPORT = "SELECT * FROM support";
+	public static final String GET_ALL_SUPPORT = "SELECT * FROM smartka.support inner join smartka.info on support.user_name = info.user_name";
 
 }

@@ -46,7 +46,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-6">
+			<form class="col-lg-6 modal-product-form" data-productid="${product.id }">
 				<div class="product-details-content" data-aos="fade-up"
 					data-aos-delay="400">
 					<h2>${product.name}</h2>
@@ -83,9 +83,10 @@
 							<input class="cart-plus-minus-box input-text qty text"
 								name="qtybutton" value="1">
 						</div>
-						<div class="single-product-cart btn-hover">
-							<a href="#">Add to cart</a>
-						</div>
+						<button type="submit" style="padding: unset"
+							class="single-product-cart btn-hover">
+							<a class="">Add to cart</a>
+						</button>
 						<div class="single-product-wishlist">
 							<a title="Wishlist" href="wishlist.html"><i
 								class="pe-7s-like"></i></a>
@@ -117,7 +118,7 @@
 							class="fa fa-linkedin"></i></a>
 					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 	</div>
 </div>
