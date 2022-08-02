@@ -269,6 +269,25 @@ public class UserDAO {
 		return false;
 	}
 	
+	public static ArrayList<User> getAccountsByRole(String role) {
+		ArrayList<User> arrayList = new ArrayList<User>();
+		
+		String query = Constant.GET_ACCOUNT_BY_ROLE_QUERY;
+		
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, role);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				arrayList.add(new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+			}
+		} catch (Exception e) { 
+			e.printStackTrace();
+		}
+		
+		return arrayList;
+	}
+	
 	
 	// qhai : ADMIN
 		public static ArrayList<UserInAdminManage> getUserInAdmin() {
