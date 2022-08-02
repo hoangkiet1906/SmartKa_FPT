@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <div class="product-details-area pb-100 pt-100">
 	<div class="container">
 		<div class="row">

@@ -149,7 +149,7 @@ public class CartService implements ICartService {
 			for (Cart cart : arrayList) {
 				ArrayList<Order> orders = OrderDAO.findAll();
 				int lastId = orders.get(orders.size() - 1).getId();
-				OrderDAO.saveCart(new OrderDetail(cart.getProduct().getId(), lastId, cart.getQuantity()));
+				OrderDAO.saveCart(new OrderDetail(cart.getProduct(), lastId, cart.getQuantity()));
 				CartDAO.deleteCartItemByID(cart.getId(), session);
 			}
 			responseObject.setSuccess(true);

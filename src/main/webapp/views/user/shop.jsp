@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <div class="shop-area shop-page-responsive pt-100 pb-100">
 	<div class="container">
 		<div class="row flex-row-reverse">
@@ -29,25 +28,23 @@
 				<div class="shop-bottom-area">
 					<div class="tab-content jump">
 						<div id="shop-1" class="tab-pane active">
-							<div class="row" id="productContentShop1">
-							</div>
-							<div class="pagination-style-1" data-aos="fade-up" data-aos-delay="200">
-								<ul id="pagiContentShop1"></ul>									
+							<div class="row" id="productContentShop1"></div>
+							<div class="pagination-style-1" data-aos="fade-up"
+								data-aos-delay="200">
+								<ul id="pagiContentShop1"></ul>
 							</div>
 						</div>
 						<div id="shop-2" class="tab-pane">
-								<div id="productContentShop2" class="shop-list-wrap mb-30"></div>
+							<div id="productContentShop2" class="shop-list-wrap mb-30"></div>
 							<!-- Pagi -->
 							<div class="pagination-style-1">
-								<ul id="pagiContentShop2"></ul>	
+								<ul id="pagiContentShop2"></ul>
 							</div>
-							
+
 						</div>
 						<!-- Product Modal start -->
-							<div class="modal fade quickview-modal-style" id="Modaldetail"
-							tabindex="-1" role="dialog">
-								
-							</div>
+						<div class="modal fade quickview-modal-style" id="Modaldetail"
+							tabindex="-1" role="dialog"></div>
 						<!-- Product Modal end -->
 					</div>
 				</div>
@@ -57,8 +54,10 @@
 					<div class="sidebar-widget mb-40" data-aos="fade-up"
 						data-aos-delay="200">
 						<div class="search-wrap-2">
-							<form class="search-2-form" action="<c:url value='/shop'/>" method ="get">
-								<input id="searchProductKey" placeholder="Search*" name="searchProduct" type="text">
+							<form class="search-2-form" action="<c:url value='/shop'/>"
+								method="get">
+								<input id="searchProductKey" placeholder="Search*"
+									name="searchProduct" type="text">
 								<button class="button-search">
 									<i class=" ti-search "></i>
 								</button>
@@ -89,7 +88,8 @@
 						<div class="sidebar-list-style">
 							<ul id="CateList1">
 								<c:forEach var="cate" items="${cateList}">
-									<li><a class="productTag1" data-tagname="${cate.name}" id="tag1${cate.id}">${cate.name}<span>${cate.quantity}</span></a></li>
+									<li><a class="productTag1" data-tagname="${cate.name}"
+										id="tag1${cate.id}">${cate.name}<span>${cate.quantity}</span></a></li>
 								</c:forEach>
 							</ul>
 						</div>
@@ -99,9 +99,10 @@
 							<h3>Tags</h3>
 						</div>
 						<div class="sidebar-widget-tag">
-							<a class="productTag2All">All, </a> 
+							<a class="productTag2All">All, </a>
 							<c:forEach var="cate" items="${cateList}">
-								<a  class="productTag2" data-tagname="${cate.name}" id="tag2${cate.id}">${cate.name}, </a>
+								<a class="productTag2" data-tagname="${cate.name}"
+									id="tag2${cate.id}">${cate.name}, </a>
 							</c:forEach>
 						</div>
 					</div>
@@ -111,7 +112,6 @@
 	</div>
 </div>
 
-<script src="assets/js/plugins/ajax-mail.js"></script>
 <script src="assets/js/vendor/modernizr-3.11.2.min.js"></script>
 <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
 <script src="assets/js/vendor/jquery-migrate-3.3.2.min.js"></script>
@@ -351,7 +351,7 @@
 	    											</button>\
 	    										</div>\
 	    										<div class="product-action-2-wrap">\
-	    											<button class="product-action-btn-2" title="Add To Cart">\
+	    											<button data-productid="'+ item.id +'" class="product-action-btn-2" title="Add To Cart">\
 	    												<i class="pe-7s-cart"></i> Add to cart\
 	    											</button>\
 	    										</div>\
@@ -436,7 +436,7 @@
 														</button>\
 													</div>\
 													<div class="product-action-2-wrap">\
-														<button class="product-action-btn-2" title="Add To Cart">\
+														<button data-productid="'+item.id+'" class="product-action-btn-2" title="Add To Cart">\
 															<i class="pe-7s-cart"></i> Add to cart\
 														</button>\
 													</div>\
@@ -584,7 +584,7 @@
 	    											</button>\
 	    										</div>\
 	    										<div class="product-action-2-wrap">\
-	    											<button class="product-action-btn-2" title="Add To Cart">\
+	    											<button data-productid="'+item.id+'" class="product-action-btn-2" title="Add To Cart">\
 	    												<i class="pe-7s-cart"></i> Add to cart\
 	    											</button>\
 	    										</div>\
@@ -669,7 +669,7 @@
 														</button>\
 													</div>\
 													<div class="product-action-2-wrap">\
-														<button class="product-action-btn-2" title="Add To Cart">\
+														<button data-productid="'+item.id+'" class="product-action-btn-2" title="Add To Cart">\
 															<i class="pe-7s-cart"></i> Add to cart\
 														</button>\
 													</div>\
@@ -909,7 +909,7 @@
 															</button>\
 			    										</div>\
 			    										<div class="product-action-2-wrap">\
-			    											<button class="product-action-btn-2" title="Add To Cart">\
+			    											<button data-productid="'+item.id+'" data-productid="' + item.id +'" class="product-action-btn-2" title="Add To Cart">\
 			    												<i class="pe-7s-cart"></i> Add to cart\
 			    											</button>\
 			    										</div>\
@@ -937,7 +937,7 @@
 																<span>-10%</span>\
 															</div>\
 															<div class="product-list-quickview">\
-																<button class="product-action-btn-2" title="Quick View"\
+																<button data-productid="'+item.id+'" class="product-action-btn-2" title="Quick View"\
 																	data-bs-toggle="modal" data-bs-target="#">\
 																	<i class="pe-7s-look"></i>\
 																</button>\
@@ -995,7 +995,7 @@
 																</button>\
 															</div>\
 															<div class="product-action-2-wrap">\
-																<button class="product-action-btn-2" title="Add To Cart">\
+																<button data-productid="'+item.id+'" class="product-action-btn-2" title="Add To Cart">\
 																	<i class="pe-7s-cart"></i> Add to cart\
 																</button>\
 															</div>\
@@ -1019,7 +1019,7 @@
 																alt="Product Style">\
 															</a>\
 															<div class="product-list-quickview">\
-																<button class="product-action-btn-2" title="Quick View"\
+																<button data-productid="'+item.id+'" class="product-action-btn-2" title="Quick View"\
 																	data-bs-toggle="modal" data-bs-target="#">\
 																	<i class="pe-7s-look"></i>\
 																</button>\
@@ -1134,7 +1134,7 @@
 														</button>\
 		    										</div>\
 		    										<div class="product-action-2-wrap">\
-		    											<button class="product-action-btn-2" title="Add To Cart">\
+		    											<button data-productid="'+item.id+'" class="product-action-btn-2" title="Add To Cart">\
 		    												<i class="pe-7s-cart"></i> Add to cart\
 		    											</button>\
 		    										</div>\
@@ -1162,7 +1162,7 @@
 															<span>-10%</span>\
 														</div>\
 														<div class="product-list-quickview">\
-															<button class="product-action-btn-2" title="Quick View"\
+															<button data-productid="'+item.id+'" class="product-action-btn-2" title="Quick View"\
 																data-bs-toggle="modal" data-bs-target="#">\
 																<i class="pe-7s-look"></i>\
 															</button>\
@@ -1220,7 +1220,7 @@
 															</button>\
 														</div>\
 														<div class="product-action-2-wrap">\
-															<button class="product-action-btn-2" title="Add To Cart">\
+															<button data-productid="'+item.id+'" class="product-action-btn-2" title="Add To Cart">\
 																<i class="pe-7s-cart"></i> Add to cart\
 															</button>\
 														</div>\
@@ -1244,7 +1244,7 @@
 															alt="Product Style">\
 														</a>\
 														<div class="product-list-quickview">\
-															<button class="product-action-btn-2" title="Quick View"\
+															<button data-productid="'+item.id+'" class="product-action-btn-2" title="Quick View"\
 																data-bs-toggle="modal" data-bs-target="#">\
 																<i class="pe-7s-look"></i>\
 															</button>\
@@ -1326,4 +1326,4 @@
 					searchProductKey.addEventListener('input', updateSearchProductResult);
 				// end search
 			}) //document ready end
-	</script>
+</script>

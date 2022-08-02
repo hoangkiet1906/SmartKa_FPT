@@ -1,5 +1,7 @@
 package SmartKa.Model;
 
+import java.util.ArrayList;
+
 public class Order {
 	private int id;
 	private String username;
@@ -12,6 +14,7 @@ public class Order {
 	private String fullname;
 	private String phone;
 	private String note;
+	private ArrayList<OrderDetail> orderDetail;
 	
 	public Order() {
 		super();
@@ -46,6 +49,23 @@ public class Order {
 		this.fullname = fullname;
 		this.phone = phone;
 		this.note = note;
+	}
+	
+	public Order(int id, String username, String payment_method, double total_money, String date_checkout, String status,
+			String address, String email, String fullname, String phone, String note, ArrayList<OrderDetail> orderDetail) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.payment_method = payment_method;
+		this.total_money = total_money;
+		this.date_checkout = date_checkout;
+		this.status = status;
+		this.address = address;
+		this.email = email;
+		this.fullname = fullname;
+		this.phone = phone;
+		this.note = note;
+		this.orderDetail = orderDetail;
 	}
 
 	public int getId() {
@@ -135,12 +155,23 @@ public class Order {
 	public void setNote(String note) {
 		this.note = note;
 	}
+	
+	
+	
+	public ArrayList<OrderDetail> getOrderDetail() {
+		return orderDetail;
+	}
+
+	public void setOrderDetail(ArrayList<OrderDetail> orderDetail) {
+		this.orderDetail = orderDetail;
+	}
 
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", username=" + username + ", payment_method=" + payment_method + ", total_money="
 				+ total_money + ", date_checkout=" + date_checkout + ", status=" + status + ", address=" + address
-				+ ", email=" + email + ", fullname=" + fullname + ", phone=" + phone + ", note=" + note + "]";
+				+ ", email=" + email + ", fullname=" + fullname + ", phone=" + phone + ", note=" + note
+				+ ", orderDetail=" + orderDetail + "]";
 	}
 
 }

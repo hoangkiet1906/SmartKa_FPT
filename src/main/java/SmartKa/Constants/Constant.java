@@ -79,6 +79,8 @@ public class Constant {
 			public static final String DELETE_CART_QUERY = "DELETE FROM cart WHERE idcart = ? and user_name = ?";
 			public static final String UPDATE_CART_BY_ID_QUERY = "UPDATE cart SET cartquantity = ? WHERE user_name = ? and idcart = ? and id = ?";
 			public static final String GET_ORDER_BY_ID_QUERY = "SELECT * FROM smartka.order where idcheckout = ?";
+			public static final String GET_ORDERS_BY_USERNAME_QUERY = "SELECT * FROM smartka.order where user_name = ? order by status asc";
+			public static final String GET_ORDER_PRODUCTS_BY_ID_QUERY = "SELECT * FROM smartka.orderdetail where idcheckout = ?";
 			public static final String GET_ALL_ORDER_QUERY = "SELECT * FROM smartka.order";
 			public static final String ADD_ORDER_QUERY = "INSERT INTO smartka.order(user_name, payment_method, "
 					+ "total_money, date_checkout, status, address, email, fullname, phone, note) "

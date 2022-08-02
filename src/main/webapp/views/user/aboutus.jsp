@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <div class="about-us-area pt-100 pb-100">
 	<div class="container">
 		<div class="row align-items-center flex-row-reverse">
