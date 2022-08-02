@@ -143,7 +143,7 @@ public class CartService implements ICartService {
 			total += cart.getQuantity() * cart.getProduct().getPrice();
 		}
 		
-		Order order = new Order(username, payment_method, total, date, "Processing", street, email, fullname, phone, note);
+		Order order = new Order(username, payment_method, total, date, "Pending", street, email, fullname, phone, note);
 		
 		if (OrderDAO.save(order)) {
 			for (Cart cart : arrayList) {
@@ -153,7 +153,7 @@ public class CartService implements ICartService {
 				CartDAO.deleteCartItemByID(cart.getId(), session);
 			}
 			responseObject.setSuccess(true);
-			responseObject.setMessage("Your order is processing!");
+			responseObject.setMessage("Your order is pending!");
 		} else {
 			responseObject.setSuccess(false);
 			responseObject.setMessage("Have some problems!");

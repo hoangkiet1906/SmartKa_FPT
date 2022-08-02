@@ -89,6 +89,9 @@
 														<tr>
 															<td>${item.date_checkout }</td>
 															<c:choose>
+																<c:when test="${item.status == 'Pending' }">
+																	<td class='text-danger'>${item.status }</td>
+																</c:when>
 																<c:when test="${item.status == 'Processing' }">
 																	<td class='text-warning'>${item.status }</td>
 																</c:when>
