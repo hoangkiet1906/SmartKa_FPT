@@ -319,6 +319,14 @@ $(document).ready(function() {
 		const productId = $(this).data("productid");
 		addCart(productId, quantity, cart);
 	});
+	$(".modal-product-form").submit(function (e) {
+		e.preventDefault();
+		const qtybutton = $(this).find("input[name=qtybutton]");
+		const quantity = qtybutton.val();
+		const productid = $(this).data("productid")
+		addCart(productid, quantity, cart);
+	});
+	
 	$(".deleteCartItem").click(function() {
 		const id = $(this).data("cartid");
 		deleteCartItem(id, cart);

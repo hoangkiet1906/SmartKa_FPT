@@ -420,6 +420,7 @@
 	<script src="assets/js/plugins/ajax-mail.js"></script>
 	<!-- Main JS -->
 	<script src="assets/js/main.js"></script>
+	<script src="assets/js/mic2.js"></script>
 	<!-- SweetAlert JS -->
 	<%-- <link rel='stylesheet'
 		href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'> --%>

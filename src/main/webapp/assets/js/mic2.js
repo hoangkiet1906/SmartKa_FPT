@@ -1,4 +1,4 @@
-const searchInput = document.querySelector('#searchProduct');
+const searchInput = document.querySelector('#searchProductKey');
 
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 
@@ -24,27 +24,19 @@ const speak = (text) => {
 
 const handleVoice = (text) => {
     console.log('text : ', text);
+	console.log(text);
+    searchInput.value = text;
+    //const handledText = text.toLowerCase();
+    //if (handledText.includes('buy')) {
+        //const timk = handledText.split('buy')[1].trim();
 
-    const handledText = text.toLowerCase();
-    if (handledText.includes('buy')) {
-        const timk = handledText.split('buy')[1].trim();
-
-        console.log(timk);
-        searchInput.value = timk;
-        var lik = 'http://localhost:8000/shop/' + timk;
+        //console.log(timk);
+        //searchInput.value = timk;
+        //var lik = 'http://localhost:8000/shop/' + timk;
         //console.log(lik);
-        location.replace("http://localhost:8000/shop/" + timk);
-        speak("OK");
-    }
-
-    if (handledText.includes('on')) {
-        document.getElementById('phong').src = "http://localhost:8000/User/assets/images/product/phong_bat_den.jpg";
-        speak('Ok');
-    }
-    if (handledText.includes('off')) {
-        document.getElementById('phong').src = "http://localhost:8000/User/assets/images/product/phong_tat_den.jpg";
-        speak('Ok');
-    }
+        //location.replace("http://localhost:8000/shop/" + timk);
+        //speak("OK");
+    //}
 
     // if (handledText.includes('mấy giờ')) {
     //     var today = new Date();
@@ -52,7 +44,7 @@ const handleVoice = (text) => {
     //     return;
     // }
 
-    speak('sorry I do not understand');
+    //speak('sorry I do not understand');
 }
 
 microphone.addEventListener('click', (e) => {

@@ -19,6 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import SmartKa.Constants.Constant;
 import SmartKa.DAO.BlogDAO;
+import SmartKa.DAO.OrderDAO;
 import SmartKa.DAO.ProductDAO;
 import SmartKa.DAO.UserDAO;
 import SmartKa.Model.User;
@@ -26,6 +27,7 @@ import SmartKa.Model.UserInfo;
 import SmartKa.Model.Blog;
 import SmartKa.Model.BlogControl;
 import SmartKa.Model.CateNumber;
+import SmartKa.Model.Order;
 import SmartKa.Model.Pagishop;
 import SmartKa.Model.Product;
 import SmartKa.Response.AuthResponse;
@@ -76,6 +78,10 @@ public class HomeController {
 		AuthResponse loginResponse = UserDAO.loginToSystem(user);
 		if (loginResponse.isSuccess()) {
 			session.setAttribute(Constant.SESSION_USERNAME, user.getUser_name());
+			UserInfo info = UserDAO.getUserInfo(username);
+			if (info != null) {
+				session.setAttribute(Constant.SESSION_USER_INFORMATION, info);
+			}
 			cartService.addLocalCartIntoDB(session);
 		}
 		String ajaxResponse = "";
@@ -105,7 +111,10 @@ public class HomeController {
 		}
 		if (registerResponse.isSuccess()) {
 			session.setAttribute(Constant.SESSION_USERNAME, username);
-
+			UserInfo info = UserDAO.getUserInfo(username);
+			if (info != null) {
+				session.setAttribute(Constant.SESSION_USER_INFORMATION, info);
+			}
 			cartService.addLocalCartIntoDB(session);
 		}
 		String ajaxResponse = "";
@@ -123,6 +132,7 @@ public class HomeController {
 		AuthResponse authResponse = new AuthResponse();
 		try {
 			session.removeAttribute(Constant.SESSION_USERNAME);
+			session.removeAttribute(Constant.SESSION_USER_INFORMATION);
 			authResponse.setMessage("Logout successfully!");
 			authResponse.setSuccess(true);
 		} catch (Exception e) {
@@ -166,6 +176,7 @@ public class HomeController {
 				} else {
 					response.setSuccess(true);
 					response.setMessage(UserDAO.updateUserInfo(username, userInfo));
+					session.setAttribute(Constant.SESSION_USER_INFORMATION, UserDAO.getUserInfo(username));
 				}
 			} else {
 				response.setMessage("Invalid Email!");
@@ -185,10 +196,8 @@ public class HomeController {
 	@RequestMapping(value = { "/info" }, method = RequestMethod.GET)
 	public String Info(HttpSession session, HttpServletRequest req) {
 		String username = (String) session.getAttribute(Constant.SESSION_USERNAME);
-		UserInfo info = UserDAO.getUserInfo(username);
-		if (info != null) {
-			session.setAttribute(Constant.SESSION_USER_INFORMATION, info);
-		}
+		ArrayList<Order> orders = OrderDAO.findByUsername(username);
+		req.setAttribute("orders", orders);
 		// set attribute to get avatar in UI
 		String avt = UserDAO.getAvatar(username);
 		if (avt != null) {

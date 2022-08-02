@@ -9,12 +9,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import SmartKa.DAO.ProductDAO;
 
+import SmartKa.DAO.UserDAO;
+import SmartKa.Model.UserInAdminManage;
+import java.util.ArrayList;
+
 @Controller
 public class AdminController {
 	@RequestMapping(value = { "/admin/usermng" }, method = RequestMethod.GET)
 	public String UserManagement(HttpServletRequest req) {
 		req.setAttribute("page", "quanli1");
-
+		
+		ArrayList<UserInAdminManage> users = UserDAO.getUserInAdmin();
+		req.setAttribute("users", users);
+		req.setAttribute("userNumber", users.size());
 		return "admin/index";
 	}
 	

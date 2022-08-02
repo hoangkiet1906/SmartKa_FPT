@@ -13,6 +13,11 @@ import SmartKa.Response.AuthResponse;
 import SmartKa.Service.JDBCConnection;
 import SmartKa.Validators.Validators;
 
+//qhai
+import java.time.LocalDate;
+import SmartKa.Model.Product;
+import SmartKa.Model.UserInAdminManage;
+
 public class UserDAO {
 	public static Connection connection = new JDBCConnection().conn;
 	public static ArrayList<User> getAllUsers() {
@@ -257,4 +262,70 @@ public class UserDAO {
 		}
 		return false;
 	}
+	
+	
+	// qhai : ADMIN
+		public static ArrayList<UserInAdminManage> getUserInAdmin() {
+			ArrayList<UserInAdminManage> users = new ArrayList<UserInAdminManage>();
+			LocalDate today = LocalDate.now();
+			LocalDate yesterday = today.minusDays(1);
+			LocalDate sevDaysAgo = today.minusDays(8);
+			LocalDate todaySql = today.plusDays(1);
+			try {
+				String sql = Constant.ADMIN_GET_USER_MANAGE;
+				PreparedStatement ps = new JDBCConnection().conn.prepareStatement(sql);
+				ps.setString(1, sevDaysAgo.toString());
+				ps.setString(2, todaySql.toString());
+				ps.setInt(3, Constant.NO_USER_IN_ADMIN_MANAGE);
+	            ResultSet rs = ps.executeQuery();
+	            while(rs.next()){
+	            	if(rs.getString(11).compareTo(today.toString()) >= 10)
+	            	{
+	            		if(rs.getString(2)==null)
+	            		{
+	            			UserInAdminManage user = new UserInAdminManage(rs.getInt(1),rs.getString(8),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8), "Today");
+	                		users.add(user);
+	            		}
+	            		else
+	            		{
+	            			UserInAdminManage user = new UserInAdminManage(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8), "Today");
+	                		users.add(user);
+	            		}
+
+	            	}
+	            	else if(rs.getString(11).compareTo(yesterday.toString()) >= 10)
+	            	{
+	            		if(rs.getString(2)==null)
+	            		{
+	            			UserInAdminManage user = new UserInAdminManage(rs.getInt(1),rs.getString(8),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8), "Yesterday");
+	                		users.add(user);
+	            		}
+	            		else
+	            		{
+	            			UserInAdminManage user = new UserInAdminManage(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8), "Yesterday");
+	                		users.add(user);
+	            		}
+	            	}
+	            	else {
+	            		if(rs.getString(2)==null)
+	            		{
+	            			UserInAdminManage user = new UserInAdminManage(rs.getInt(1),rs.getString(8),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8), rs.getString(11));
+	                		users.add(user);
+	            		}
+	            		else
+	            		{
+	            			UserInAdminManage user = new UserInAdminManage(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8), rs.getString(11));
+	                		users.add(user);
+	            		}
+	            	}
+	            }
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			return users;
+		}
+
+		
+	
 }

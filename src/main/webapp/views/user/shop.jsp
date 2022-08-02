@@ -7,7 +7,52 @@
 				<div class="shop-topbar-wrapper mb-40">
 					<div class="shop-topbar-left" data-aos="fade-up"
 						data-aos-delay="200">
-						<div class="showing-item" id="showing"></div>
+						<div class="showing-item" id="showing">
+							<span class="microphone"> 
+                                <i style="font-size: 20px; padding-top: 13px;" class="fa fa-microphone"></i>
+                                <span class="recording-icon"></span>
+                            </span>
+                            
+                            <style type="text/css">
+                                .microphone {
+                                    cursor: pointer;
+                                    margin-left: 10px;
+                                    
+                                }
+
+                                .microphone .recording-icon {
+                                	margin-top: 13px; 
+                                    display: none;
+                                    width: 15px;
+                                    height: 15px;
+                                    background-color: #e22d2d;
+                                    border-radius: 50%;
+                                    animation: pulse 1.5s infinite linear;
+                                }
+
+                                .microphone.recording .recording-icon {
+                                    display: inline-block;
+                                }
+
+                                .microphone.recording .fa-microphone {
+                                    display: none;
+                                }
+
+                                @keyframes pulse {
+                                    0% {
+                                        box-shadow: 0 0 3px 0 rgba(173, 0, 0, .3);
+                                    }
+                                    65% {
+                                        box-shadow: 0 0 3px 5px rgba(173, 0, 0, .3);
+                                    }
+                                    100% {
+                                        box-shadow: 0 0 3px 5px rgba(173, 0, 0, 0);
+                                    }
+                                }
+                            </style>
+                            
+						
+						</div>
 					</div>
 					<div class="shop-topbar-right" data-aos="fade-up"
 						data-aos-delay="400">
@@ -58,7 +103,7 @@
 						data-aos-delay="200">
 						<div class="search-wrap-2">
 							<form class="search-2-form" action="<c:url value='/shop'/>" method ="get">
-								<input id="searchProductKey" placeholder="Search*" name="searchProduct" type="text">
+								<input id="searchProductKey" placeholder="Search" name="searchProduct" type="text">
 								<button class="button-search">
 									<i class=" ti-search "></i>
 								</button>

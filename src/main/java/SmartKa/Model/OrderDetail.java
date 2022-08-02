@@ -2,7 +2,7 @@ package SmartKa.Model;
 
 public class OrderDetail {
 	private int iddecheckout;
-	private int id;
+	private Product product;
 	private int idcheckout;
 	private int quantity;
 
@@ -11,17 +11,17 @@ public class OrderDetail {
 		// TODO Auto-generated constructor stub
 	}
 
-	public OrderDetail(int iddecheckout, int id, int idcheckout, int quantity) {
+	public OrderDetail(int iddecheckout, Product product, int idcheckout, int quantity) {
 		super();
 		this.iddecheckout = iddecheckout;
-		this.id = id;
+		this.product = product;
 		this.idcheckout = idcheckout;
 		this.quantity = quantity;
 	}
 
-	public OrderDetail(int id, int idcheckout, int quantity) {
+	public OrderDetail(Product product, int idcheckout, int quantity) {
 		super();
-		this.id = id;
+		this.product = product;
 		this.idcheckout = idcheckout;
 		this.quantity = quantity;
 	}
@@ -34,12 +34,12 @@ public class OrderDetail {
 		this.iddecheckout = iddecheckout;
 	}
 
-	public int getId() {
-		return id;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	public int getIdcheckout() {
@@ -60,8 +60,8 @@ public class OrderDetail {
 
 	@Override
 	public String toString() {
-		return "OrderDetail [iddecheckout=" + iddecheckout + ", id=" + id + ", idcheckout=" + idcheckout + ", quantity="
-				+ quantity + "]";
+		return "OrderDetail [iddecheckout=" + iddecheckout + ", product=" + product + ", idcheckout=" + idcheckout
+				+ ", quantity=" + quantity + "]";
 	}
 
 }

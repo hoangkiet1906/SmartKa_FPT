@@ -14,7 +14,26 @@ import SmartKa.Service.JDBCConnection;
 
 public class OrderDAO {
 	public static Connection connection = new JDBCConnection().conn;
-	
+	public static ArrayList<Order> findByUsername(String username) {
+		ArrayList<Order> arrayList = new ArrayList<Order>();
+
+		String query = Constant.GET_ORDERS_BY_USERNAME_QUERY;
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, username);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				arrayList.add(new Order(rs.getInt(1), 
+						rs.getString(2), rs.getString(3), rs.getInt(4),
+						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8),
+						rs.getString(9), rs.getString(10), rs.getString(11), OrderDAO.getOrderProductsByID(rs.getInt(1))));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return arrayList;
+	}
 	public static ArrayList<Order> findAll() {
 		ArrayList<Order> arrayList = new ArrayList<Order>();
 		
@@ -79,13 +98,31 @@ public class OrderDAO {
 		String query = Constant.ADD_ORDER_DETAIL_QUERY;
 		try {
 			PreparedStatement ps = connection.prepareStatement(query);
-			ps.setInt(1, orderDetail.getId());
+			ps.setInt(1, orderDetail.getProduct().getId());
 			ps.setInt(2, orderDetail.getIdcheckout());
 			ps.setInt(3, orderDetail.getQuantity());
 			ps.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	public static ArrayList<OrderDetail> getOrderProductsByID(int id) {
+		ArrayList<OrderDetail> details = new ArrayList<OrderDetail>();
+
+		String query = Constant.GET_ORDER_PRODUCTS_BY_ID_QUERY;
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				details.add(new OrderDetail(rs.getInt(1), ProductDAO.getProductById(rs.getInt(2)),
+						rs.getInt(3), rs.getInt(4)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return details;
 	}
 
 	public static void main(String[] args) {

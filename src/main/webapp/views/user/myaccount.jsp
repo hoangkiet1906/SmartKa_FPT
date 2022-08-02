@@ -5,9 +5,9 @@
 		<c:if test="${avatar != null }">
 			<img id="img" class="imgAvt" src="assets/images/avatar/${avatar}">
 		</c:if>
-				
+
 		<form class="formAvt" action="">
-			<input type='file' id="uploadAvt" style="display: none"> 
+			<input type='file' id="uploadAvt" style="display: none">
 			<div class="divUpdate">
 				<label class="lblUpdate" for="uploadAvt">UPDATE</label>
 			</div>
@@ -18,7 +18,7 @@
 				<li><a href="index.html">Home</a></li>
 				<li><i class="ti-angle-right"></i></li>
 				<li>My Account</li>
-				
+
 			</ul>
 		</div>
 	</div>
@@ -42,11 +42,7 @@
 							<div class="myaccount-tab-menu nav" role="tablist">
 								<a href="#dashboad" class="active" data-bs-toggle="tab">Dashboard</a>
 								<a href="#orders" data-bs-toggle="tab">Orders</a> <a
-									href="#download" data-bs-toggle="tab">Download</a> <a
-									href="#payment-method" data-bs-toggle="tab">Payment Method</a>
-								<a href="#address-edit" data-bs-toggle="tab">Address</a> <a
-									href="#account-info" data-bs-toggle="tab">Account Details</a> <a
-									href="login-register.html">Logout</a>
+									href="#account-info" data-bs-toggle="tab">Account Details</a>
 							</div>
 						</div>
 						<!-- My Account Tab Menu End -->
@@ -60,8 +56,9 @@
 										<h3>Dashboard</h3>
 										<div class="welcome">
 											<p>
-												Hello, <strong>Alex Tuntuni</strong> (If Not <strong>Tuntuni
-													!</strong><a href='<c:url value="/logout" />' id="logoutText" class="logout"> Logout</a>)
+												Hello, <strong>${sessionScope.username}</strong> (If Not <strong><span>${sessionScope.username }</span>
+													!</strong><a href='<c:url value="/logout" />' id="logoutText"
+													class="logout"> Logout</a>)
 											</p>
 										</div>
 
@@ -80,100 +77,77 @@
 											<table class="table table-bordered">
 												<thead class="thead-light">
 													<tr>
-														<th>Order</th>
 														<th>Date</th>
 														<th>Status</th>
 														<th>Total</th>
+														<th>Payment method</th>
 														<th>Action</th>
 													</tr>
 												</thead>
 												<tbody>
-													<tr>
-														<td>1</td>
-														<td>Aug 22, 2018</td>
-														<td>Pending</td>
-														<td>$3000</td>
-														<td><a href="cart.html" class="check-btn sqr-btn ">View</a></td>
-													</tr>
-													<tr>
-														<td>2</td>
-														<td>July 22, 2018</td>
-														<td>Approved</td>
-														<td>$200</td>
-														<td><a href="cart.html" class="check-btn sqr-btn ">View</a></td>
-													</tr>
-													<tr>
-														<td>3</td>
-														<td>June 12, 2017</td>
-														<td>On Hold</td>
-														<td>$990</td>
-														<td><a href="cart.html" class="check-btn sqr-btn ">View</a></td>
-													</tr>
+													<c:forEach var="item" items="${orders }">
+														<tr>
+															<td>${item.date_checkout }</td>
+															<c:choose>
+																<c:when test="${item.status == 'Processing' }">
+																	<td class='text-warning'>${item.status }</td>
+																</c:when>
+																<c:otherwise>
+																	<td class='text-success'>${item.status }</td>
+																</c:otherwise>
+															</c:choose>
+															<td>$${item.total_money }</td>
+															<td>${item.payment_method }</td>
+															<td><button href="#" data-bs-toggle="modal"
+																	data-bs-target="#Modal${item.id}"
+																	class="check-btn sqr-btn ">
+																	View</a></td>
+														</tr>
+													</c:forEach>
 												</tbody>
 											</table>
+											<c:forEach var="o" items="${orders }">
+												<!-- Product Modal start -->
+												<div class="modal fade quickview-modal-style"
+													id="Modal${o.id}" tabindex="-1" role="dialog">
+													<div class="modal-dialog modal-dialog-centered"
+														role="document">
+														<div class="modal-content modal-product-form">
+															<div class="modal-header">
+																<a href="#" class="close" data-bs-dismiss="modal"
+																	aria-label="Close"><i class=" ti-close "></i></a>
+															</div>
+															<div class="modal-body">
+																<div class="row gx-0 mt-60">
+																	<div
+																		class="myaccount-table table-responsive text-center">
+																		<table class="table table-bordered">
+																			<thead class="thead-light">
+																				<tr>
+																					<th>Product Image</th>
+																					<th>Product name</th>
+																					<th>Quantity</th>
+																				</tr>
+																			</thead>
+																			<tbody>
+																				<c:forEach var="p" items="${o.orderDetail }">
+																					<tr>
+																						<td><img width="80px" src="<c:url value='assets/images/product/${p.product.image}'/>" /></td>
+																						<td>${p.product.name }</td>
+																						<td>${p.quantity }</td>
+																					</tr>
+																				</c:forEach>
+																			</tbody>
+																		</table>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<!-- Product Modal end -->
+											</c:forEach>
 										</div>
-									</div>
-								</div>
-								<!-- Single Tab Content End -->
-								<!-- Single Tab Content Start -->
-								<div class="tab-pane fade" id="download" role="tabpanel">
-									<div class="myaccount-content">
-										<h3>Downloads</h3>
-										<div class="myaccount-table table-responsive text-center">
-											<table class="table table-bordered">
-												<thead class="thead-light">
-													<tr>
-														<th>Product</th>
-														<th>Date</th>
-														<th>Expire</th>
-														<th>Download</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>Haven - Free Real Estate PSD Template</td>
-														<td>Aug 22, 2018</td>
-														<td>Yes</td>
-														<td><a href="#" class="check-btn sqr-btn "><i
-																class="fa fa-cloud-download"></i> Download File</a></td>
-													</tr>
-													<tr>
-														<td>HasTech - Profolio Business Template</td>
-														<td>Sep 12, 2018</td>
-														<td>Never</td>
-														<td><a href="#" class="check-btn sqr-btn "><i
-																class="fa fa-cloud-download"></i> Download File</a></td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
-								<!-- Single Tab Content End -->
-								<!-- Single Tab Content Start -->
-								<div class="tab-pane fade" id="payment-method" role="tabpanel">
-									<div class="myaccount-content">
-										<h3>Payment Method</h3>
-										<p class="saved-message">You Can't Saved Your Payment
-											Method yet.</p>
-									</div>
-								</div>
-								<!-- Single Tab Content End -->
-								<!-- Single Tab Content Start -->
-								<div class="tab-pane fade" id="address-edit" role="tabpanel">
-									<div class="myaccount-content">
-										<h3>Billing Address</h3>
-										<address>
-											<p>
-												<strong>Alex Tuntuni</strong>
-											</p>
-											<p>
-												1355 Market St, Suite 900 <br> San Francisco, CA 94103
-											</p>
-											<p>Mobile: (123) 456-7890</p>
-										</address>
-										<a href="#" class="check-btn sqr-btn "><i
-											class="fa fa-edit"></i> Edit Address</a>
 									</div>
 								</div>
 								<!-- Single Tab Content End -->
@@ -184,9 +158,8 @@
 										<div class="account-details-form">
 											<form action="javascript:void(0)" id="accountDetailsForm">
 												<div class="single-input-item">
-													<label for="fullname" 
-													 class="required">Full Name</label> 
-													<input type="text" id="fullname"
+													<label for="fullname" class="required">Full Name</label> <input
+														type="text" id="fullname"
 														<c:choose>
 															<c:when test="${sessionScope.userInfo.fullname==''}">
 														         placeholder="No update yet"
@@ -197,12 +170,11 @@
 														    <c:otherwise>
 														        placeholder="No update yet"
 														    </c:otherwise>
-														</c:choose>
-													 />
+														</c:choose> />
 												</div>
 												<div class="single-input-item">
-													<label for="email" class="required">Email Address</label> 
-													<input type="text" 
+													<label for="email" class="required">Email Address</label> <input
+														type="text"
 														<c:choose>
 															<c:when test="${sessionScope.userInfo.email==''}">
 														         placeholder="No update yet"
@@ -214,11 +186,11 @@
 														        placeholder="No update yet"
 														    </c:otherwise>
 														</c:choose>
-													id="email" />
+														id="email" />
 												</div>
 												<div class="single-input-item">
-													<label for="phoneNumber" class="required">Phone Number</label> 
-													<input type="text"
+													<label for="phoneNumber" class="required">Phone
+														Number</label> <input type="text"
 														<c:choose>
 															<c:when test="${sessionScope.userInfo.phone==''}">
 														         placeholder="No update yet"
@@ -230,11 +202,11 @@
 														        placeholder="No update yet"
 														    </c:otherwise>
 														</c:choose>
-													id="phoneNumber" />
+														id="phoneNumber" />
 												</div>
 												<div class="single-input-item">
-													<label for="address" class="required">Address</label> 
-													<input type="text" 
+													<label for="address" class="required">Address</label> <input
+														type="text"
 														<c:choose>
 															<c:when test="${sessionScope.userInfo.address==''}">
 														         placeholder="No update yet"
@@ -246,11 +218,11 @@
 														        placeholder="No update yet"
 														    </c:otherwise>
 														</c:choose>
-													id="address" />
+														id="address" />
 												</div>
 												<div class="single-input-item">
-													<label for="deliveryAddress" class="required">Delivery Address</label> 
-													<input type="text" 
+													<label for="deliveryAddress" class="required">Delivery
+														Address</label> <input type="text"
 														<c:choose>
 														    <c:when test="${sessionScope.userInfo.daddress==''}">
 														         placeholder="No update yet"
@@ -262,10 +234,11 @@
 														        placeholder="No update yet"
 														    </c:otherwise>
 														</c:choose>
-													id="deliveryAddress" />
+														id="deliveryAddress" />
 												</div>
 												<div class="single-input-item btn-hover">
-													<button type="submit" class="check-btn sqr-btn">Save Changes</button>
+													<button type="submit" class="check-btn sqr-btn">Save
+														Changes</button>
 												</div>
 											</form>
 										</div>
