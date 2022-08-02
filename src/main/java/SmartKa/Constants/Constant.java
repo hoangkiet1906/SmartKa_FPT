@@ -23,7 +23,22 @@ public class Constant {
 	public static final String GET_NO_BLOG_BY_TAG = "SELECT COUNT(*) FROM BLOG WHERE TAG = ?";
 	public static final String SEARCH_BLOG_BY_NAME = "SELECT * FROM blog WHERE title LIKE ? order BY DATE DESC LIMIT ?,?";
 	public static final String COUNT_SEARCHED_BLOG = "SELECT COUNT(*) FROM blog WHERE title LIKE ? order BY DATE DESC";
-
+	public static final String GET_OUTSTANDING_REVENUE = "\r\n"
+			+ "SELECT  product.name, product.image, product.price,sum(orderdetail.quantity)\r\n"
+			+ "FROM product\r\n"
+			+ "INNER JOIN orderdetail\r\n"
+			+ "ON product.id = orderdetail.id\r\n"
+			+ "GROUP BY product.name\r\n";
+	public static final String GET_RARELY_BOUGHT_PRODUCT = "SELECT  product.name, product.image, product.price,sum(orderdetail.quantity)\r\n"
+			+ "FROM product\r\n"
+			+ "LEFT outer JOIN orderdetail\r\n"
+			+ "ON product.id = orderdetail.id\r\n"
+			+ "GROUP BY product.name\r\n"
+			+ "HAVING SUM(orderdetail.quantity) IS null\r\n";
+	public static final String GET_TOTAL_MONEY_WEEKLY = "SELECT SUM(total_money) , date_checkout FROM smartka.order \n"
+			+ "GROUP BY date_checkout \n"
+			+ "HAVING (date_checkout BETWEEN ? AND ?)";
+														
 	// cmt product
 	public static final String GET_CMT_PRODUCT = "SELECT c.cmtpro, c.cmtdatepro, c.user_name, i.avatar FROM cmtproduct AS c INNER JOIN info AS i ON (c.user_name = i.user_name)  WHERE c.id = ?";
 	public static final String ADD_CMT_PRODUCT = "INSERT INTO cmtproduct (cmtpro, cmtdatepro, user_name, id) values (?, ?, ?, ?)";
