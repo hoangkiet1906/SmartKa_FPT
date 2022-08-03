@@ -8,8 +8,10 @@ import java.util.ArrayList;
 
 import SmartKa.Constants.Constant;
 import SmartKa.Model.Cart;
+import SmartKa.Model.LatestOrder;
 import SmartKa.Model.Order;
 import SmartKa.Model.OrderDetail;
+import SmartKa.Model.User;
 import SmartKa.Service.JDBCConnection;
 
 public class OrderDAO {
@@ -124,9 +126,71 @@ public class OrderDAO {
 
 		return details;
 	}
+	//lviet code
+	public static ArrayList<LatestOrder> getLatestOrder() {
+		ArrayList<LatestOrder> list = new ArrayList<LatestOrder>();
+		try {
+			String query = Constant.GET_LATEST_ORDER;
+			PreparedStatement ps = new JDBCConnection().conn.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				LatestOrder bean = new LatestOrder(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getInt(6));
+				list.add(bean);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return list;
+	}
+	public static int getPurchasedQuantity() {
+		int totalbuy = 0;
+		try {
+			String query = "SELECT sum(quantity) FROM smartka.orderdetail";
+			PreparedStatement ps = new JDBCConnection().conn.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				totalbuy = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return totalbuy;
+	}
+	public static int getCartQuantity() {
+		int cartq = 0;
+		try {
+			String query = "SELECT id,COUNT(id) FROM smartka.cart\r\n"
+					+ "GROUP BY id\r\n"
+					+ "";
+			PreparedStatement ps = new JDBCConnection().conn.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				cartq +=1;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return cartq;
+	}
+	public static int getPurchasedCount() {
+		int purchaseq = 0;
+		try {
+			String query = "SELECT COUNT(*) FROM smartka.`order`\r\n"
+					+ "WHERE order.status = 'completed'";
+			PreparedStatement ps = new JDBCConnection().conn.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				purchaseq = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return purchaseq;
+	}
 
 	public static void main(String[] args) {
-		ArrayList<Order> orders = findAll();
-		System.out.println(orders.get(orders.size() - 1).getId());
+		ArrayList<User> allusers = UserDAO.getAllUsers();
+		
+		System.out.println(OrderDAO.getPurchasedCount());
 	}
 }

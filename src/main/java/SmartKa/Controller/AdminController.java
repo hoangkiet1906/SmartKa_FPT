@@ -11,11 +11,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import SmartKa.DAO.OrderDAO;
 import SmartKa.DAO.ProductDAO;
 
 import SmartKa.DAO.UserDAO;
+import SmartKa.Model.LatestOrder;
+import SmartKa.Model.LoyalCustomer;
 import SmartKa.Model.ORProduct;
 import SmartKa.Model.RevenueChartData;
+import SmartKa.Model.User;
 import SmartKa.Model.UserInAdminManage;
 import SmartKa.Validators.Validators;
 
@@ -28,8 +32,28 @@ public class AdminController {
 		req.setAttribute("page", "quanli1");
 		
 		ArrayList<UserInAdminManage> users = UserDAO.getUserInAdmin();
+		ArrayList<User> allusers = UserDAO.getAllUsers();
 		req.setAttribute("users", users);
 		req.setAttribute("userNumber", users.size());
+		ArrayList<LoyalCustomer> loyalUsers = UserDAO.getLoyalCus();
+		req.setAttribute("loyalcus", loyalUsers);
+		ArrayList<LatestOrder> lolist = OrderDAO.getLatestOrder();
+		req.setAttribute("latestorder", lolist);
+		int totalbuy = OrderDAO.getPurchasedQuantity();
+		req.setAttribute("totalbuy", totalbuy);
+		int cartq = OrderDAO.getCartQuantity();
+		req.setAttribute("cartq", cartq);
+		req.setAttribute("userq", allusers.size());
+		int userq = allusers.size();
+		double per =(double) 100/userq;
+		double percentage = ((cartq*per)/(userq*per))*100;
+		long realper = Math.round(percentage);
+		req.setAttribute("addToCart", realper);
+		int purchaseq = OrderDAO.getPurchasedCount();
+		req.setAttribute("purchaseq", purchaseq);
+		double purchaseper = (double) 100/cartq;
+		double purchasePercentage = ((purchaseq*purchaseper)/(cartq*purchaseper))*100;
+		req.setAttribute("completePurchase", purchasePercentage);
 		return "admin/index";
 	}
 	

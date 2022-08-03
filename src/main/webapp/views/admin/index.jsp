@@ -67,7 +67,7 @@
 
 						<div class="info-box-content">
 							<span class="info-box-text">Purchase Quantity</span> <span
-								class="info-box-number">{{$PurchaseQuantity->count()}}</span>
+								class="info-box-number">${totalbuy }</span>
 						</div>
 						<!-- /.info-box-content -->
 					</div>
@@ -81,7 +81,7 @@
 
 						<div class="info-box-content">
 							<span class="info-box-text">New Member</span> <span
-								class="info-box-number">{{$UserQuantity->count()}}</span>
+								class="info-box-number">${userNumber}</span>
 						</div>
 						<!-- /.info-box-content -->
 					</div>
@@ -125,19 +125,19 @@
 									</p>
 
 									<div class="progress-group">
-										Add to cart <span class="float-right"><b>{{$CartQuantity}}</b>/{{$UserQuantity->count()}}</span>
+										Add to cart <span class="float-right"><b>${cartq }</b>/${userq}</span>
 										<div class="progress progress-sm">
 											<div class="progress-bar bg-primary"
-												style="width: {{$CartQuantity/$UserQuantity-&gt;count()*100"></div>
+												style="width: ${addToCart}%"></div>
 										</div>
 									</div>
 									<!-- /.progress-group -->
 
 									<div class="progress-group">
-										Complete purchase <span class="float-right"><b>{{$PurchaseQuantity->count()}}</b>/{{$CartQuantity}}</span>
+										Complete purchase <span class="float-right"><b>${purchaseq }</b>/${cartq }</span>
 										<div class="progress progress-sm">
 											<div class="progress-bar bg-danger"
-												style="width: {{$PurchaseQuantity-&gt;count()/$CartQuantity*100"></div>
+												style="width: ${completePurchase}%"></div>
 										</div>
 									</div>
 
@@ -180,7 +180,7 @@
 									<div class="description-block border-right">
 										<span class="description-percentage text-warning"><i
 											class="fas fa-caret-up"></i> 5%</span>
-										<h5 class="description-header">{{$UserQuantity->count()}}</h5>
+										<h5 class="description-header">${userNumber }</h5>
 										<span class="description-text">Members</span>
 									</div>
 									<!-- /.description-block -->
@@ -190,7 +190,7 @@
 									<div class="description-block border-right">
 										<span class="description-percentage text-success"><i
 											class="fas fa-caret-up"></i> 35%</span>
-										<h5 class="description-header">{{$PurchaseQuantity->count()}}</h5>
+										<h5 class="description-header">${totalbuy }</h5>
 										<span class="description-text">Purchase Quantity</span>
 									</div>
 									<!-- /.description-block -->
@@ -253,8 +253,7 @@
 													2:00 pm</span>
 											</div>
 											<!-- /.direct-chat-infos -->
-											<img class="direct-chat-img"
-												src="asset/dist/img/ad.jpg')}}"
+											<img class="direct-chat-img" src="asset/dist/img/ad.jpg')}}"
 												alt="message user image">
 											<!-- /.direct-chat-img -->
 											<div class="direct-chat-text">Do you have kali linux ?
@@ -288,8 +287,7 @@
 													5:37 pm</span>
 											</div>
 											<!-- /.direct-chat-infos -->
-											<img class="direct-chat-img"
-												src="asset/dist/img/ad.jpg"
+											<img class="direct-chat-img" src="asset/dist/img/ad.jpg"
 												alt="message user image">
 											<!-- /.direct-chat-img -->
 											<div class="direct-chat-text">Can I eat it</div>
@@ -344,7 +342,8 @@
 									<h3 class="card-title">Members</h3>
 
 									<div class="card-tools">
-										<span class="badge badge-danger">${userNumber} New Members</span>
+										<span class="badge badge-danger">${userNumber} New
+											Members</span>
 										<button type="button" class="btn btn-tool"
 											data-card-widget="collapse">
 											<i class="fas fa-minus"></i>
@@ -364,8 +363,7 @@
 											<li><img
 												src="<c:url value = "/assets/images/avatar/${users.avatar}"/>"
 												alt="User Image"> <a class="users-list-name" href="#">${users.fullname}</a>
-												<span class="users-list-date">${users.date}</span>
-											</li>
+												<span class="users-list-date">${users.date}</span></li>
 										</c:forEach>
 
 									</ul>
@@ -406,6 +404,7 @@
 									<thead>
 										<tr>
 											<th>ID</th>
+											<th>Date</th>
 											<th>Username</th>
 											<th>Payment Method</th>
 											<th>Status</th>
@@ -413,32 +412,31 @@
 										</tr>
 									</thead>
 									<tbody>
-										@foreach ($PurchaseQuantity as $item)
-
-										<tr>
-											<td><a href="pages/examples/invoice.html">{{$item->idcheckout}}</a></td>
-											<td>{{$item->user_name}}</td>
-											<td>{{$item->payment_method}}</td> @if
-											($item->status=='Processing')
-											<td><span class="badge badge-warning">{{$item->status}}</span></td>
-											@else
-											<td><span class="badge badge-success">{{$item->status}}</span></td>
-											@endif
-
-											<td>{{$item->total_money}}$</td>
-										</tr>
-
-										@endforeach
+										<c:forEach var="lo" items="${latestorder}">
+											<tr>
+												<td><a href="pages/examples/invoice.html">${lo.idco }</a></td>
+												<td>${lo.date }</td>
+												<td>${lo.username}</td>
+												<td>${lo.pmethod}</td>
+												<c:choose>
+													<c:when test="${lo.status == 'Completed'}">
+														<td><span class="badge badge-success">${lo.status }</span></td>
+													</c:when>
+													<c:when test ="${lo.status == 'Pending'}">
+														<td><span class="badge badge-danger">${lo.status }</span></td>
+													</c:when>
+													<c:otherwise>
+														<td><span class="badge badge-warning">${lo.status }</span></td>
+													</c:otherwise>
+												</c:choose>
+												<td>${lo.total }</td>
+										</c:forEach>
 									</tbody>
 								</table>
 							</div>
 							<!-- /.table-responsive -->
 						</div>
 						<!-- /.card-body -->
-						<div class="card-footer clearfix">
-							<a href="javascript:void(0)"
-								class="btn btn-sm btn-secondary float-right">See more</a>
-						</div>
 						<!-- /.card-footer -->
 					</div>
 					<!-- /.card -->
@@ -514,47 +512,33 @@
 
 					<!-- PRODUCT LIST -->
 					<div class="card">
-						<div class="card-header">
-							<h3 class="card-title">Loyal customers</h3>
-
-							<div class="card-tools">
-								<button type="button" class="btn btn-tool"
-									data-card-widget="collapse">
-									<i class="fas fa-minus"></i>
-								</button>
-								<button type="button" class="btn btn-tool"
-									data-card-widget="remove">
-									<i class="fas fa-times"></i>
-								</button>
-							</div>
+						<div class="card-header border-0">
+							<h3 class="card-title">Loyal Customers</h3>
+							<div class="card-tools"></div>
 						</div>
-						<!-- /.card-header -->
-						<div class="card-body p-0">
-							<ul class="products-list product-list-in-card pl-2 pr-2">
-								@php $i=0; @endphp @foreach ($topU as $key => $value) @php $i++;
-								@endphp
-								<li class="item">
-									<div class="product-img">
-										<img
-											src="{{ asset('User')}}/assets/images/avatar/{{$topUI[$key][0]->avatar}}"
-											alt="Product Image" class="img-size-50">
-									</div>
-									<div class="product-info">
-										<a href="javascript:void(0)" class="product-title">{{$key}}
-											<span class="badge badge-success float-right">${{$value}}</span>
-										</a> <span class="product-description"> Top {{$i}} </span>
-									</div>
-								</li> @endforeach
-
-							</ul>
+						<div class="card-body table-responsive p-0">
+							<table class="table table-striped table-valign-middle">
+								<thead>
+									<tr>
+										<th></th>
+										<th style="text-align: center;">Name</th>
+										<th style="text-align: center;">Purchased</th>
+										<th style="text-align: center;">Total Order</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="lc" items="${loyalcus}">
+										<tr>
+											<td><img src="asset/images/avatar/${lc.avt}"
+												alt="avatar1" class="img-circle img-size-32 mr-2" /></td>
+											<td><p style="text-align: center;">${lc.username}</p></td>
+											<td style="text-align: center;">$${lc.totalmoney }</td>
+											<td style="text-align: center;">${lc.totalorder }</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
 						</div>
-						<!-- /.card-body -->
-						<div class="card-footer text-center"
-							style="padding-top: 8px; padding-bottom: 9px;">
-
-							<a href="javascript:void(0)" class="uppercase">Xem Thêm</a>
-						</div>
-						<!-- /.card-footer -->
 					</div>
 					<!-- /.card -->
 				</div>

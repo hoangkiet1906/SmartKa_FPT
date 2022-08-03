@@ -1,5 +1,6 @@
 package SmartKa.DAO;
 
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,6 +16,8 @@ import SmartKa.Validators.Validators;
 
 //qhai
 import java.time.LocalDate;
+
+import SmartKa.Model.LoyalCustomer;
 import SmartKa.Model.Product;
 import SmartKa.Model.UserInAdminManage;
 
@@ -325,7 +328,24 @@ public class UserDAO {
 			}
 			return users;
 		}
+		public static ArrayList<LoyalCustomer> getLoyalCus() {
+			ArrayList<LoyalCustomer> list = new ArrayList<LoyalCustomer>();
+			try {
+				String query = Constant.GET_LOYAL_CUS;
+				PreparedStatement ps = new JDBCConnection().conn.prepareStatement(query);
+				ResultSet rs = ps.executeQuery();
+				while(rs.next()) {
+					LoyalCustomer bean = new LoyalCustomer(rs.getString(1),rs.getString(2), rs.getInt(3), rs.getInt(4));
+					list.add(bean);
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			return list;
+		}
 
-		
+		public static void main(String[] args) {
+			System.out.println(UserDAO.getLoyalCus().toString());
+		}
 	
 }
