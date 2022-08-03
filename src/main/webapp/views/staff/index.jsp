@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
@@ -33,71 +35,49 @@
 					<div class="card">
 						<div class="card-header border-0">
 							<h3 class="card-title">Current job</h3>
-							<div class="card-tools">
-								<ul class="pagination pagination-sm">
-
-									<li class="page-item"><a href="" class="page-link">&laquo;</a></li>
-									<li class="page-item"><a href="" class="page-link">1</a></li>
-									<li class="page-item"><a href="" class="page-link">&raquo;</a></li>
-
-								</ul>
-							</div>
-							<div class="card-tools"></div>
 						</div>
 						<div class="card-body table-responsive p-0">
 							<table class="table table-striped table-valign-middle">
 								<thead>
 									<tr>
 										<th>Buyer</th>
+										<th>Fullname</th>
+										<th>Status</th>
 										<th>Price</th>
 										<th>Address</th>
 										<th>Phone</th>
 										<th>Email</th>
+										<th>Note</th>
 										<th>Confirm</th>
 									</tr>
 								</thead>
 								<tbody>
-									@foreach ($work as $pro) @if ($pro->status == 'Processing')
 
-									<tr id="x{{ $pro->idcheckout }}">
-										<td><img style="border: 0.5px solid black"
-											src="{{ asset(" User/assets/images/avatar/$pro->avatar")
-											}}" class="img-circle img-size-32 mr-2"> {{ $pro->fullname }}
-										</td>
-										<td>{{ $pro->total_money }}</td>
-										<td>{{ $pro->deliveryaddress }}</td>
-										<td>{{ $pro->phone }}</td>
-										<td>{{ $pro->email }}</td>
-										<td><a data-delpro="{{ $pro->idcheckout }}" type="button"
-											class="delpro">Complete</a></td>
-									</tr>
-
-									@endif @endforeach
+									<c:forEach var="w" items="${processingOrders }">
+										<tr>
+											<td>${w.order.username }</td>
+											<td>${w.order.fullname }</td>
+											<td class="text-warning">${w.order.status }</td>
+											<td>$${w.order.total_money }</td>
+											<td>${w.order.address }</td>
+											<td>${w.order.phone }</td>
+											<td>${w.order.email }</td>
+											<td>
+												<c:choose>
+													<c:when test="${w.order.note == null || w.order.note == '' }">
+														Dont have any note
+													</c:when>
+													<c:otherwise>
+														${w.order.note }
+													</c:otherwise>
+												</c:choose>
+											</td>
+											<td><a data-taskid="${w.order.id }" type="button" class="completedTask">Complete</a></td>
+										</tr>
+									</c:forEach>
 
 								</tbody>
 							</table>
-							<script
-								src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-							<script>
-                                    $(document).ready(function() {
-                                        $('.delpro').click(function() {
-                                            var delid = $(this).data('delpro');
-                                            $.ajax({
-                                                type: "post",
-                                                url: '{{ url('/delAjax') }}',
-                                                data: {
-                                                    delid: delid,
-                                                    "_token": "{{ csrf_token() }}",
-                                                },
-                                                //dataType: "dataType",
-                                                success: function(response) {
-                                                    $('#x' + delid).remove();
-                                                }
-                                            });
-                                        });
-
-                                    });
-                                </script>
 						</div>
 					</div>
 					<!-- /.card -->

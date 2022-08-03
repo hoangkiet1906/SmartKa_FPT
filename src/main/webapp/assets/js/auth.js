@@ -39,6 +39,8 @@ $(document).ready(function() {
 						.then(() => {
 							if (data.user.role == "ADMIN") {
 								$(location).prop("href", "/SmartKa/admin/usermng")
+							} else if (data.user.role=="STAFF") {
+								$(location).prop("href", "/SmartKa//staff/home")
 							} else {
 								$(location).prop("href", "/SmartKa/")
 							}

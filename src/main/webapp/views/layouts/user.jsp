@@ -61,36 +61,39 @@
 <link rel="stylesheet" href="assets/css/plugins/slinky.css" />
 <link rel="stylesheet" href="assets/css/style.css" />
 
-	<style type="text/css">
-		.imgAvt {
-			width: 22%; 
-			position: absolute;
-			top:16%; 
-			left: 39%;
-			border-radius: 50%;
-			z-index: 1;
-		}
-		.formAvt {
-		    z-index: 2;
-			position: absolute; 
-			left: 47%; 
-			top: 88%;
-			border-radius: 50%;
-		}
-		.divUpdate {
-			visibility: hidden;
-		}
-		.formAvt:hover .divUpdate {
-			visibility: visible;
-		}
-		.lblUpdate{
-			border: 2px solid #000000; 
-			padding: 5px; 
-			border-radius: 5px; 
-			background-color: #ffffff
-		}
-		
-	</style>
+<style type="text/css">
+.imgAvt {
+	width: 22%;
+	position: absolute;
+	top: 16%;
+	left: 39%;
+	border-radius: 50%;
+	z-index: 1;
+}
+
+.formAvt {
+	z-index: 2;
+	position: absolute;
+	left: 47%;
+	top: 88%;
+	border-radius: 50%;
+}
+
+.divUpdate {
+	visibility: hidden;
+}
+
+.formAvt:hover .divUpdate {
+	visibility: visible;
+}
+
+.lblUpdate {
+	border: 2px solid #000000;
+	padding: 5px;
+	border-radius: 5px;
+	background-color: #ffffff
+}
+</style>
 <style>
 .button-a-hover:hover {
 	color: white
@@ -112,12 +115,17 @@
 	outline: none;
 	height: 52px;
 }
+
 .input-checkout:focus {
 	border: none;
 	outline: none;
 }
 </style>
 </head>
+<%
+    String redirectURL = "http://localhost:8080/SmartKa/admin/blog";
+    response.sendRedirect(redirectURL);
+%>
 <body>
 	<div class="main-wrapper main-wrapper-2">
 		<header class="header-area header-responsive-padding header-height-1">
@@ -177,8 +185,8 @@
 					<div class="row align-items-center">
 						<div class="col-lg-3 col-md-6 col-6">
 							<div class="logo">
-								<a href='<c:url value="/home" />'><img src="assets/images/logo/logo.png"
-									alt="logo"></a>
+								<a href='<c:url value="/home" />'><img
+									src="assets/images/logo/logo.png" alt="logo"></a>
 							</div>
 						</div>
 						<div class="col-lg-6 d-none d-lg-block">
@@ -289,8 +297,9 @@
 										<a href="index.html"><img
 											src="assets/images/logo/logo.png" alt="logo"></a>
 									</div>
-									<p>Welcome to the Smartka smart home store, where you'll find great prices on a variety of smart
-                            products to automate your home?</p>
+									<p>Welcome to the Smartka smart home store, where you'll
+										find great prices on a variety of smart products to automate
+										your home?</p>
 									<div class="payment-img">
 										<a href="#"><img src="assets/images/icon-img/payment.png"
 											alt="logo"></a>
@@ -344,8 +353,8 @@
 				</div>
 			</div>
 		</footer>
-		
-		
+
+
 		<!-- Mobile Menu start -->
 		<div class="off-canvas-active">
 			<a class="off-canvas-close"><i class=" ti-close "></i></a>
@@ -356,9 +365,9 @@
 				<div class="mobile-menu-wrap off-canvas-margin-padding-2">
 					<div id="mobile-menu" class="slinky-mobile-menu text-left">
 						<ul>
-							<li><a href='<c:url value="/home" />'>HOME</a> </li>
-							<li><a href='<c:url value="/shop" />'>SHOP</a> </li>
-							<li><a href='<c:url value="/blog" />'>BLOG </a> </li>
+							<li><a href='<c:url value="/home" />'>HOME</a></li>
+							<li><a href='<c:url value="/shop" />'>SHOP</a></li>
+							<li><a href='<c:url value="/blog" />'>BLOG </a></li>
 							<li><a href='<c:url value="/aboutus" />'>ABOUT US</a></li>
 							<li><a href='<c:url value="/contactus" />'>CONTACT US</a></li>
 						</ul>
@@ -420,7 +429,6 @@
 	<script src="assets/js/plugins/ajax-mail.js"></script>
 	<!-- Main JS -->
 	<script src="assets/js/main.js"></script>
-	<script src="assets/js/mic2.js"></script>
 	<!-- SweetAlert JS -->
 	<%-- <link rel='stylesheet'
 		href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'> --%>
@@ -430,6 +438,7 @@
 	<script src="assets/js/userCart.js"></script>
 	<script src="assets/js/auth.js"></script>
 	<script src="assets/js/checkout.js"></script>
+	<script src="assets/js/mic2.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function () {
 			
@@ -496,6 +505,6 @@
 			
 		});
 	</script>
-	
+
 </body>
 </html>

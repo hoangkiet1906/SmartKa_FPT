@@ -1,9 +1,13 @@
 package SmartKa.Constants;
 
 public class Constant {
+	
+	public static final String BASE_URL = "http://localhost:8080/SmartKa/";
+	
 	public static final String SESSION_USERNAME = "username";
 	public static final String SESSION_USER_INFORMATION = "userInfo";
 	public static final String GET_ALL_ACCOUNTS_QUERY = "SELECT * FROM account";
+	public static final String GET_ACCOUNT_BY_ROLE_QUERY = "SELECT * FROM account where role = ?";
 	public static final String CHECK_ACCOUNT_QUERY = "SELECT * FROM account WHERE user_name = ?";
 	public static final String ADD_USER_QUERY = "INSERT INTO account (user_name, password, date, role) VALUE (?, ?, ?, ?)";
 	public static final String GET_USER_INFO_BY_USERNAME_QUERY = "SELECT * FROM info WHERE user_name = ?";
@@ -85,12 +89,14 @@ public class Constant {
 			+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	public static final String ADD_ORDER_DETAIL_QUERY = "INSERT INTO smartka.orderdetail(id, "
 			+ "idcheckout, quantity) " + "VALUES (?, ?, ?)";
-	
+	public static final String GET_ORDERS_BY_STATUS_QUERY = "SELECT * FROM smartka.order where status = ?";
 	//order
 	public static final String GET_ORDERS_BY_USERNAME_QUERY = "SELECT * FROM smartka.order where user_name = ? order by status asc";
 	public static final String GET_ORDER_PRODUCTS_BY_ID_QUERY = "SELECT * FROM smartka.orderdetail where idcheckout = ?";
+	public static final String GET_WORKS_BY_STATUS_QUERY = "SELECT id, staff_name, work.idcheckout, user_name, payment_method, total_money, date_checkout, status, address, email, fullname, phone, note FROM `work` inner join `order` on `work`.idcheckout = `order`.idcheckout where `order`.status = ? order by id ;";
+	public static final String GET_WORKS_BY_STATUS_AND_NAME_QUERY = "SELECT id, staff_name, work.idcheckout, user_name, payment_method, total_money, date_checkout, status, address, email, fullname, phone, note FROM `work` inner join `order` on `work`.idcheckout = `order`.idcheckout where `order`.status = ? and staff_name = ? order by id ;";
 
-// end shop
+	// end shop
 
 	// qhai - admin user manage
 	public static final String ADMIN_GET_USER_MANAGE = "SELECT * FROM info INNER JOIN account "
@@ -98,5 +104,9 @@ public class Constant {
 	public static final int NO_USER_IN_ADMIN_MANAGE = 8;
 	
 	public static final String GET_ALL_SUPPORT = "SELECT * FROM smartka.support inner join smartka.info on support.user_name = info.user_name";
-
+	
+	// Work
+	public static final String SAVE_WORK_QUERY = "insert into smartka.work (staff_name, idcheckout) values (?, ?)";
+	
+	public static final String UPDATE_STATUS_ORDER_QUERY = "update smartka.order set status = ? where idcheckout = ?";
 }
