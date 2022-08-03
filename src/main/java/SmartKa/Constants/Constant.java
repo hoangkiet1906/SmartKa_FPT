@@ -1,6 +1,9 @@
 package SmartKa.Constants;
 
 public class Constant {
+	
+	public static final String BASE_URL = "http://localhost:8080/SmartKa/";
+	
 	public static final String SESSION_USERNAME = "username";
 	public static final String SESSION_USER_INFORMATION = "userInfo";
 	public static final String GET_ALL_ACCOUNTS_QUERY = "SELECT * FROM account";
