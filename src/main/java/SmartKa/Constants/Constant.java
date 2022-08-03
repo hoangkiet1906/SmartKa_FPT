@@ -38,7 +38,10 @@ public class Constant {
 	public static final String GET_TOTAL_MONEY_WEEKLY = "SELECT SUM(total_money) , date_checkout FROM smartka.order \n"
 			+ "GROUP BY date_checkout \n"
 			+ "HAVING (date_checkout BETWEEN ? AND ?)";
-														
+	public static final String GET_LOYAL_CUS = "SELECT user_name, SUM(total_money) AS total_money, COUNT(user_name) AS total_order\r\n"
+			+ "FROM smartka.`order` AS o\r\n"
+			+ "GROUP BY user_name\r\n"
+			+ "order BY total_money desc";												
 	// cmt product
 	public static final String GET_CMT_PRODUCT = "SELECT c.cmtpro, c.cmtdatepro, c.user_name, i.avatar FROM cmtproduct AS c INNER JOIN info AS i ON (c.user_name = i.user_name)  WHERE c.id = ?";
 	public static final String ADD_CMT_PRODUCT = "INSERT INTO cmtproduct (cmtpro, cmtdatepro, user_name, id) values (?, ?, ?, ?)";
