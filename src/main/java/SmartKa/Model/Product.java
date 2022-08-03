@@ -10,8 +10,6 @@ public class Product {
 	String tag;
 	int view;
 	String status;
-	String details;
-	String specifications;
 	
 	
 	
@@ -20,7 +18,7 @@ public class Product {
 	}
 
 	public Product(int id, String name, int price, int quantity, String image, String description, String tag, int view,
-			String status, String details, String specifications) {
+			String status) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -31,8 +29,6 @@ public class Product {
 		this.tag = tag;
 		this.view = view;
 		this.status = status;
-		this.details = details;
-		this.specifications = specifications;
 	}
 	
 	public int getId() {
@@ -89,24 +85,13 @@ public class Product {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public String getDetails() {
-		return details;
-	}
-	public void setDetails(String details) {
-		this.details = details;
-	}
-	public String getSpecifications() {
-		return specifications;
-	}
-	public void setSpecifications(String specifications) {
-		this.specifications = specifications;
-	}
+
 
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", quantity=" + quantity + ", image="
 				+ image + ", description=" + description + ", tag=" + tag + ", view=" + view + ", status=" + status
-				+ ", details=" + details + ", specifications=" + specifications + "] \n";
+				+ "\n";
 	}
 	
 	

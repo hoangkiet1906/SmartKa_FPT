@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <div class="slider-area">
 	<div class="slider-active swiper-container">
 		<div class="swiper-wrapper">

@@ -87,4 +87,21 @@ public class Constant {
 					+ "idcheckout, quantity) "
 					+ "VALUES (?, ?, ?)";
 // end shop
+			
+// blog manager
+			public static final String SELECT_BLOG_PAGE1 = "SELECT * FROM blog WHERE idblog <= 6";
+			public static final String SELECT_BLOG_PAGE2 = "SELECT * FROM blog WHERE idblog > 6";
+			public static final String UPDATE_BLOG ="UPDATE blog SET title = ?, content = ?, image = ?, tag = ?, ct1 = ?, ct2 = ?, ct3 = ?, img1 = ?, img2 = ? WHERE idblog = ?";
+			public static final String UPDATE_BLOG_NOT_IMG ="UPDATE blog SET title = ?, content = ?, tag = ?, ct1 = ?, ct2 = ?, ct3 = ? WHERE idblog = ?";
+			public static final String UPDATE_STATUS_BLOG = "UPDATE blog SET status = ? WHERE idblog = ?";			
+			public static final String SELECT_BLOG_STATUS = "SELECT status FROM blog WHERE idblog = ?";
+			public static final String DELETE_BLOG = "DELETE FROM blog WHERE idblog = ?";
+			public static final String COUNT_BLOG = "SELECT idblog FROM blog ORDER BY IDBLOG DESC LIMIT 1";
+			public static final String INSERT_BLOG = "INSERT INTO blog (idblog, title, author, content, date, image, tag, ct1, ct2, ct3, img1, img2) VALUES (?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?)";
+// product manager
+			public static final String UPDATE_PRODUCT ="UPDATE product SET name = ?, price = ?, quantity = ?, image = ?,description = ? , tag = ?, status = ? WHERE id = ?";
+			public static final String UPDATE_PRODUCT_NOT_IMG ="UPDATE product SET name = ?, price = ?, quantity = ?,description = ? , tag = ?, status = ? WHERE id = ?";
+			public static final String DELETE_PRODUCT ="DELETE FROM product WHERE id = ?";
+			public static final String INSERT_PRODUCT ="INSERT INTO product (id, name, price, quantity, image, description, tag, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+			public static final String GET_ID_LAST_PRODUCT ="SELECT id FROM product ORDER BY ID DESC LIMIT 1";
 }
