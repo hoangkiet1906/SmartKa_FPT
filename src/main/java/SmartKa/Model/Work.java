@@ -47,4 +47,11 @@ public class Work {
 		this.order = order;
 	}
 
+	@Override
+	public String toString() {
+		return "Work [id=" + id + ", staff_name=" + staff_name + ", order=" + order + "]";
+	}
+	
+	
+
 }

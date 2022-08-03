@@ -68,6 +68,8 @@ public class AdminController {
 		
 		req.setAttribute("pendingOrders", OrderDAO.findOrdersByStatus("Pending"));
 		req.setAttribute("staffs", UserDAO.getAccountsByRole("STAFF"));
+		req.setAttribute("processingOrders", WorkDAO.getWorkByStatus("Processing"));
+		req.setAttribute("completedOrders", WorkDAO.getWorkByStatus("Completed"));
 
 		return "admin/staff";
 	}

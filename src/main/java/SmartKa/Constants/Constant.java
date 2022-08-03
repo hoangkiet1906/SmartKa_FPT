@@ -90,8 +90,10 @@ public class Constant {
 	//order
 	public static final String GET_ORDERS_BY_USERNAME_QUERY = "SELECT * FROM smartka.order where user_name = ? order by status asc";
 	public static final String GET_ORDER_PRODUCTS_BY_ID_QUERY = "SELECT * FROM smartka.orderdetail where idcheckout = ?";
+	public static final String GET_WORKS_BY_STATUS_QUERY = "SELECT id, staff_name, work.idcheckout, user_name, payment_method, total_money, date_checkout, status, address, email, fullname, phone, note FROM `work` inner join `order` on `work`.idcheckout = `order`.idcheckout where `order`.status = ? order by id ;";
+	public static final String GET_WORKS_BY_STATUS_AND_NAME_QUERY = "SELECT id, staff_name, work.idcheckout, user_name, payment_method, total_money, date_checkout, status, address, email, fullname, phone, note FROM `work` inner join `order` on `work`.idcheckout = `order`.idcheckout where `order`.status = ? and staff_name = ? order by id ;";
 
-// end shop
+	// end shop
 
 	// qhai - admin user manage
 	public static final String ADMIN_GET_USER_MANAGE = "SELECT * FROM info INNER JOIN account "

@@ -52,7 +52,7 @@
 											<td>${o.username }</td>
 											<td>${o.date_checkout }</td>
 											<td>${o.payment_method }</td>
-											<td>${o.status }</td>
+											<td class="text-danger">${o.status }</td>
 											<td>$${o.total_money }</td>
 											<td><select data-id="${o.id }" name="staffSelection">
 													<option>Choose one</option>
@@ -69,7 +69,78 @@
 					</div>
 					<!-- /.card -->
 				</div>
-
+				
+				<div class="col-lg-12">
+					<!-- TO DO List -->
+					<div class="card">
+						<div class="card-header border-0">
+							<h3 class="card-title">All </h3>
+						</div>
+						<div id="processcing" class="card-body table-responsive p-0">
+							<table class="table table-striped table-valign-middle">
+								<thead>
+									<tr>
+										<th>Username</th>
+										<th>Date</th>
+										<th>Payment method</th>
+										<th>Status</th>
+										<th>Total</th>
+										<th>Staff</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="o" items="${processingOrders }">
+										<tr>
+											<td>${o.order.username }</td>
+											<td>${o.order.date_checkout }</td>
+											<td>${o.order.payment_method }</td>
+											<td class="text-warning">${o.order.status }</td>
+											<td>$${o.order.total_money }</td>
+											<td>${o.staff_name }</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- /.card -->
+				</div>
+				
+				<div class="col-lg-12">
+					<!-- TO DO List -->
+					<div class="card">
+						<div class="card-header border-0">
+							<h3 class="card-title">All </h3>
+						</div>
+						<div id="processcing" class="card-body table-responsive p-0">
+							<table class="table table-striped table-valign-middle">
+								<thead>
+									<tr>
+										<th>Username</th>
+										<th>Date</th>
+										<th>Payment method</th>
+										<th>Status</th>
+										<th>Total</th>
+										<th>Staff</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="o" items="${completedOrders }">
+										<tr>
+											<td>${o.order.username }</td>
+											<td>${o.order.date_checkout }</td>
+											<td>${o.order.payment_method }</td>
+											<td class="text-success">${o.order.status }</td>
+											<td>$${o.order.total_money }</td>
+											<td>${o.staff_name }</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- /.card -->
+				</div>
 
 			</div>
 			<!-- /.row -->
