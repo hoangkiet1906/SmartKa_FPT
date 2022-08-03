@@ -11,18 +11,18 @@ public class Constant {
 	public static final String UPDATE_USER_INFO_QUERY = "UPDATE info SET fullname = ?, avatar = ?, phone = ?, email = ?, address = ?, deliveryaddress = ? WHERE user_name = ?";
 
 	// lviet
-	public static final String GET_ALL_BLOG_QUERY = "SELECT * FROM BLOG";
-	public static final String GET_BLOG_BY_ID_QUERY = "SELECT * FROM BLOG WHERE IDBLOG = ?";
-	public static final String GET_LATEST_2_BLOG = "SELECT * FROM blog order BY DATE DESC LIMIT 3";
-	public static final String GET_NUMBER_OF_BLOG = "SELECT COUNT(*) FROM BLOG";
-	public static final String GET_BLOG_PER_PAGE = "SELECT * FROM blog order by date desc LIMIT ?,?";
+	public static final String GET_ALL_BLOG_QUERY = "SELECT * FROM blog WHERE STATUS = 1";
+	public static final String GET_BLOG_BY_ID_QUERY = "SELECT * FROM BLOG WHERE IDBLOG = ? HAVING STATUS =1";
+	public static final String GET_LATEST_2_BLOG = "SELECT * FROM blog HAVING STATUS = 1 order BY DATE DESC LIMIT 3";
+	public static final String GET_NUMBER_OF_BLOG = "SELECT COUNT(*) FROM BLOG WHERE STATUS=1";
+	public static final String GET_BLOG_PER_PAGE = "SELECT * FROM blog HAVING STATUS = 1 order by date desc LIMIT ?,?";
 	public static final int NO_BLOG_PER_PAGE = 6;
 	public static final int START_BLOG = 1;
 	public static final String GET_ALL_BLOG_TAG = "SELECT DISTINCT TAG FROM BLOG";
-	public static final String GET_BLOG_BY_TAG = "SELECT * FROM blog WHERE TAG = ? order BY DATE DESC LIMIT ?,?";
-	public static final String GET_NO_BLOG_BY_TAG = "SELECT COUNT(*) FROM BLOG WHERE TAG = ?";
-	public static final String SEARCH_BLOG_BY_NAME = "SELECT * FROM blog WHERE title LIKE ? order BY DATE DESC LIMIT ?,?";
-	public static final String COUNT_SEARCHED_BLOG = "SELECT COUNT(*) FROM blog WHERE title LIKE ? order BY DATE DESC";
+	public static final String GET_BLOG_BY_TAG = "SELECT * FROM blog WHERE TAG = ? and status=1 order BY DATE DESC LIMIT ?,?";
+	public static final String GET_NO_BLOG_BY_TAG = "SELECT COUNT(*) FROM BLOG WHERE TAG = ? and status = 1";
+	public static final String SEARCH_BLOG_BY_NAME = "SELECT * FROM blog WHERE title LIKE ? having status =1 order BY DATE DESC LIMIT ?,?";
+	public static final String COUNT_SEARCHED_BLOG = "SELECT COUNT(*) FROM blog WHERE title LIKE ? and status=1 order BY DATE DESC";
 	public static final String GET_OUTSTANDING_REVENUE = "\r\n"
 			+ "SELECT  product.name, product.image, product.price,sum(orderdetail.quantity)\r\n"
 			+ "FROM product\r\n"

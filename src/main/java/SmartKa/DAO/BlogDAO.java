@@ -227,7 +227,7 @@ public class BlogDAO {
 		return resultBlog;
 	}
 	public static void main(String[] args) {
-		System.out.println(BlogDAO.getBlogByID(1+1));
+		System.out.println(BlogDAO.getAllBlog());
 	}
 }
 
