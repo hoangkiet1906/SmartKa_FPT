@@ -136,9 +136,26 @@ public class Blog {
 	public void setMonth(String month) {
 		this.month = month;
 	}
+	public Blog(int idblog, String title, String author, String content, String date, String image, String tag,
+			String status, String ct1, String ct2, String ct3, String img1, String img2) {
+		super();
+		this.idblog = idblog;
+		this.title = title;
+		this.author = author;
+		this.content = content;
+		this.date = date;
+		this.image = image;
+		this.tag = tag;
+		this.status = status;
+		this.ct1 = ct1;
+		this.ct2 = ct2;
+		this.ct3 = ct3;
+		this.img1 = img1;
+		this.img2 = img2;
+	}
 	@Override
 	public String toString() {
-		return "ID: +"+idblog+", title:"+ title +", author: " + author +", content: "+content+", date: "+date+", image: "+image+", tag: "+tag+", status: "+status+", ct1: "+ct1+", ct2: "+ct2+", ct3: "+ct3+", img1: "+img1+", img2: "+img2+", day: "+day+", month: " +month+", year: "+ year+ "\n";
+		return "ID: "+idblog+", title:"+ title +", author: " + author +", content: "+content+", date: "+date+", image: "+image+", tag: "+tag+", status: "+status+", ct1: "+ct1+", ct2: "+ct2+", ct3: "+ct3+", img1: "+img1+", img2: "+img2+", day: "+day+", month: " +month+", year: "+ year+ "\n";
 	}
 }
 	

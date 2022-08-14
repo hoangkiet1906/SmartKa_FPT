@@ -15,6 +15,8 @@ import SmartKa.Validators.Validators;
 
 //qhai
 import java.time.LocalDate;
+
+import SmartKa.Model.LoyalCustomer;
 import SmartKa.Model.Product;
 import SmartKa.Model.UserInAdminManage;
 
@@ -36,7 +38,21 @@ public class UserDAO {
 		}
 		return users;
 	}
-	
+	public static ArrayList<LoyalCustomer> getLoyalCus() {
+		ArrayList<LoyalCustomer> list = new ArrayList<LoyalCustomer>();
+		try {
+			String query = Constant.GET_LOYAL_CUS;
+			PreparedStatement ps = new JDBCConnection().conn.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				LoyalCustomer bean = new LoyalCustomer(rs.getString(1),rs.getString(2), rs.getInt(3), rs.getInt(4));
+				list.add(bean);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return list;
+	}
 	public static UserInfo getUserInfo(String username) {
 		UserInfo sessionUserInfo = null;		
 		try {
@@ -269,6 +285,25 @@ public class UserDAO {
 		return false;
 	}
 	
+	public static ArrayList<User> getAccountsByRole(String role) {
+		ArrayList<User> arrayList = new ArrayList<User>();
+
+		String query = Constant.GET_ACCOUNT_BY_ROLE_QUERY;
+
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, role);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				arrayList.add(new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+			}
+		} catch (Exception e) { 
+			e.printStackTrace();
+		}
+
+		return arrayList;
+	}
+
 	
 	// qhai : ADMIN
 		public static ArrayList<UserInAdminManage> getUserInAdmin() {

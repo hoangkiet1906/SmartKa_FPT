@@ -222,7 +222,8 @@
 					<div class="swiper-slide">
 						<div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
 							<div class="product-img img-zoom mb-25">
-								<a href="product-details.html"> <img
+								<a href="/SmartKa/product?id=${relatedProducts.id}&&tag=${relatedProducts.tag}">
+								<img
 									src="assets/images/product/${relatedProducts.image}" alt="">
 								</a>
 								<c:if test="${relatedProducts.status eq 'Sale Items'}">
@@ -247,8 +248,7 @@
 							</div>
 							<div class="product-content">
 								<h3>
-									<a
-										href="/SmartKa/product?id=${relatedProducts.id}&&tag=${relatedProducts.tag}">${relatedProducts.name}</a>
+									<a href="/SmartKa/product?id=${relatedProducts.id}&&tag=${relatedProducts.tag}">${relatedProducts.name}</a>
 								</h3>
 								<c:if test="${relatedProducts.status eq 'Sale Items'}">
 									<div class="product-price">

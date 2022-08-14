@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
 	<div class="content-header">
@@ -35,16 +37,25 @@
 						<div class="card-body">
 							<div class="d-flex">
 								<p class="d-flex flex-column">
-									<span class="text-bold text-lg">${{$totalWeek}}</span> <span>USD</span>
+									<span class="text-bold text-lg">${totalweek}</span> <span>USD</span>
 								</p>
 								<p class="ml-auto d-flex flex-column text-right">
-									@if ($totalWeek/$totalWeek2*100-100>=0) <span
-										class="text-success"> <i class="fas fa-arrow-up"></i>
-										{{round($totalWeek/$totalWeek2*100-100)}}%
-									</span> @else <span class="text-danger"> <i
+									<c:set var="rate" value="${gr }" />
+									<c:choose>
+										<c:when test="${rate >0 }">
+										<span
+											class="text-success"> <i class="fas fa-arrow-up"></i>
+											${rate}%
+										</span>
+										</c:when>
+										<c:otherwise>
+											<span class="text-danger"> <i
 										class="fas fa-arrow-down"></i>
-										{{round($totalWeek/$totalWeek2*100-100)}}%
-									</span> @endif <span class="text-muted">Compared to Last Week</span>
+										${rate }%
+										</span>	
+										</c:otherwise>
+									</c:choose>
+									 <span class="text-muted">Compared to Last Week</span>
 								</p>
 							</div>
 							<!-- /.d-flex -->
@@ -75,27 +86,24 @@
 										<th></th>
 										<th>Product</th>
 										<th>Price</th>
-										<th>Purchase Quantity</th>
-										<th><i class="fas fa-arrow-up"></i></th>
+										<th style="text-align:center;">Purchase Quantity</th>
+										<th>Total</th>
 									</tr>
 								</thead>
 								<tbody>
-									<%-- @foreach ($countTopPro as $key => $value)
-
+									<c:forEach var="orp" items="${ORPlist}">
 									<tr>
 										<td><img
-											src="{{ asset('User')}}/assets/images/product/{{$topProReal[$key][0]->image}}"
-											alt="Product 1" class="img-circle img-size-32 mr-2"></td>
-										<td>{{$topProReal[$key][0]->name}}</td>
-										<td>${{$topProReal[$key][0]->price}}</td>
-										<td>{{$value}}</td>
-										<td><small class="text-success"> <i
-												class="fas fa-arrow-up"></i>{{round($value/$topProReal[$key][0]->price*100)}}%
-										</small></td>
+											src="asset/images/product/${orp.ORPimage}"
+											alt="Product 1" class="img-circle img-size-32 mr-2"/>
+											
+											</td>
+											<td><p>${orp.ORPname}</p></td>
+										<td>$${orp.ORPprice }</td>
+										<td style="text-align:center;">${orp.ORPquantity }</td>
+										<td>$${orp.ORPtotal }</td>
 									</tr>
-
-									@endforeach --%>
-
+								</c:forEach>
 								</tbody>
 							</table>
 						</div>
@@ -150,26 +158,24 @@
 										<th>Product</th>
 										<th>Price</th>
 										<th>Purchase Quantity</th>
-										<th><i class="fas fa-arrow-up"></i></th>
+										<th>Total</th>
 									</tr>
 								</thead>
 								<tbody>
-									<%-- @foreach ($countGaPro as $key => $value)
-
+								<c:forEach var="rb" items="${RBlist}">
 									<tr>
 										<td><img
-											src="{{ asset('User')}}/assets/images/product/{{$gaProReal[$key][0]->image}}"
-											alt="Product 1" class="img-circle img-size-32 mr-2"></td>
-										<td>{{$gaProReal[$key][0]->name}}</td>
-										<td>${{$gaProReal[$key][0]->price}}</td>
-										<td>{{$value}}</td>
-										<td><small class="text-warning"> <i
-												class="fas fa-arrow-down"></i>{{round($value/$gaProReal[$key][0]->price*100)}}%
-										</small></td>
+											src="asset/images/product/${rb.ORPimage}"
+											alt="Product 1" class="img-circle img-size-32 mr-2"/>
+											
+											</td>
+											<td><p>${rb.ORPname}</p></td>
+										<td>$${rb.ORPprice }</td>
+										<td style="text-align:center;">${rb.ORPquantity }</td>
+										<td>$${rb.ORPtotal }</td>
 									</tr>
-
-									@endforeach --%>
-
+								</c:forEach>
+								
 								</tbody>
 							</table>
 						</div>
@@ -187,7 +193,5 @@
 </div>
 <!-- /.content-wrapper -->
 
-<script type="text/javascript">
-	var passedArray = <?= $inWeek ?>;
-	var passedArray2 = <?= $inWeek2 ?>;
+<script src="asset/dist/js/pages/dashboard3.js">
 </script>

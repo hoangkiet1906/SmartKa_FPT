@@ -179,7 +179,7 @@ MY CODE
             entities: false
         };
         
-        cke.content = "<h1>Nhập Thông Tin</h1>";
+        cke.content = "<h1>hi</h1>";
         
     }
 

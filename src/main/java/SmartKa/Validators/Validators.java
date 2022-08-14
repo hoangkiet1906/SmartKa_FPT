@@ -105,6 +105,14 @@ public class Validators {
 			date.setDate(date.getDate()-1);
 			return dateFormat.format(date);
 		}
+	
+		public static String getCurrentDateMinus(int dayToMinus) {
+			Calendar cal = Calendar.getInstance();
+			cal.add(Calendar.DATE, dayToMinus);
+			Date week = cal.getTime();
+			SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
+			return dateFormat.format(week);
+		}
 		// Check phone number valid
 		public static boolean isValidPhoneNumber (String phoneNumber) {
 			String regex = "^(0|\\+84)(\\s|\\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\\d)(\\s|\\.)?(\\d{3})(\\s|\\.)?(\\d{3})$";

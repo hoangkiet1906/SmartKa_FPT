@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -6,7 +7,7 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1 class="m-0">Work Done</h1>
+					<h1 class="m-0">Work</h1>
 				</div>
 				<!-- /.col -->
 				<div class="col-sm-6">
@@ -33,49 +34,48 @@
 
 					<div class="card">
 						<div class="card-header border-0">
-							<h3 class="card-title">Work Done</h3>
-							<div class="card-tools">
-								<ul class="pagination pagination-sm">
-
-									<li class="page-item"><a href="" class="page-link">&laquo;</a></li>
-									<li class="page-item"><a href="" class="page-link">1</a></li>
-									<li class="page-item"><a href="" class="page-link">&raquo;</a></li>
-
-								</ul>
-							</div>
-							<div class="card-tools"></div>
+							<h3 class="card-title">Completed job</h3>
 						</div>
 						<div class="card-body table-responsive p-0">
 							<table class="table table-striped table-valign-middle">
 								<thead>
 									<tr>
 										<th>Buyer</th>
+										<th>Fullname</th>
+										<th>Status</th>
 										<th>Price</th>
 										<th>Address</th>
 										<th>Phone</th>
 										<th>Email</th>
+										<th>Note</th>
 									</tr>
 								</thead>
 								<tbody>
-									@foreach ($work as $pro) @if ($pro->status == 'Complete')
 
-									<tr>
-										<td><img style="border: 0.5px solid black"
-											src="{{ asset(" User/assets/images/avatar/$pro->avatar")
-											}}" class="img-circle img-size-32 mr-2"> {{ $pro->fullname }}
-										</td>
-										<td>{{ $pro->total_money }}</td>
-										<td>{{ $pro->deliveryaddress }}</td>
-										<td>{{ $pro->phone }}</td>
-										<td>{{ $pro->email }}</td>
-										<td>{{ $pro->email }}</td>
-									</tr>
-
-									@endif @endforeach
+									<c:forEach var="w" items="${completedOrders }">
+										<tr>
+											<td>${w.order.username }</td>
+											<td>${w.order.fullname }</td>
+											<td class="text-success">${w.order.status }</td>
+											<td>$${w.order.total_money }</td>
+											<td>${w.order.address }</td>
+											<td>${w.order.phone }</td>
+											<td>${w.order.email }</td>
+											<td>
+												<c:choose>
+													<c:when test="${w.order.note == null || w.order.note == '' }">
+														Dont have any note
+													</c:when>
+													<c:otherwise>
+														${w.order.note }
+													</c:otherwise>
+												</c:choose>
+											</td>
+										</tr>
+									</c:forEach>
 
 								</tbody>
 							</table>
-
 						</div>
 					</div>
 					<!-- /.card -->

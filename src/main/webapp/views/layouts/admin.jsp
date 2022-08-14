@@ -112,7 +112,7 @@
             <!-- Brand Logo -->
             <a href="{{route('login')}}" class="brand-link"
                 style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                <img src="asset/dist/img/team.png" style="width: 100px; ">
+                <img id="logoutImg" src="asset/dist/img/team.png" style="width: 100px; ">
             </a>
 
             <!-- Sidebar -->
@@ -315,6 +315,9 @@
     <script src="asset/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
     <script src="asset/dist/js/adminlte.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- PAGE PLUGINS -->
     <!-- jQuery Mapael -->
@@ -330,7 +333,10 @@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="asset/dist/js/pages/dashboard2.js"></script>
     <script src="asset/dist/js/pages/dashboard3.js"></script>
-
+	<script src="asset/dist/js/staff.js"></script>
+	<script src="asset/dist/js/auth.js"></script>
+	
+	
     
 </body>
 

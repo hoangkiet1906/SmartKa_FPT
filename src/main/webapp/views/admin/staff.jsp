@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
@@ -28,57 +30,117 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<!-- TO DO List -->
-
-
-
 					<div class="card">
 						<div class="card-header border-0">
-							<h3 class="card-title">All Staff</h3>
-							<div class="card-tools">
-								<ul class="pagination pagination-sm">
-
-									<li class="page-item"><a href="" class="page-link">&laquo;</a></li>
-									<li class="page-item"><a href="{{ route('Adstaff') }}"
-										class="page-link">1</a></li>
-									<li class="page-item"><a href="" class="page-link">&raquo;</a></li>
-
-								</ul>
-							</div>
-							<div class="card-tools"></div>
+							<h3 class="card-title">All Pending</h3>
 						</div>
-						<div class="card-body table-responsive p-0">
+						<form method="post" id="updateStaffDoOrder" class="card-body table-responsive p-0">
 							<table class="table table-striped table-valign-middle">
 								<thead>
 									<tr>
-										<th>Staff's name</th>
-										<th>In process</th>
-										<th>Accomplished</th>
-
+										<th>Username</th>
+										<th>Date</th>
+										<th>Payment method</th>
+										<th>Status</th>
+										<th>Total</th>
+										<th>Staff?</th>
 									</tr>
 								</thead>
 								<tbody>
-									@foreach ($st as $s)
-
-									<tr>
-										<td><img style="border: 0.5px solid black"
-											src="{{ asset(" Admin/dist/img/$s->avatar") }}"
-											class="img-circle img-size-32 mr-2"> {{ $s->fullname }}</td>
-										<td>{{$count[$s->staff_name]}}</td>
-										<td>{{$countc[$s->staff_name]}}</td>
-
-									</tr>
-
-
-									@endforeach
-
+									<c:forEach var="o" items="${pendingOrders }">
+										<tr>
+											<td>${o.username }</td>
+											<td>${o.date_checkout }</td>
+											<td>${o.payment_method }</td>
+											<td class="text-danger">${o.status }</td>
+											<td>$${o.total_money }</td>
+											<td><select data-id="${o.id }" name="staffSelection">
+													<option>Choose one</option>
+													<c:forEach var="s" items="${staffs }">
+														<option value="${s.user_name }">${s.user_name }</option>
+													</c:forEach>
+											</select></td>
+										</tr>
+									</c:forEach>
 								</tbody>
 							</table>
-
+							<button type="submit" class="btn btn-primary">Update</button>
+						</form>
+					</div>
+					<!-- /.card -->
+				</div>
+				
+				<div class="col-lg-12">
+					<!-- TO DO List -->
+					<div class="card">
+						<div class="card-header border-0">
+							<h3 class="card-title">All </h3>
+						</div>
+						<div id="processcing" class="card-body table-responsive p-0">
+							<table class="table table-striped table-valign-middle">
+								<thead>
+									<tr>
+										<th>Username</th>
+										<th>Date</th>
+										<th>Payment method</th>
+										<th>Status</th>
+										<th>Total</th>
+										<th>Staff</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="o" items="${processingOrders }">
+										<tr>
+											<td>${o.order.username }</td>
+											<td>${o.order.date_checkout }</td>
+											<td>${o.order.payment_method }</td>
+											<td class="text-warning">${o.order.status }</td>
+											<td>$${o.order.total_money }</td>
+											<td>${o.staff_name }</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
 						</div>
 					</div>
 					<!-- /.card -->
 				</div>
-
+				
+				<div class="col-lg-12">
+					<!-- TO DO List -->
+					<div class="card">
+						<div class="card-header border-0">
+							<h3 class="card-title">All </h3>
+						</div>
+						<div id="processcing" class="card-body table-responsive p-0">
+							<table class="table table-striped table-valign-middle">
+								<thead>
+									<tr>
+										<th>Username</th>
+										<th>Date</th>
+										<th>Payment method</th>
+										<th>Status</th>
+										<th>Total</th>
+										<th>Staff</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="o" items="${completedOrders }">
+										<tr>
+											<td>${o.order.username }</td>
+											<td>${o.order.date_checkout }</td>
+											<td>${o.order.payment_method }</td>
+											<td class="text-success">${o.order.status }</td>
+											<td>$${o.order.total_money }</td>
+											<td>${o.staff_name }</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- /.card -->
+				</div>
 
 			</div>
 			<!-- /.row -->

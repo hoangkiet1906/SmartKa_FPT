@@ -185,11 +185,11 @@
 			<div class="col-lg-4 col-md-4 col-sm-4 col-12">
 				<div class="single-team-wrap text-center mb-30" data-aos="fade-up"
 					data-aos-delay="400">
-					<img src="assets/images/avatar/kietr.jpg" alt="">
+					<img src="assets/images/avatar/kietk.jpg" alt="">
 					<div class="team-info-position">
 						<div class="team-info">
 							<h3>Hoang Kiet</h3>
-							<span>Developer</span>
+							<span>Leader</span>
 						</div>
 					</div>
 				</div>
@@ -213,7 +213,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-4 col-12"></div>
                 <div class="col-lg-4 col-md-4 col-sm-4 col-12">
                     <div class="single-team-wrap text-center mb-30" data-aos="fade-up" data-aos-delay="400">
-                        <img src="assets/images/team/team-2.png" alt="">
+                        <img src="assets/images/avatar/lviet.jpg" alt="">
                         <div class="team-info-position">
                             <div class="team-info">
                                 <h3>Le Viet</h3>
@@ -224,7 +224,7 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4 col-12">
                     <div class="single-team-wrap text-center mb-30" data-aos="fade-up" data-aos-delay="600">
-                        <img src="assets/images/team/team-2.png" alt="">
+                        <img src="assets/images/avatar/ktoan.jpg" alt="">
                         <div class="team-info-position">
                             <div class="team-info">
                                 <h3>Khanh Toan</h3>

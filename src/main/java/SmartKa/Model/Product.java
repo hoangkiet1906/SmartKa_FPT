@@ -14,7 +14,21 @@ public class Product {
 	String specifications;
 	
 	
+	public Product(int id, String name, int price, int quantity, String image, String description, String tag, int view,
+			String status) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.price = price;
+		this.quantity = quantity;
+		this.image = image;
+		this.description = description;
+		this.tag = tag;
+		this.view = view;
+		this.status = status;
+	}
 	
+
 	public Product() {
 		super();
 	}
